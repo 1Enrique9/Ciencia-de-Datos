@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ce003f2c117ed3f9aa95dbb337ff9da4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 120px; left: 30px; width: 220px; height: 60px;
+                background-color: white; border:2px solid grey; z-index:9999;
+                font-size:14px; font-weight: bold; padding: 10px;">
+        <b>Muertes Totales por COVID-19 por Estado</b>
+    </div>
+    
+    
+    <div style="position: fixed; 
+                bottom: 30px; left: 30px; width: 220px; height: 120px;
+                background-color: white; border:2px solid grey; z-index:9999;
+                font-size:14px; padding: 10px;">
+        <b>Escala de colores</b><br>
+        <svg height="40" width="450"><line x1="0" y1="15" x2="0" y2="27" style="stroke:#ffffccff;stroke-width:2;" /><line x1="1" y1="15" x2="1" y2="27" style="stroke:#ffffccff;stroke-width:2;" /><line x1="2" y1="15" x2="2" y2="27" style="stroke:#ffffcbff;stroke-width:2;" /><line x1="3" y1="15" x2="3" y2="27" style="stroke:#ffffcaff;stroke-width:2;" /><line x1="4" y1="15" x2="4" y2="27" style="stroke:#fffec9ff;stroke-width:2;" /><line x1="5" y1="15" x2="5" y2="27" style="stroke:#fffec8ff;stroke-width:2;" /><line x1="6" y1="15" x2="6" y2="27" style="stroke:#fffec8ff;stroke-width:2;" /><line x1="7" y1="15" x2="7" y2="27" style="stroke:#fffdc7ff;stroke-width:2;" /><line x1="8" y1="15" x2="8" y2="27" style="stroke:#fffdc6ff;stroke-width:2;" /><line x1="9" y1="15" x2="9" y2="27" style="stroke:#fffdc5ff;stroke-width:2;" /><line x1="10" y1="15" x2="10" y2="27" style="stroke:#fffcc4ff;stroke-width:2;" /><line x1="11" y1="15" x2="11" y2="27" style="stroke:#fffcc4ff;stroke-width:2;" /><line x1="12" y1="15" x2="12" y2="27" style="stroke:#fffcc3ff;stroke-width:2;" /><line x1="13" y1="15" x2="13" y2="27" style="stroke:#fffbc2ff;stroke-width:2;" /><line x1="14" y1="15" x2="14" y2="27" style="stroke:#fffbc1ff;stroke-width:2;" /><line x1="15" y1="15" x2="15" y2="27" style="stroke:#fffbc0ff;stroke-width:2;" /><line x1="16" y1="15" x2="16" y2="27" style="stroke:#fffac0ff;stroke-width:2;" /><line x1="17" y1="15" x2="17" y2="27" style="stroke:#fffabfff;stroke-width:2;" /><line x1="18" y1="15" x2="18" y2="27" style="stroke:#fffabeff;stroke-width:2;" /><line x1="19" y1="15" x2="19" y2="27" style="stroke:#fff9bdff;stroke-width:2;" /><line x1="20" y1="15" x2="20" y2="27" style="stroke:#fff9bdff;stroke-width:2;" /><line x1="21" y1="15" x2="21" y2="27" style="stroke:#fff9bcff;stroke-width:2;" /><line x1="22" y1="15" x2="22" y2="27" style="stroke:#fff8bbff;stroke-width:2;" /><line x1="23" y1="15" x2="23" y2="27" style="stroke:#fff8baff;stroke-width:2;" /><line x1="24" y1="15" x2="24" y2="27" style="stroke:#fff8b9ff;stroke-width:2;" /><line x1="25" y1="15" x2="25" y2="27" style="stroke:#fff7b9ff;stroke-width:2;" /><line x1="26" y1="15" x2="26" y2="27" style="stroke:#fff7b8ff;stroke-width:2;" /><line x1="27" y1="15" x2="27" y2="27" style="stroke:#fff7b7ff;stroke-width:2;" /><line x1="28" y1="15" x2="28" y2="27" style="stroke:#fff6b6ff;stroke-width:2;" /><line x1="29" y1="15" x2="29" y2="27" style="stroke:#fff6b5ff;stroke-width:2;" /><line x1="30" y1="15" x2="30" y2="27" style="stroke:#fff6b5ff;stroke-width:2;" /><line x1="31" y1="15" x2="31" y2="27" style="stroke:#fff6b4ff;stroke-width:2;" /><line x1="32" y1="15" x2="32" y2="27" style="stroke:#fff5b3ff;stroke-width:2;" /><line x1="33" y1="15" x2="33" y2="27" style="stroke:#fff5b2ff;stroke-width:2;" /><line x1="34" y1="15" x2="34" y2="27" style="stroke:#fff5b2ff;stroke-width:2;" /><line x1="35" y1="15" x2="35" y2="27" style="stroke:#fff4b1ff;stroke-width:2;" /><line x1="36" y1="15" x2="36" y2="27" style="stroke:#fff4b0ff;stroke-width:2;" /><line x1="37" y1="15" x2="37" y2="27" style="stroke:#fff4afff;stroke-width:2;" /><line x1="38" y1="15" x2="38" y2="27" style="stroke:#fff3aeff;stroke-width:2;" /><line x1="39" y1="15" x2="39" y2="27" style="stroke:#fff3aeff;stroke-width:2;" /><line x1="40" y1="15" x2="40" y2="27" style="stroke:#fff3adff;stroke-width:2;" /><line x1="41" y1="15" x2="41" y2="27" style="stroke:#fff2acff;stroke-width:2;" /><line x1="42" y1="15" x2="42" y2="27" style="stroke:#fff2abff;stroke-width:2;" /><line x1="43" y1="15" x2="43" y2="27" style="stroke:#fff2aaff;stroke-width:2;" /><line x1="44" y1="15" x2="44" y2="27" style="stroke:#fff1aaff;stroke-width:2;" /><line x1="45" y1="15" x2="45" y2="27" style="stroke:#fff1a9ff;stroke-width:2;" /><line x1="46" y1="15" x2="46" y2="27" style="stroke:#fff1a8ff;stroke-width:2;" /><line x1="47" y1="15" x2="47" y2="27" style="stroke:#fff0a7ff;stroke-width:2;" /><line x1="48" y1="15" x2="48" y2="27" style="stroke:#fff0a7ff;stroke-width:2;" /><line x1="49" y1="15" x2="49" y2="27" style="stroke:#fff0a6ff;stroke-width:2;" /><line x1="50" y1="15" x2="50" y2="27" style="stroke:#ffefa5ff;stroke-width:2;" /><line x1="51" y1="15" x2="51" y2="27" style="stroke:#ffefa4ff;stroke-width:2;" /><line x1="52" y1="15" x2="52" y2="27" style="stroke:#ffefa3ff;stroke-width:2;" /><line x1="53" y1="15" x2="53" y2="27" style="stroke:#ffeea3ff;stroke-width:2;" /><line x1="54" y1="15" x2="54" y2="27" style="stroke:#ffeea2ff;stroke-width:2;" /><line x1="55" y1="15" x2="55" y2="27" style="stroke:#ffeea1ff;stroke-width:2;" /><line x1="56" y1="15" x2="56" y2="27" style="stroke:#ffeda0ff;stroke-width:2;" /><line x1="57" y1="15" x2="57" y2="27" style="stroke:#ffed9fff;stroke-width:2;" /><line x1="58" y1="15" x2="58" y2="27" style="stroke:#ffed9fff;stroke-width:2;" /><line x1="59" y1="15" x2="59" y2="27" style="stroke:#ffec9eff;stroke-width:2;" /><line x1="60" y1="15" x2="60" y2="27" style="stroke:#ffec9dff;stroke-width:2;" /><line x1="61" y1="15" x2="61" y2="27" style="stroke:#ffec9cff;stroke-width:2;" /><line x1="62" y1="15" x2="62" y2="27" style="stroke:#ffeb9cff;stroke-width:2;" /><line x1="63" y1="15" x2="63" y2="27" style="stroke:#ffeb9bff;stroke-width:2;" /><line x1="64" y1="15" x2="64" y2="27" style="stroke:#ffeb9aff;stroke-width:2;" /><line x1="65" y1="15" x2="65" y2="27" style="stroke:#ffea99ff;stroke-width:2;" /><line x1="66" y1="15" x2="66" y2="27" style="stroke:#ffea99ff;stroke-width:2;" /><line x1="67" y1="15" x2="67" y2="27" style="stroke:#ffea98ff;stroke-width:2;" /><line x1="68" y1="15" x2="68" y2="27" style="stroke:#ffe997ff;stroke-width:2;" /><line x1="69" y1="15" x2="69" y2="27" style="stroke:#ffe996ff;stroke-width:2;" /><line x1="70" y1="15" x2="70" y2="27" style="stroke:#ffe896ff;stroke-width:2;" /><line x1="71" y1="15" x2="71" y2="27" style="stroke:#ffe895ff;stroke-width:2;" /><line x1="72" y1="15" x2="72" y2="27" style="stroke:#ffe894ff;stroke-width:2;" /><line x1="73" y1="15" x2="73" y2="27" style="stroke:#ffe793ff;stroke-width:2;" /><line x1="74" y1="15" x2="74" y2="27" style="stroke:#ffe793ff;stroke-width:2;" /><line x1="75" y1="15" x2="75" y2="27" style="stroke:#ffe792ff;stroke-width:2;" /><line x1="76" y1="15" x2="76" y2="27" style="stroke:#ffe691ff;stroke-width:2;" /><line x1="77" y1="15" x2="77" y2="27" style="stroke:#ffe690ff;stroke-width:2;" /><line x1="78" y1="15" x2="78" y2="27" style="stroke:#ffe690ff;stroke-width:2;" /><line x1="79" y1="15" x2="79" y2="27" style="stroke:#ffe58fff;stroke-width:2;" /><line x1="80" y1="15" x2="80" y2="27" style="stroke:#ffe58eff;stroke-width:2;" /><line x1="81" y1="15" x2="81" y2="27" style="stroke:#ffe58dff;stroke-width:2;" /><line x1="82" y1="15" x2="82" y2="27" style="stroke:#ffe48dff;stroke-width:2;" /><line x1="83" y1="15" x2="83" y2="27" style="stroke:#ffe48cff;stroke-width:2;" /><line x1="84" y1="15" x2="84" y2="27" style="stroke:#ffe38bff;stroke-width:2;" /><line x1="85" y1="15" x2="85" y2="27" style="stroke:#ffe38aff;stroke-width:2;" /><line x1="86" y1="15" x2="86" y2="27" style="stroke:#ffe38aff;stroke-width:2;" /><line x1="87" y1="15" x2="87" y2="27" style="stroke:#ffe289ff;stroke-width:2;" /><line x1="88" y1="15" x2="88" y2="27" style="stroke:#ffe288ff;stroke-width:2;" /><line x1="89" y1="15" x2="89" y2="27" style="stroke:#ffe287ff;stroke-width:2;" /><line x1="90" y1="15" x2="90" y2="27" style="stroke:#ffe187ff;stroke-width:2;" /><line x1="91" y1="15" x2="91" y2="27" style="stroke:#ffe186ff;stroke-width:2;" /><line x1="92" y1="15" x2="92" y2="27" style="stroke:#ffe185ff;stroke-width:2;" /><line x1="93" y1="15" x2="93" y2="27" style="stroke:#ffe084ff;stroke-width:2;" /><line x1="94" y1="15" x2="94" y2="27" style="stroke:#ffe084ff;stroke-width:2;" /><line x1="95" y1="15" x2="95" y2="27" style="stroke:#ffe083ff;stroke-width:2;" /><line x1="96" y1="15" x2="96" y2="27" style="stroke:#ffdf82ff;stroke-width:2;" /><line x1="97" y1="15" x2="97" y2="27" style="stroke:#ffdf81ff;stroke-width:2;" /><line x1="98" y1="15" x2="98" y2="27" style="stroke:#ffde81ff;stroke-width:2;" /><line x1="99" y1="15" x2="99" y2="27" style="stroke:#ffde80ff;stroke-width:2;" /><line x1="100" y1="15" x2="100" y2="27" style="stroke:#ffde7fff;stroke-width:2;" /><line x1="101" y1="15" x2="101" y2="27" style="stroke:#ffdd7eff;stroke-width:2;" /><line x1="102" y1="15" x2="102" y2="27" style="stroke:#ffdd7eff;stroke-width:2;" /><line x1="103" y1="15" x2="103" y2="27" style="stroke:#ffdd7dff;stroke-width:2;" /><line x1="104" y1="15" x2="104" y2="27" style="stroke:#ffdc7cff;stroke-width:2;" /><line x1="105" y1="15" x2="105" y2="27" style="stroke:#ffdc7bff;stroke-width:2;" /><line x1="106" y1="15" x2="106" y2="27" style="stroke:#ffdc7bff;stroke-width:2;" /><line x1="107" y1="15" x2="107" y2="27" style="stroke:#ffdb7aff;stroke-width:2;" /><line x1="108" y1="15" x2="108" y2="27" style="stroke:#ffdb79ff;stroke-width:2;" /><line x1="109" y1="15" x2="109" y2="27" style="stroke:#ffdb78ff;stroke-width:2;" /><line x1="110" y1="15" x2="110" y2="27" style="stroke:#ffda78ff;stroke-width:2;" /><line x1="111" y1="15" x2="111" y2="27" style="stroke:#ffda77ff;stroke-width:2;" /><line x1="112" y1="15" x2="112" y2="27" style="stroke:#ffd976ff;stroke-width:2;" /><line x1="113" y1="15" x2="113" y2="27" style="stroke:#fed975ff;stroke-width:2;" /><line x1="114" y1="15" x2="114" y2="27" style="stroke:#fed875ff;stroke-width:2;" /><line x1="115" y1="15" x2="115" y2="27" style="stroke:#fed774ff;stroke-width:2;" /><line x1="116" y1="15" x2="116" y2="27" style="stroke:#fed773ff;stroke-width:2;" /><line x1="117" y1="15" x2="117" y2="27" style="stroke:#fed672ff;stroke-width:2;" /><line x1="118" y1="15" x2="118" y2="27" style="stroke:#fed572ff;stroke-width:2;" /><line x1="119" y1="15" x2="119" y2="27" style="stroke:#fed571ff;stroke-width:2;" /><line x1="120" y1="15" x2="120" y2="27" style="stroke:#fed470ff;stroke-width:2;" /><line x1="121" y1="15" x2="121" y2="27" style="stroke:#fed36fff;stroke-width:2;" /><line x1="122" y1="15" x2="122" y2="27" style="stroke:#fed36fff;stroke-width:2;" /><line x1="123" y1="15" x2="123" y2="27" style="stroke:#fed26eff;stroke-width:2;" /><line x1="124" y1="15" x2="124" y2="27" style="stroke:#fed16dff;stroke-width:2;" /><line x1="125" y1="15" x2="125" y2="27" style="stroke:#fed06cff;stroke-width:2;" /><line x1="126" y1="15" x2="126" y2="27" style="stroke:#fed06cff;stroke-width:2;" /><line x1="127" y1="15" x2="127" y2="27" style="stroke:#fecf6bff;stroke-width:2;" /><line x1="128" y1="15" x2="128" y2="27" style="stroke:#fece6aff;stroke-width:2;" /><line x1="129" y1="15" x2="129" y2="27" style="stroke:#fece69ff;stroke-width:2;" /><line x1="130" y1="15" x2="130" y2="27" style="stroke:#fecd69ff;stroke-width:2;" /><line x1="131" y1="15" x2="131" y2="27" style="stroke:#fecc68ff;stroke-width:2;" /><line x1="132" y1="15" x2="132" y2="27" style="stroke:#fecc67ff;stroke-width:2;" /><line x1="133" y1="15" x2="133" y2="27" style="stroke:#fecb66ff;stroke-width:2;" /><line x1="134" y1="15" x2="134" y2="27" style="stroke:#feca66ff;stroke-width:2;" /><line x1="135" y1="15" x2="135" y2="27" style="stroke:#fec965ff;stroke-width:2;" /><line x1="136" y1="15" x2="136" y2="27" style="stroke:#fec964ff;stroke-width:2;" /><line x1="137" y1="15" x2="137" y2="27" style="stroke:#fec863ff;stroke-width:2;" /><line x1="138" y1="15" x2="138" y2="27" style="stroke:#fec763ff;stroke-width:2;" /><line x1="139" y1="15" x2="139" y2="27" style="stroke:#fec762ff;stroke-width:2;" /><line x1="140" y1="15" x2="140" y2="27" style="stroke:#fec661ff;stroke-width:2;" /><line x1="141" y1="15" x2="141" y2="27" style="stroke:#fec560ff;stroke-width:2;" /><line x1="142" y1="15" x2="142" y2="27" style="stroke:#fec560ff;stroke-width:2;" /><line x1="143" y1="15" x2="143" y2="27" style="stroke:#fec45fff;stroke-width:2;" /><line x1="144" y1="15" x2="144" y2="27" style="stroke:#fec35eff;stroke-width:2;" /><line x1="145" y1="15" x2="145" y2="27" style="stroke:#fec35dff;stroke-width:2;" /><line x1="146" y1="15" x2="146" y2="27" style="stroke:#fec25dff;stroke-width:2;" /><line x1="147" y1="15" x2="147" y2="27" style="stroke:#fec15cff;stroke-width:2;" /><line x1="148" y1="15" x2="148" y2="27" style="stroke:#fec05bff;stroke-width:2;" /><line x1="149" y1="15" x2="149" y2="27" style="stroke:#fec05aff;stroke-width:2;" /><line x1="150" y1="15" x2="150" y2="27" style="stroke:#febf5aff;stroke-width:2;" /><line x1="151" y1="15" x2="151" y2="27" style="stroke:#febe59ff;stroke-width:2;" /><line x1="152" y1="15" x2="152" y2="27" style="stroke:#febe58ff;stroke-width:2;" /><line x1="153" y1="15" x2="153" y2="27" style="stroke:#febd57ff;stroke-width:2;" /><line x1="154" y1="15" x2="154" y2="27" style="stroke:#febc57ff;stroke-width:2;" /><line x1="155" y1="15" x2="155" y2="27" style="stroke:#febc56ff;stroke-width:2;" /><line x1="156" y1="15" x2="156" y2="27" style="stroke:#febb55ff;stroke-width:2;" /><line x1="157" y1="15" x2="157" y2="27" style="stroke:#feba54ff;stroke-width:2;" /><line x1="158" y1="15" x2="158" y2="27" style="stroke:#feb954ff;stroke-width:2;" /><line x1="159" y1="15" x2="159" y2="27" style="stroke:#feb953ff;stroke-width:2;" /><line x1="160" y1="15" x2="160" y2="27" style="stroke:#feb852ff;stroke-width:2;" /><line x1="161" y1="15" x2="161" y2="27" style="stroke:#feb751ff;stroke-width:2;" /><line x1="162" y1="15" x2="162" y2="27" style="stroke:#feb751ff;stroke-width:2;" /><line x1="163" y1="15" x2="163" y2="27" style="stroke:#feb650ff;stroke-width:2;" /><line x1="164" y1="15" x2="164" y2="27" style="stroke:#feb54fff;stroke-width:2;" /><line x1="165" y1="15" x2="165" y2="27" style="stroke:#feb54eff;stroke-width:2;" /><line x1="166" y1="15" x2="166" y2="27" style="stroke:#feb44eff;stroke-width:2;" /><line x1="167" y1="15" x2="167" y2="27" style="stroke:#feb34dff;stroke-width:2;" /><line x1="168" y1="15" x2="168" y2="27" style="stroke:#feb24cff;stroke-width:2;" /><line x1="169" y1="15" x2="169" y2="27" style="stroke:#feb24cff;stroke-width:2;" /><line x1="170" y1="15" x2="170" y2="27" style="stroke:#feb14bff;stroke-width:2;" /><line x1="171" y1="15" x2="171" y2="27" style="stroke:#feb04bff;stroke-width:2;" /><line x1="172" y1="15" x2="172" y2="27" style="stroke:#feb04bff;stroke-width:2;" /><line x1="173" y1="15" x2="173" y2="27" style="stroke:#feaf4aff;stroke-width:2;" /><line x1="174" y1="15" x2="174" y2="27" style="stroke:#feae4aff;stroke-width:2;" /><line x1="175" y1="15" x2="175" y2="27" style="stroke:#feae4aff;stroke-width:2;" /><line x1="176" y1="15" x2="176" y2="27" style="stroke:#fead4aff;stroke-width:2;" /><line x1="177" y1="15" x2="177" y2="27" style="stroke:#feac49ff;stroke-width:2;" /><line x1="178" y1="15" x2="178" y2="27" style="stroke:#feac49ff;stroke-width:2;" /><line x1="179" y1="15" x2="179" y2="27" style="stroke:#feab49ff;stroke-width:2;" /><line x1="180" y1="15" x2="180" y2="27" style="stroke:#feab48ff;stroke-width:2;" /><line x1="181" y1="15" x2="181" y2="27" style="stroke:#feaa48ff;stroke-width:2;" /><line x1="182" y1="15" x2="182" y2="27" style="stroke:#fea948ff;stroke-width:2;" /><line x1="183" y1="15" x2="183" y2="27" style="stroke:#fea948ff;stroke-width:2;" /><line x1="184" y1="15" x2="184" y2="27" style="stroke:#fea847ff;stroke-width:2;" /><line x1="185" y1="15" x2="185" y2="27" style="stroke:#fea747ff;stroke-width:2;" /><line x1="186" y1="15" x2="186" y2="27" style="stroke:#fea747ff;stroke-width:2;" /><line x1="187" y1="15" x2="187" y2="27" style="stroke:#fea646ff;stroke-width:2;" /><line x1="188" y1="15" x2="188" y2="27" style="stroke:#fea546ff;stroke-width:2;" /><line x1="189" y1="15" x2="189" y2="27" style="stroke:#fea546ff;stroke-width:2;" /><line x1="190" y1="15" x2="190" y2="27" style="stroke:#fea446ff;stroke-width:2;" /><line x1="191" y1="15" x2="191" y2="27" style="stroke:#fea345ff;stroke-width:2;" /><line x1="192" y1="15" x2="192" y2="27" style="stroke:#fea345ff;stroke-width:2;" /><line x1="193" y1="15" x2="193" y2="27" style="stroke:#fea245ff;stroke-width:2;" /><line x1="194" y1="15" x2="194" y2="27" style="stroke:#fea144ff;stroke-width:2;" /><line x1="195" y1="15" x2="195" y2="27" style="stroke:#fea144ff;stroke-width:2;" /><line x1="196" y1="15" x2="196" y2="27" style="stroke:#fea044ff;stroke-width:2;" /><line x1="197" y1="15" x2="197" y2="27" style="stroke:#fe9f44ff;stroke-width:2;" /><line x1="198" y1="15" x2="198" y2="27" style="stroke:#fe9f43ff;stroke-width:2;" /><line x1="199" y1="15" x2="199" y2="27" style="stroke:#fe9e43ff;stroke-width:2;" /><line x1="200" y1="15" x2="200" y2="27" style="stroke:#fe9d43ff;stroke-width:2;" /><line x1="201" y1="15" x2="201" y2="27" style="stroke:#fe9d42ff;stroke-width:2;" /><line x1="202" y1="15" x2="202" y2="27" style="stroke:#fe9c42ff;stroke-width:2;" /><line x1="203" y1="15" x2="203" y2="27" style="stroke:#fe9b42ff;stroke-width:2;" /><line x1="204" y1="15" x2="204" y2="27" style="stroke:#fe9b42ff;stroke-width:2;" /><line x1="205" y1="15" x2="205" y2="27" style="stroke:#fe9a41ff;stroke-width:2;" /><line x1="206" y1="15" x2="206" y2="27" style="stroke:#fe9941ff;stroke-width:2;" /><line x1="207" y1="15" x2="207" y2="27" style="stroke:#fe9941ff;stroke-width:2;" /><line x1="208" y1="15" x2="208" y2="27" style="stroke:#fe9840ff;stroke-width:2;" /><line x1="209" y1="15" x2="209" y2="27" style="stroke:#fe9740ff;stroke-width:2;" /><line x1="210" y1="15" x2="210" y2="27" style="stroke:#fe9740ff;stroke-width:2;" /><line x1="211" y1="15" x2="211" y2="27" style="stroke:#fe9640ff;stroke-width:2;" /><line x1="212" y1="15" x2="212" y2="27" style="stroke:#fe953fff;stroke-width:2;" /><line x1="213" y1="15" x2="213" y2="27" style="stroke:#fe953fff;stroke-width:2;" /><line x1="214" y1="15" x2="214" y2="27" style="stroke:#fe943fff;stroke-width:2;" /><line x1="215" y1="15" x2="215" y2="27" style="stroke:#fe933eff;stroke-width:2;" /><line x1="216" y1="15" x2="216" y2="27" style="stroke:#fe933eff;stroke-width:2;" /><line x1="217" y1="15" x2="217" y2="27" style="stroke:#fe923eff;stroke-width:2;" /><line x1="218" y1="15" x2="218" y2="27" style="stroke:#fe913eff;stroke-width:2;" /><line x1="219" y1="15" x2="219" y2="27" style="stroke:#fe913dff;stroke-width:2;" /><line x1="220" y1="15" x2="220" y2="27" style="stroke:#fe903dff;stroke-width:2;" /><line x1="221" y1="15" x2="221" y2="27" style="stroke:#fe8f3dff;stroke-width:2;" /><line x1="222" y1="15" x2="222" y2="27" style="stroke:#fe8f3cff;stroke-width:2;" /><line x1="223" y1="15" x2="223" y2="27" style="stroke:#fe8e3cff;stroke-width:2;" /><line x1="224" y1="15" x2="224" y2="27" style="stroke:#fe8d3cff;stroke-width:2;" /><line x1="225" y1="15" x2="225" y2="27" style="stroke:#fd8c3cff;stroke-width:2;" /><line x1="226" y1="15" x2="226" y2="27" style="stroke:#fd8b3bff;stroke-width:2;" /><line x1="227" y1="15" x2="227" y2="27" style="stroke:#fd8a3bff;stroke-width:2;" /><line x1="228" y1="15" x2="228" y2="27" style="stroke:#fd893bff;stroke-width:2;" /><line x1="229" y1="15" x2="229" y2="27" style="stroke:#fd883aff;stroke-width:2;" /><line x1="230" y1="15" x2="230" y2="27" style="stroke:#fd873aff;stroke-width:2;" /><line x1="231" y1="15" x2="231" y2="27" style="stroke:#fd863aff;stroke-width:2;" /><line x1="232" y1="15" x2="232" y2="27" style="stroke:#fd8539ff;stroke-width:2;" /><line x1="233" y1="15" x2="233" y2="27" style="stroke:#fd8339ff;stroke-width:2;" /><line x1="234" y1="15" x2="234" y2="27" style="stroke:#fd8239ff;stroke-width:2;" /><line x1="235" y1="15" x2="235" y2="27" style="stroke:#fd8138ff;stroke-width:2;" /><line x1="236" y1="15" x2="236" y2="27" style="stroke:#fd8038ff;stroke-width:2;" /><line x1="237" y1="15" x2="237" y2="27" style="stroke:#fd7f38ff;stroke-width:2;" /><line x1="238" y1="15" x2="238" y2="27" style="stroke:#fd7e37ff;stroke-width:2;" /><line x1="239" y1="15" x2="239" y2="27" style="stroke:#fd7d37ff;stroke-width:2;" /><line x1="240" y1="15" x2="240" y2="27" style="stroke:#fd7c37ff;stroke-width:2;" /><line x1="241" y1="15" x2="241" y2="27" style="stroke:#fd7a36ff;stroke-width:2;" /><line x1="242" y1="15" x2="242" y2="27" style="stroke:#fd7936ff;stroke-width:2;" /><line x1="243" y1="15" x2="243" y2="27" style="stroke:#fd7836ff;stroke-width:2;" /><line x1="244" y1="15" x2="244" y2="27" style="stroke:#fd7735ff;stroke-width:2;" /><line x1="245" y1="15" x2="245" y2="27" style="stroke:#fd7635ff;stroke-width:2;" /><line x1="246" y1="15" x2="246" y2="27" style="stroke:#fd7535ff;stroke-width:2;" /><line x1="247" y1="15" x2="247" y2="27" style="stroke:#fd7434ff;stroke-width:2;" /><line x1="248" y1="15" x2="248" y2="27" style="stroke:#fd7334ff;stroke-width:2;" /><line x1="249" y1="15" x2="249" y2="27" style="stroke:#fd7134ff;stroke-width:2;" /><line x1="250" y1="15" x2="250" y2="27" style="stroke:#fd7034ff;stroke-width:2;" /><line x1="251" y1="15" x2="251" y2="27" style="stroke:#fd6f33ff;stroke-width:2;" /><line x1="252" y1="15" x2="252" y2="27" style="stroke:#fd6e33ff;stroke-width:2;" /><line x1="253" y1="15" x2="253" y2="27" style="stroke:#fd6d33ff;stroke-width:2;" /><line x1="254" y1="15" x2="254" y2="27" style="stroke:#fd6c32ff;stroke-width:2;" /><line x1="255" y1="15" x2="255" y2="27" style="stroke:#fd6b32ff;stroke-width:2;" /><line x1="256" y1="15" x2="256" y2="27" style="stroke:#fd6a32ff;stroke-width:2;" /><line x1="257" y1="15" x2="257" y2="27" style="stroke:#fd6831ff;stroke-width:2;" /><line x1="258" y1="15" x2="258" y2="27" style="stroke:#fd6731ff;stroke-width:2;" /><line x1="259" y1="15" x2="259" y2="27" style="stroke:#fd6631ff;stroke-width:2;" /><line x1="260" y1="15" x2="260" y2="27" style="stroke:#fd6530ff;stroke-width:2;" /><line x1="261" y1="15" x2="261" y2="27" style="stroke:#fd6430ff;stroke-width:2;" /><line x1="262" y1="15" x2="262" y2="27" style="stroke:#fd6330ff;stroke-width:2;" /><line x1="263" y1="15" x2="263" y2="27" style="stroke:#fd622fff;stroke-width:2;" /><line x1="264" y1="15" x2="264" y2="27" style="stroke:#fd612fff;stroke-width:2;" /><line x1="265" y1="15" x2="265" y2="27" style="stroke:#fd5f2fff;stroke-width:2;" /><line x1="266" y1="15" x2="266" y2="27" style="stroke:#fd5e2eff;stroke-width:2;" /><line x1="267" y1="15" x2="267" y2="27" style="stroke:#fd5d2eff;stroke-width:2;" /><line x1="268" y1="15" x2="268" y2="27" style="stroke:#fd5c2eff;stroke-width:2;" /><line x1="269" y1="15" x2="269" y2="27" style="stroke:#fd5b2dff;stroke-width:2;" /><line x1="270" y1="15" x2="270" y2="27" style="stroke:#fd5a2dff;stroke-width:2;" /><line x1="271" y1="15" x2="271" y2="27" style="stroke:#fd592dff;stroke-width:2;" /><line x1="272" y1="15" x2="272" y2="27" style="stroke:#fd582cff;stroke-width:2;" /><line x1="273" y1="15" x2="273" y2="27" style="stroke:#fd562cff;stroke-width:2;" /><line x1="274" y1="15" x2="274" y2="27" style="stroke:#fd552cff;stroke-width:2;" /><line x1="275" y1="15" x2="275" y2="27" style="stroke:#fd542bff;stroke-width:2;" /><line x1="276" y1="15" x2="276" y2="27" style="stroke:#fd532bff;stroke-width:2;" /><line x1="277" y1="15" x2="277" y2="27" style="stroke:#fd522bff;stroke-width:2;" /><line x1="278" y1="15" x2="278" y2="27" style="stroke:#fd512bff;stroke-width:2;" /><line x1="279" y1="15" x2="279" y2="27" style="stroke:#fd502aff;stroke-width:2;" /><line x1="280" y1="15" x2="280" y2="27" style="stroke:#fc4f2aff;stroke-width:2;" /><line x1="281" y1="15" x2="281" y2="27" style="stroke:#fc4d2aff;stroke-width:2;" /><line x1="282" y1="15" x2="282" y2="27" style="stroke:#fc4d29ff;stroke-width:2;" /><line x1="283" y1="15" x2="283" y2="27" style="stroke:#fb4c29ff;stroke-width:2;" /><line x1="284" y1="15" x2="284" y2="27" style="stroke:#fb4b29ff;stroke-width:2;" /><line x1="285" y1="15" x2="285" y2="27" style="stroke:#fb4a29ff;stroke-width:2;" /><line x1="286" y1="15" x2="286" y2="27" style="stroke:#fa4928ff;stroke-width:2;" /><line x1="287" y1="15" x2="287" y2="27" style="stroke:#fa4828ff;stroke-width:2;" /><line x1="288" y1="15" x2="288" y2="27" style="stroke:#f94728ff;stroke-width:2;" /><line x1="289" y1="15" x2="289" y2="27" style="stroke:#f94628ff;stroke-width:2;" /><line x1="290" y1="15" x2="290" y2="27" style="stroke:#f84527ff;stroke-width:2;" /><line x1="291" y1="15" x2="291" y2="27" style="stroke:#f84427ff;stroke-width:2;" /><line x1="292" y1="15" x2="292" y2="27" style="stroke:#f74327ff;stroke-width:2;" /><line x1="293" y1="15" x2="293" y2="27" style="stroke:#f74227ff;stroke-width:2;" /><line x1="294" y1="15" x2="294" y2="27" style="stroke:#f74126ff;stroke-width:2;" /><line x1="295" y1="15" x2="295" y2="27" style="stroke:#f64026ff;stroke-width:2;" /><line x1="296" y1="15" x2="296" y2="27" style="stroke:#f64026ff;stroke-width:2;" /><line x1="297" y1="15" x2="297" y2="27" style="stroke:#f53f26ff;stroke-width:2;" /><line x1="298" y1="15" x2="298" y2="27" style="stroke:#f53e25ff;stroke-width:2;" /><line x1="299" y1="15" x2="299" y2="27" style="stroke:#f43d25ff;stroke-width:2;" /><line x1="300" y1="15" x2="300" y2="27" style="stroke:#f43c25ff;stroke-width:2;" /><line x1="301" y1="15" x2="301" y2="27" style="stroke:#f33b25ff;stroke-width:2;" /><line x1="302" y1="15" x2="302" y2="27" style="stroke:#f33a24ff;stroke-width:2;" /><line x1="303" y1="15" x2="303" y2="27" style="stroke:#f23924ff;stroke-width:2;" /><line x1="304" y1="15" x2="304" y2="27" style="stroke:#f23824ff;stroke-width:2;" /><line x1="305" y1="15" x2="305" y2="27" style="stroke:#f23724ff;stroke-width:2;" /><line x1="306" y1="15" x2="306" y2="27" style="stroke:#f13623ff;stroke-width:2;" /><line x1="307" y1="15" x2="307" y2="27" style="stroke:#f13523ff;stroke-width:2;" /><line x1="308" y1="15" x2="308" y2="27" style="stroke:#f03423ff;stroke-width:2;" /><line x1="309" y1="15" x2="309" y2="27" style="stroke:#f03323ff;stroke-width:2;" /><line x1="310" y1="15" x2="310" y2="27" style="stroke:#ef3222ff;stroke-width:2;" /><line x1="311" y1="15" x2="311" y2="27" style="stroke:#ef3222ff;stroke-width:2;" /><line x1="312" y1="15" x2="312" y2="27" style="stroke:#ee3122ff;stroke-width:2;" /><line x1="313" y1="15" x2="313" y2="27" style="stroke:#ee3022ff;stroke-width:2;" /><line x1="314" y1="15" x2="314" y2="27" style="stroke:#ee2f21ff;stroke-width:2;" /><line x1="315" y1="15" x2="315" y2="27" style="stroke:#ed2e21ff;stroke-width:2;" /><line x1="316" y1="15" x2="316" y2="27" style="stroke:#ed2d21ff;stroke-width:2;" /><line x1="317" y1="15" x2="317" y2="27" style="stroke:#ec2c21ff;stroke-width:2;" /><line x1="318" y1="15" x2="318" y2="27" style="stroke:#ec2b20ff;stroke-width:2;" /><line x1="319" y1="15" x2="319" y2="27" style="stroke:#eb2a20ff;stroke-width:2;" /><line x1="320" y1="15" x2="320" y2="27" style="stroke:#eb2920ff;stroke-width:2;" /><line x1="321" y1="15" x2="321" y2="27" style="stroke:#ea2820ff;stroke-width:2;" /><line x1="322" y1="15" x2="322" y2="27" style="stroke:#ea271fff;stroke-width:2;" /><line x1="323" y1="15" x2="323" y2="27" style="stroke:#ea261fff;stroke-width:2;" /><line x1="324" y1="15" x2="324" y2="27" style="stroke:#e9251fff;stroke-width:2;" /><line x1="325" y1="15" x2="325" y2="27" style="stroke:#e9251fff;stroke-width:2;" /><line x1="326" y1="15" x2="326" y2="27" style="stroke:#e8241eff;stroke-width:2;" /><line x1="327" y1="15" x2="327" y2="27" style="stroke:#e8231eff;stroke-width:2;" /><line x1="328" y1="15" x2="328" y2="27" style="stroke:#e7221eff;stroke-width:2;" /><line x1="329" y1="15" x2="329" y2="27" style="stroke:#e7211eff;stroke-width:2;" /><line x1="330" y1="15" x2="330" y2="27" style="stroke:#e6201dff;stroke-width:2;" /><line x1="331" y1="15" x2="331" y2="27" style="stroke:#e61f1dff;stroke-width:2;" /><line x1="332" y1="15" x2="332" y2="27" style="stroke:#e61e1dff;stroke-width:2;" /><line x1="333" y1="15" x2="333" y2="27" style="stroke:#e51d1dff;stroke-width:2;" /><line x1="334" y1="15" x2="334" y2="27" style="stroke:#e51c1cff;stroke-width:2;" /><line x1="335" y1="15" x2="335" y2="27" style="stroke:#e41b1cff;stroke-width:2;" /><line x1="336" y1="15" x2="336" y2="27" style="stroke:#e41a1cff;stroke-width:2;" /><line x1="337" y1="15" x2="337" y2="27" style="stroke:#e3191cff;stroke-width:2;" /><line x1="338" y1="15" x2="338" y2="27" style="stroke:#e3191cff;stroke-width:2;" /><line x1="339" y1="15" x2="339" y2="27" style="stroke:#e2191cff;stroke-width:2;" /><line x1="340" y1="15" x2="340" y2="27" style="stroke:#e1181cff;stroke-width:2;" /><line x1="341" y1="15" x2="341" y2="27" style="stroke:#e1181cff;stroke-width:2;" /><line x1="342" y1="15" x2="342" y2="27" style="stroke:#e0171dff;stroke-width:2;" /><line x1="343" y1="15" x2="343" y2="27" style="stroke:#df171dff;stroke-width:2;" /><line x1="344" y1="15" x2="344" y2="27" style="stroke:#de161dff;stroke-width:2;" /><line x1="345" y1="15" x2="345" y2="27" style="stroke:#de161dff;stroke-width:2;" /><line x1="346" y1="15" x2="346" y2="27" style="stroke:#dd151dff;stroke-width:2;" /><line x1="347" y1="15" x2="347" y2="27" style="stroke:#dc151dff;stroke-width:2;" /><line x1="348" y1="15" x2="348" y2="27" style="stroke:#dc141eff;stroke-width:2;" /><line x1="349" y1="15" x2="349" y2="27" style="stroke:#db141eff;stroke-width:2;" /><line x1="350" y1="15" x2="350" y2="27" style="stroke:#da131eff;stroke-width:2;" /><line x1="351" y1="15" x2="351" y2="27" style="stroke:#da131eff;stroke-width:2;" /><line x1="352" y1="15" x2="352" y2="27" style="stroke:#d9131eff;stroke-width:2;" /><line x1="353" y1="15" x2="353" y2="27" style="stroke:#d8121fff;stroke-width:2;" /><line x1="354" y1="15" x2="354" y2="27" style="stroke:#d8121fff;stroke-width:2;" /><line x1="355" y1="15" x2="355" y2="27" style="stroke:#d7111fff;stroke-width:2;" /><line x1="356" y1="15" x2="356" y2="27" style="stroke:#d6111fff;stroke-width:2;" /><line x1="357" y1="15" x2="357" y2="27" style="stroke:#d6101fff;stroke-width:2;" /><line x1="358" y1="15" x2="358" y2="27" style="stroke:#d5101fff;stroke-width:2;" /><line x1="359" y1="15" x2="359" y2="27" style="stroke:#d40f20ff;stroke-width:2;" /><line x1="360" y1="15" x2="360" y2="27" style="stroke:#d40f20ff;stroke-width:2;" /><line x1="361" y1="15" x2="361" y2="27" style="stroke:#d30e20ff;stroke-width:2;" /><line x1="362" y1="15" x2="362" y2="27" style="stroke:#d20e20ff;stroke-width:2;" /><line x1="363" y1="15" x2="363" y2="27" style="stroke:#d20d20ff;stroke-width:2;" /><line x1="364" y1="15" x2="364" y2="27" style="stroke:#d10d20ff;stroke-width:2;" /><line x1="365" y1="15" x2="365" y2="27" style="stroke:#d00c21ff;stroke-width:2;" /><line x1="366" y1="15" x2="366" y2="27" style="stroke:#d00c21ff;stroke-width:2;" /><line x1="367" y1="15" x2="367" y2="27" style="stroke:#cf0c21ff;stroke-width:2;" /><line x1="368" y1="15" x2="368" y2="27" style="stroke:#ce0b21ff;stroke-width:2;" /><line x1="369" y1="15" x2="369" y2="27" style="stroke:#cd0b21ff;stroke-width:2;" /><line x1="370" y1="15" x2="370" y2="27" style="stroke:#cd0a22ff;stroke-width:2;" /><line x1="371" y1="15" x2="371" y2="27" style="stroke:#cc0a22ff;stroke-width:2;" /><line x1="372" y1="15" x2="372" y2="27" style="stroke:#cb0922ff;stroke-width:2;" /><line x1="373" y1="15" x2="373" y2="27" style="stroke:#cb0922ff;stroke-width:2;" /><line x1="374" y1="15" x2="374" y2="27" style="stroke:#ca0822ff;stroke-width:2;" /><line x1="375" y1="15" x2="375" y2="27" style="stroke:#c90822ff;stroke-width:2;" /><line x1="376" y1="15" x2="376" y2="27" style="stroke:#c90723ff;stroke-width:2;" /><line x1="377" y1="15" x2="377" y2="27" style="stroke:#c80723ff;stroke-width:2;" /><line x1="378" y1="15" x2="378" y2="27" style="stroke:#c70623ff;stroke-width:2;" /><line x1="379" y1="15" x2="379" y2="27" style="stroke:#c70623ff;stroke-width:2;" /><line x1="380" y1="15" x2="380" y2="27" style="stroke:#c60523ff;stroke-width:2;" /><line x1="381" y1="15" x2="381" y2="27" style="stroke:#c50524ff;stroke-width:2;" /><line x1="382" y1="15" x2="382" y2="27" style="stroke:#c50524ff;stroke-width:2;" /><line x1="383" y1="15" x2="383" y2="27" style="stroke:#c40424ff;stroke-width:2;" /><line x1="384" y1="15" x2="384" y2="27" style="stroke:#c30424ff;stroke-width:2;" /><line x1="385" y1="15" x2="385" y2="27" style="stroke:#c30324ff;stroke-width:2;" /><line x1="386" y1="15" x2="386" y2="27" style="stroke:#c20324ff;stroke-width:2;" /><line x1="387" y1="15" x2="387" y2="27" style="stroke:#c10225ff;stroke-width:2;" /><line x1="388" y1="15" x2="388" y2="27" style="stroke:#c10225ff;stroke-width:2;" /><line x1="389" y1="15" x2="389" y2="27" style="stroke:#c00125ff;stroke-width:2;" /><line x1="390" y1="15" x2="390" y2="27" style="stroke:#bf0125ff;stroke-width:2;" /><line x1="391" y1="15" x2="391" y2="27" style="stroke:#bf0025ff;stroke-width:2;" /><line x1="392" y1="15" x2="392" y2="27" style="stroke:#be0025ff;stroke-width:2;" /><line x1="393" y1="15" x2="393" y2="27" style="stroke:#bd0026ff;stroke-width:2;" /><line x1="394" y1="15" x2="394" y2="27" style="stroke:#bc0026ff;stroke-width:2;" /><line x1="395" y1="15" x2="395" y2="27" style="stroke:#bb0026ff;stroke-width:2;" /><line x1="396" y1="15" x2="396" y2="27" style="stroke:#ba0026ff;stroke-width:2;" /><line x1="397" y1="15" x2="397" y2="27" style="stroke:#b90026ff;stroke-width:2;" /><line x1="398" y1="15" x2="398" y2="27" style="stroke:#b80026ff;stroke-width:2;" /><line x1="399" y1="15" x2="399" y2="27" style="stroke:#b70026ff;stroke-width:2;" /><line x1="400" y1="15" x2="400" y2="27" style="stroke:#b50026ff;stroke-width:2;" /><line x1="401" y1="15" x2="401" y2="27" style="stroke:#b40026ff;stroke-width:2;" /><line x1="402" y1="15" x2="402" y2="27" style="stroke:#b30026ff;stroke-width:2;" /><line x1="403" y1="15" x2="403" y2="27" style="stroke:#b20026ff;stroke-width:2;" /><line x1="404" y1="15" x2="404" y2="27" style="stroke:#b10026ff;stroke-width:2;" /><line x1="405" y1="15" x2="405" y2="27" style="stroke:#b00026ff;stroke-width:2;" /><line x1="406" y1="15" x2="406" y2="27" style="stroke:#af0026ff;stroke-width:2;" /><line x1="407" y1="15" x2="407" y2="27" style="stroke:#ae0026ff;stroke-width:2;" /><line x1="408" y1="15" x2="408" y2="27" style="stroke:#ad0026ff;stroke-width:2;" /><line x1="409" y1="15" x2="409" y2="27" style="stroke:#ac0026ff;stroke-width:2;" /><line x1="410" y1="15" x2="410" y2="27" style="stroke:#ab0026ff;stroke-width:2;" /><line x1="411" y1="15" x2="411" y2="27" style="stroke:#a90026ff;stroke-width:2;" /><line x1="412" y1="15" x2="412" y2="27" style="stroke:#a80026ff;stroke-width:2;" /><line x1="413" y1="15" x2="413" y2="27" style="stroke:#a70026ff;stroke-width:2;" /><line x1="414" y1="15" x2="414" y2="27" style="stroke:#a60026ff;stroke-width:2;" /><line x1="415" y1="15" x2="415" y2="27" style="stroke:#a50026ff;stroke-width:2;" /><line x1="416" y1="15" x2="416" y2="27" style="stroke:#a40026ff;stroke-width:2;" /><line x1="417" y1="15" x2="417" y2="27" style="stroke:#a30026ff;stroke-width:2;" /><line x1="418" y1="15" x2="418" y2="27" style="stroke:#a20026ff;stroke-width:2;" /><line x1="419" y1="15" x2="419" y2="27" style="stroke:#a10026ff;stroke-width:2;" /><line x1="420" y1="15" x2="420" y2="27" style="stroke:#a00026ff;stroke-width:2;" /><line x1="421" y1="15" x2="421" y2="27" style="stroke:#9f0026ff;stroke-width:2;" /><line x1="422" y1="15" x2="422" y2="27" style="stroke:#9d0026ff;stroke-width:2;" /><line x1="423" y1="15" x2="423" y2="27" style="stroke:#9c0026ff;stroke-width:2;" /><line x1="424" y1="15" x2="424" y2="27" style="stroke:#9b0026ff;stroke-width:2;" /><line x1="425" y1="15" x2="425" y2="27" style="stroke:#9a0026ff;stroke-width:2;" /><line x1="426" y1="15" x2="426" y2="27" style="stroke:#990026ff;stroke-width:2;" /><line x1="427" y1="15" x2="427" y2="27" style="stroke:#980026ff;stroke-width:2;" /><line x1="428" y1="15" x2="428" y2="27" style="stroke:#970026ff;stroke-width:2;" /><line x1="429" y1="15" x2="429" y2="27" style="stroke:#960026ff;stroke-width:2;" /><line x1="430" y1="15" x2="430" y2="27" style="stroke:#950026ff;stroke-width:2;" /><line x1="431" y1="15" x2="431" y2="27" style="stroke:#940026ff;stroke-width:2;" /><line x1="432" y1="15" x2="432" y2="27" style="stroke:#930026ff;stroke-width:2;" /><line x1="433" y1="15" x2="433" y2="27" style="stroke:#910026ff;stroke-width:2;" /><line x1="434" y1="15" x2="434" y2="27" style="stroke:#900026ff;stroke-width:2;" /><line x1="435" y1="15" x2="435" y2="27" style="stroke:#8f0026ff;stroke-width:2;" /><line x1="436" y1="15" x2="436" y2="27" style="stroke:#8e0026ff;stroke-width:2;" /><line x1="437" y1="15" x2="437" y2="27" style="stroke:#8d0026ff;stroke-width:2;" /><line x1="438" y1="15" x2="438" y2="27" style="stroke:#8c0026ff;stroke-width:2;" /><line x1="439" y1="15" x2="439" y2="27" style="stroke:#8b0026ff;stroke-width:2;" /><line x1="440" y1="15" x2="440" y2="27" style="stroke:#8a0026ff;stroke-width:2;" /><line x1="441" y1="15" x2="441" y2="27" style="stroke:#890026ff;stroke-width:2;" /><line x1="442" y1="15" x2="442" y2="27" style="stroke:#880026ff;stroke-width:2;" /><line x1="443" y1="15" x2="443" y2="27" style="stroke:#870026ff;stroke-width:2;" /><line x1="444" y1="15" x2="444" y2="27" style="stroke:#850026ff;stroke-width:2;" /><line x1="445" y1="15" x2="445" y2="27" style="stroke:#840026ff;stroke-width:2;" /><line x1="446" y1="15" x2="446" y2="27" style="stroke:#830026ff;stroke-width:2;" /><line x1="447" y1="15" x2="447" y2="27" style="stroke:#820026ff;stroke-width:2;" /><line x1="448" y1="15" x2="448" y2="27" style="stroke:#810026ff;stroke-width:2;" /><line x1="449" y1="15" x2="449" y2="27" style="stroke:#800026ff;stroke-width:2;" /><text x="0" y="38" style="text-anchor:start; font-size:11px; font:Arial; fill:black">177</text><text x="75" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">1107.3</text><text x="150" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">2037.7</text><text x="225" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">2968.0</text><text x="300" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">3898.3</text><text x="375" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">4828.7</text><text x="450" y="38" style="text-anchor:end; font-size:11px; font:Arial; fill:black">5759</text><text x="0" y="12" style="font-size:11px; font:Arial; fill:black"></text></svg>
+    </div>
+    
+    
+            <div class="folium-map" id="map_ce003f2c117ed3f9aa95dbb337ff9da4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ce003f2c117ed3f9aa95dbb337ff9da4 = L.map(
+                "map_ce003f2c117ed3f9aa95dbb337ff9da4",
+                {
+                    center: [23.6345, -102.5528],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d0af5e9893cbf71e262ecf3adb6835ac = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d0af5e9893cbf71e262ecf3adb6835ac.addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+            var circle_marker_c18c711186242db28060cc185c566060 = L.circleMarker(
+                [21.8853, -102.2916],
+                {"bubblingMouseEvents": true, "color": "#fffcc4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffcc4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_75374a9e6f595d0bc61b64a01f90f4ea = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4be0b16ff23a425b334360a389fb01ad = $(`<div id="html_4be0b16ff23a425b334360a389fb01ad" style="width: 100.0%; height: 100.0%;">AGUASCALIENTES: 303 muertes</div>`)[0];
+                popup_75374a9e6f595d0bc61b64a01f90f4ea.setContent(html_4be0b16ff23a425b334360a389fb01ad);
+            
+        
+
+        circle_marker_c18c711186242db28060cc185c566060.bindPopup(popup_75374a9e6f595d0bc61b64a01f90f4ea)
+        ;
+
+        
+    
+    
+            var circle_marker_c307e5d8a962cc305dccfcfdb21256ce = L.circleMarker(
+                [32.6643, -115.4679],
+                {"bubblingMouseEvents": true, "color": "#ffe289ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe289ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_d82f3f92b71b30063b568b1f90f8f42a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5495e66665daa913f72b649b8d464e03 = $(`<div id="html_5495e66665daa913f72b649b8d464e03" style="width: 100.0%; height: 100.0%;">BAJA CALIFORNIA: 1257 muertes</div>`)[0];
+                popup_d82f3f92b71b30063b568b1f90f8f42a.setContent(html_5495e66665daa913f72b649b8d464e03);
+            
+        
+
+        circle_marker_c307e5d8a962cc305dccfcfdb21256ce.bindPopup(popup_d82f3f92b71b30063b568b1f90f8f42a)
+        ;
+
+        
+    
+    
+            var circle_marker_bf078ef1794b91109c4d22e909c5f05a = L.circleMarker(
+                [24.1426, -110.3129],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_76b1015a822feaf584bc66a16beeef31 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9382fababaf3ec4d2ecc93121f20185b = $(`<div id="html_9382fababaf3ec4d2ecc93121f20185b" style="width: 100.0%; height: 100.0%;">BAJA CALIFORNIA SUR: 177 muertes</div>`)[0];
+                popup_76b1015a822feaf584bc66a16beeef31.setContent(html_9382fababaf3ec4d2ecc93121f20185b);
+            
+        
+
+        circle_marker_bf078ef1794b91109c4d22e909c5f05a.bindPopup(popup_76b1015a822feaf584bc66a16beeef31)
+        ;
+
+        
+    
+    
+            var circle_marker_aee8ce686fcbac785eb78004c15d8d7b = L.circleMarker(
+                [19.8301, -90.5349],
+                {"bubblingMouseEvents": true, "color": "#ffffcbff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcbff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_ff05714c95e6aab98e9a3edd31f2881a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64518c2a25876139658542da8b303dfd = $(`<div id="html_64518c2a25876139658542da8b303dfd" style="width: 100.0%; height: 100.0%;">CAMPECHE: 192 muertes</div>`)[0];
+                popup_ff05714c95e6aab98e9a3edd31f2881a.setContent(html_64518c2a25876139658542da8b303dfd);
+            
+        
+
+        circle_marker_aee8ce686fcbac785eb78004c15d8d7b.bindPopup(popup_ff05714c95e6aab98e9a3edd31f2881a)
+        ;
+
+        
+    
+    
+            var circle_marker_fbd2d5b2a8f3f7180d63e3d903ec99eb = L.circleMarker(
+                [16.7516, -93.1165],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_cbcc3bb6653cb6582188c6b6af46bc89 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2079f533b378cf0bdc87f5f9e721b5e5 = $(`<div id="html_2079f533b378cf0bdc87f5f9e721b5e5" style="width: 100.0%; height: 100.0%;">CHIAPAS: 261 muertes</div>`)[0];
+                popup_cbcc3bb6653cb6582188c6b6af46bc89.setContent(html_2079f533b378cf0bdc87f5f9e721b5e5);
+            
+        
+
+        circle_marker_fbd2d5b2a8f3f7180d63e3d903ec99eb.bindPopup(popup_cbcc3bb6653cb6582188c6b6af46bc89)
+        ;
+
+        
+    
+    
+            var circle_marker_3e93e19ed243eee8e926bb424c477ac1 = L.circleMarker(
+                [28.6329, -106.0691],
+                {"bubblingMouseEvents": true, "color": "#ffe996ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe996ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_e2ca0dbc1f5785c0d74cbe90a6a4ff11 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6185b34fd48c7b8fbd8fbd82254a8086 = $(`<div id="html_6185b34fd48c7b8fbd8fbd82254a8086" style="width: 100.0%; height: 100.0%;">CHIHUAHUA: 1041 muertes</div>`)[0];
+                popup_e2ca0dbc1f5785c0d74cbe90a6a4ff11.setContent(html_6185b34fd48c7b8fbd8fbd82254a8086);
+            
+        
+
+        circle_marker_3e93e19ed243eee8e926bb424c477ac1.bindPopup(popup_e2ca0dbc1f5785c0d74cbe90a6a4ff11)
+        ;
+
+        
+    
+    
+            var circle_marker_6673444464c658d20fc69525dc75f922 = L.circleMarker(
+                [19.4326, -99.1332],
+                {"bubblingMouseEvents": true, "color": "#800026ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_44d8c26c8a27a59c938d1b3fb6642cc5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e59541bc1c9b0da31e0aa579e39040d7 = $(`<div id="html_e59541bc1c9b0da31e0aa579e39040d7" style="width: 100.0%; height: 100.0%;">CIUDAD DE MEXICO: 5759 muertes</div>`)[0];
+                popup_44d8c26c8a27a59c938d1b3fb6642cc5.setContent(html_e59541bc1c9b0da31e0aa579e39040d7);
+            
+        
+
+        circle_marker_6673444464c658d20fc69525dc75f922.bindPopup(popup_44d8c26c8a27a59c938d1b3fb6642cc5)
+        ;
+
+        
+    
+    
+            var circle_marker_c6fa46951b7f32473c645e2544f54a34 = L.circleMarker(
+                [25.4232, -101.0053],
+                {"bubblingMouseEvents": true, "color": "#ffec9dff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffec9dff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_22ae417a1d2beaafe2034ad84c8dbbd8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_59732373449c32584dc01a2d196d3393 = $(`<div id="html_59732373449c32584dc01a2d196d3393" style="width: 100.0%; height: 100.0%;">COAHUILA DE ZARAGOZA: 931 muertes</div>`)[0];
+                popup_22ae417a1d2beaafe2034ad84c8dbbd8.setContent(html_59732373449c32584dc01a2d196d3393);
+            
+        
+
+        circle_marker_c6fa46951b7f32473c645e2544f54a34.bindPopup(popup_22ae417a1d2beaafe2034ad84c8dbbd8)
+        ;
+
+        
+    
+    
+            var circle_marker_1cd88929b5be8f7807a878d8a024beaf = L.circleMarker(
+                [19.2433, -103.7246],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_97ce785e10c05632a7bb271200eb4cbd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c8c64ffb06afb7e65534b387c529ca21 = $(`<div id="html_c8c64ffb06afb7e65534b387c529ca21" style="width: 100.0%; height: 100.0%;">COLIMA: 183 muertes</div>`)[0];
+                popup_97ce785e10c05632a7bb271200eb4cbd.setContent(html_c8c64ffb06afb7e65534b387c529ca21);
+            
+        
+
+        circle_marker_1cd88929b5be8f7807a878d8a024beaf.bindPopup(popup_97ce785e10c05632a7bb271200eb4cbd)
+        ;
+
+        
+    
+    
+            var circle_marker_656f76d3f9c5dc3dbdb73698dfb8f5df = L.circleMarker(
+                [24.0277, -104.6537],
+                {"bubblingMouseEvents": true, "color": "#fffbc2ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc2ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_d9587205d9d94654dfd9318365afb341 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_91aaf88a582b930b0d752ec6024dceba = $(`<div id="html_91aaf88a582b930b0d752ec6024dceba" style="width: 100.0%; height: 100.0%;">DURANGO: 332 muertes</div>`)[0];
+                popup_d9587205d9d94654dfd9318365afb341.setContent(html_91aaf88a582b930b0d752ec6024dceba);
+            
+        
+
+        circle_marker_656f76d3f9c5dc3dbdb73698dfb8f5df.bindPopup(popup_d9587205d9d94654dfd9318365afb341)
+        ;
+
+        
+    
+    
+            var circle_marker_2324d2b405596d29094afae2d83977f1 = L.circleMarker(
+                [21.019, -101.2574],
+                {"bubblingMouseEvents": true, "color": "#ffe48cff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe48cff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_e55467f9697a08210b8c0e59419c9793 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a65922b051994ba80a9b02abade116e = $(`<div id="html_4a65922b051994ba80a9b02abade116e" style="width: 100.0%; height: 100.0%;">GUANAJUATO: 1203 muertes</div>`)[0];
+                popup_e55467f9697a08210b8c0e59419c9793.setContent(html_4a65922b051994ba80a9b02abade116e);
+            
+        
+
+        circle_marker_2324d2b405596d29094afae2d83977f1.bindPopup(popup_e55467f9697a08210b8c0e59419c9793)
+        ;
+
+        
+    
+    
+            var circle_marker_aea7eb4acfe94945922d9a89d0ed0371 = L.circleMarker(
+                [17.5734, -99.5056],
+                {"bubblingMouseEvents": true, "color": "#fff6b6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_04105aaf7d7d2d21a75fc00738c3e9ff = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_253f07368b21933a997ba4aa2ae4a4be = $(`<div id="html_253f07368b21933a997ba4aa2ae4a4be" style="width: 100.0%; height: 100.0%;">GUERRERO: 533 muertes</div>`)[0];
+                popup_04105aaf7d7d2d21a75fc00738c3e9ff.setContent(html_253f07368b21933a997ba4aa2ae4a4be);
+            
+        
+
+        circle_marker_aea7eb4acfe94945922d9a89d0ed0371.bindPopup(popup_04105aaf7d7d2d21a75fc00738c3e9ff)
+        ;
+
+        
+    
+    
+            var circle_marker_f9fb9091130085ed488b85a51f78aded = L.circleMarker(
+                [20.1108, -98.7395],
+                {"bubblingMouseEvents": true, "color": "#fff3aeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff3aeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_03404c8a487b9e667b4d5ea91966df16 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a341fd161f3ad2c292b6f64c81543807 = $(`<div id="html_a341fd161f3ad2c292b6f64c81543807" style="width: 100.0%; height: 100.0%;">HIDALGO: 663 muertes</div>`)[0];
+                popup_03404c8a487b9e667b4d5ea91966df16.setContent(html_a341fd161f3ad2c292b6f64c81543807);
+            
+        
+
+        circle_marker_f9fb9091130085ed488b85a51f78aded.bindPopup(popup_03404c8a487b9e667b4d5ea91966df16)
+        ;
+
+        
+    
+    
+            var circle_marker_14590439055ff99cacd026bd55589fb7 = L.circleMarker(
+                [20.6597, -103.3496],
+                {"bubblingMouseEvents": true, "color": "#ffdf82ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdf82ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_86ac3f0b956bc55da62726278cfb2a84 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_89f7b38ac695b9d174f6eaf62e33617a = $(`<div id="html_89f7b38ac695b9d174f6eaf62e33617a" style="width: 100.0%; height: 100.0%;">JALISCO: 1374 muertes</div>`)[0];
+                popup_86ac3f0b956bc55da62726278cfb2a84.setContent(html_89f7b38ac695b9d174f6eaf62e33617a);
+            
+        
+
+        circle_marker_14590439055ff99cacd026bd55589fb7.bindPopup(popup_86ac3f0b956bc55da62726278cfb2a84)
+        ;
+
+        
+    
+    
+            var circle_marker_6502e76727c6598a309e2801fba9f7e5 = L.circleMarker(
+                [19.2833, -99.6536],
+                {"bubblingMouseEvents": true, "color": "#fd532bff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd532bff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_ecc50cd0ce5b9f646a7b9b6f09d3263e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3c0b1c0b9252c623888a44d4ffe0d76e = $(`<div id="html_3c0b1c0b9252c623888a44d4ffe0d76e" style="width: 100.0%; height: 100.0%;">MEXICO: 3613 muertes</div>`)[0];
+                popup_ecc50cd0ce5b9f646a7b9b6f09d3263e.setContent(html_3c0b1c0b9252c623888a44d4ffe0d76e);
+            
+        
+
+        circle_marker_6502e76727c6598a309e2801fba9f7e5.bindPopup(popup_ecc50cd0ce5b9f646a7b9b6f09d3263e)
+        ;
+
+        
+    
+    
+            var circle_marker_66fa6d760c2be0e42aa0ad1ce31ae4d7 = L.circleMarker(
+                [19.7069, -101.1853],
+                {"bubblingMouseEvents": true, "color": "#fff2acff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff2acff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_931cd4567064ea90c36cedc9ce2bb9b7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_073728e200f5a0d4e9040b1a5b60160d = $(`<div id="html_073728e200f5a0d4e9040b1a5b60160d" style="width: 100.0%; height: 100.0%;">MICHOACAN DE OCAMPO: 684 muertes</div>`)[0];
+                popup_931cd4567064ea90c36cedc9ce2bb9b7.setContent(html_073728e200f5a0d4e9040b1a5b60160d);
+            
+        
+
+        circle_marker_66fa6d760c2be0e42aa0ad1ce31ae4d7.bindPopup(popup_931cd4567064ea90c36cedc9ce2bb9b7)
+        ;
+
+        
+    
+    
+            var circle_marker_1ac715dcfbf816131c934bb0ec444d63 = L.circleMarker(
+                [18.9211, -99.2307],
+                {"bubblingMouseEvents": true, "color": "#fffbc0ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc0ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_7e658f7848d1bc01c99a321a5772b224 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e5d540bf08b6aa54e2951fc8d602d41e = $(`<div id="html_e5d540bf08b6aa54e2951fc8d602d41e" style="width: 100.0%; height: 100.0%;">MORELOS: 367 muertes</div>`)[0];
+                popup_7e658f7848d1bc01c99a321a5772b224.setContent(html_e5d540bf08b6aa54e2951fc8d602d41e);
+            
+        
+
+        circle_marker_1ac715dcfbf816131c934bb0ec444d63.bindPopup(popup_7e658f7848d1bc01c99a321a5772b224)
+        ;
+
+        
+    
+    
+            var circle_marker_772541ca6b6a0aff1d00662a9d4258c9 = L.circleMarker(
+                [21.5039, -104.895],
+                {"bubblingMouseEvents": true, "color": "#ffffcbff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcbff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_d65f853ffae519bec3de574d393ce39e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b7685f25b6e499260fcca1d91696bc88 = $(`<div id="html_b7685f25b6e499260fcca1d91696bc88" style="width: 100.0%; height: 100.0%;">NAYARIT: 199 muertes</div>`)[0];
+                popup_d65f853ffae519bec3de574d393ce39e.setContent(html_b7685f25b6e499260fcca1d91696bc88);
+            
+        
+
+        circle_marker_772541ca6b6a0aff1d00662a9d4258c9.bindPopup(popup_d65f853ffae519bec3de574d393ce39e)
+        ;
+
+        
+    
+    
+            var circle_marker_cb842023be9e46e120a747b5a624bd7e = L.circleMarker(
+                [25.6866, -100.3161],
+                {"bubblingMouseEvents": true, "color": "#ffe187ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe187ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_8fe5c7dd6930002be93e8b639dd6b75a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eabb86cde3c16098ffd3f3be5440abcc = $(`<div id="html_eabb86cde3c16098ffd3f3be5440abcc" style="width: 100.0%; height: 100.0%;">NUEVO LEON: 1298 muertes</div>`)[0];
+                popup_8fe5c7dd6930002be93e8b639dd6b75a.setContent(html_eabb86cde3c16098ffd3f3be5440abcc);
+            
+        
+
+        circle_marker_cb842023be9e46e120a747b5a624bd7e.bindPopup(popup_8fe5c7dd6930002be93e8b639dd6b75a)
+        ;
+
+        
+    
+    
+            var circle_marker_32180a04b2d6644596c00e299b05a885 = L.circleMarker(
+                [17.0732, -96.7266],
+                {"bubblingMouseEvents": true, "color": "#fff8baff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff8baff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_982073a1b4a73d14c592c44c55b5b859 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7367b5620b8b9b1bbf970cccb39b980a = $(`<div id="html_7367b5620b8b9b1bbf970cccb39b980a" style="width: 100.0%; height: 100.0%;">OAXACA: 463 muertes</div>`)[0];
+                popup_982073a1b4a73d14c592c44c55b5b859.setContent(html_7367b5620b8b9b1bbf970cccb39b980a);
+            
+        
+
+        circle_marker_32180a04b2d6644596c00e299b05a885.bindPopup(popup_982073a1b4a73d14c592c44c55b5b859)
+        ;
+
+        
+    
+    
+            var circle_marker_db6d16308ecfe38dba08a80bfcd64b6b = L.circleMarker(
+                [19.0414, -98.2063],
+                {"bubblingMouseEvents": true, "color": "#ffde80ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffde80ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_1580ecceecad6f7bdcf9a8173311a56a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_33a3066a7e41260805405a645cbada1a = $(`<div id="html_33a3066a7e41260805405a645cbada1a" style="width: 100.0%; height: 100.0%;">PUEBLA: 1405 muertes</div>`)[0];
+                popup_1580ecceecad6f7bdcf9a8173311a56a.setContent(html_33a3066a7e41260805405a645cbada1a);
+            
+        
+
+        circle_marker_db6d16308ecfe38dba08a80bfcd64b6b.bindPopup(popup_1580ecceecad6f7bdcf9a8173311a56a)
+        ;
+
+        
+    
+    
+            var circle_marker_c974a4443c4d9969cedec5030a106dd9 = L.circleMarker(
+                [20.5881, -100.3899],
+                {"bubblingMouseEvents": true, "color": "#fff8baff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff8baff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_3c00f9727abbf79d62e5223116ef49f9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3d9010b4810cbad4fd31ec4bddca4212 = $(`<div id="html_3d9010b4810cbad4fd31ec4bddca4212" style="width: 100.0%; height: 100.0%;">QUERETARO: 462 muertes</div>`)[0];
+                popup_3c00f9727abbf79d62e5223116ef49f9.setContent(html_3d9010b4810cbad4fd31ec4bddca4212);
+            
+        
+
+        circle_marker_c974a4443c4d9969cedec5030a106dd9.bindPopup(popup_3c00f9727abbf79d62e5223116ef49f9)
+        ;
+
+        
+    
+    
+            var circle_marker_8820ac7a4d538988d25543ff1f14a6d0 = L.circleMarker(
+                [18.5141, -88.3038],
+                {"bubblingMouseEvents": true, "color": "#fffabeff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffabeff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_b9b135af84ff4f467e82a4fbd018e0b1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bdb99ccd113d15b0001743d7d93cd5c8 = $(`<div id="html_bdb99ccd113d15b0001743d7d93cd5c8" style="width: 100.0%; height: 100.0%;">QUINTANA ROO: 397 muertes</div>`)[0];
+                popup_b9b135af84ff4f467e82a4fbd018e0b1.setContent(html_bdb99ccd113d15b0001743d7d93cd5c8);
+            
+        
+
+        circle_marker_8820ac7a4d538988d25543ff1f14a6d0.bindPopup(popup_b9b135af84ff4f467e82a4fbd018e0b1)
+        ;
+
+        
+    
+    
+            var circle_marker_be465a8da22dbf4db73424779e1eeadd = L.circleMarker(
+                [22.1565, -100.9855],
+                {"bubblingMouseEvents": true, "color": "#fff4b1ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff4b1ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_63926a9aa542c944320055063a222969 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9446b6f0e4b4e82f664b90fbe09f970e = $(`<div id="html_9446b6f0e4b4e82f664b90fbe09f970e" style="width: 100.0%; height: 100.0%;">SAN LUIS POTOSI: 611 muertes</div>`)[0];
+                popup_63926a9aa542c944320055063a222969.setContent(html_9446b6f0e4b4e82f664b90fbe09f970e);
+            
+        
+
+        circle_marker_be465a8da22dbf4db73424779e1eeadd.bindPopup(popup_63926a9aa542c944320055063a222969)
+        ;
+
+        
+    
+    
+            var circle_marker_9f30fcae97951732b1157272908a1b51 = L.circleMarker(
+                [24.8049, -107.394],
+                {"bubblingMouseEvents": true, "color": "#ffe895ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe895ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_c1ee20602d6cb88c2e61469004012df8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_10f894bc3cea76d27f2a92b840123bfb = $(`<div id="html_10f894bc3cea76d27f2a92b840123bfb" style="width: 100.0%; height: 100.0%;">SINALOA: 1066 muertes</div>`)[0];
+                popup_c1ee20602d6cb88c2e61469004012df8.setContent(html_10f894bc3cea76d27f2a92b840123bfb);
+            
+        
+
+        circle_marker_9f30fcae97951732b1157272908a1b51.bindPopup(popup_c1ee20602d6cb88c2e61469004012df8)
+        ;
+
+        
+    
+    
+            var circle_marker_5efdc4c043866a83aa1189749222d326 = L.circleMarker(
+                [29.0892, -110.9616],
+                {"bubblingMouseEvents": true, "color": "#ffe895ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe895ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_9298730c08aa09d2788d87d1f36dc0e6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c0722b90d7403b102d63e6e67db9bf5 = $(`<div id="html_2c0722b90d7403b102d63e6e67db9bf5" style="width: 100.0%; height: 100.0%;">SONORA: 1066 muertes</div>`)[0];
+                popup_9298730c08aa09d2788d87d1f36dc0e6.setContent(html_2c0722b90d7403b102d63e6e67db9bf5);
+            
+        
+
+        circle_marker_5efdc4c043866a83aa1189749222d326.bindPopup(popup_9298730c08aa09d2788d87d1f36dc0e6)
+        ;
+
+        
+    
+    
+            var circle_marker_dbd1714a93ac008ddd2111ce71d3fb5b = L.circleMarker(
+                [17.9895, -92.9281],
+                {"bubblingMouseEvents": true, "color": "#fff7b9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff7b9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_7b8370591468575a7d737ca767d47f15 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e5d7b254b764a46efdb70e2a0fb9cd9f = $(`<div id="html_e5d7b254b764a46efdb70e2a0fb9cd9f" style="width: 100.0%; height: 100.0%;">TABASCO: 487 muertes</div>`)[0];
+                popup_7b8370591468575a7d737ca767d47f15.setContent(html_e5d7b254b764a46efdb70e2a0fb9cd9f);
+            
+        
+
+        circle_marker_dbd1714a93ac008ddd2111ce71d3fb5b.bindPopup(popup_7b8370591468575a7d737ca767d47f15)
+        ;
+
+        
+    
+    
+            var circle_marker_5cb9b9a450573eaaa434ce483049bdb0 = L.circleMarker(
+                [23.7417, -99.1456],
+                {"bubblingMouseEvents": true, "color": "#ffefa4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffefa4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_2927765a557f9a9eb0e6d192f47d5239 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7853d9a415da7995bb6c10907843fe60 = $(`<div id="html_7853d9a415da7995bb6c10907843fe60" style="width: 100.0%; height: 100.0%;">TAMAULIPAS: 811 muertes</div>`)[0];
+                popup_2927765a557f9a9eb0e6d192f47d5239.setContent(html_7853d9a415da7995bb6c10907843fe60);
+            
+        
+
+        circle_marker_5cb9b9a450573eaaa434ce483049bdb0.bindPopup(popup_2927765a557f9a9eb0e6d192f47d5239)
+        ;
+
+        
+    
+    
+            var circle_marker_14b600e6d6e95107316c2f24a640111e = L.circleMarker(
+                [19.3133, -98.2394],
+                {"bubblingMouseEvents": true, "color": "#fffbc1ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc1ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_3982764d68dddeec50138f0a322d9427 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3f48b636a32a72649a42498473e3fa5f = $(`<div id="html_3f48b636a32a72649a42498473e3fa5f" style="width: 100.0%; height: 100.0%;">TLAXCALA: 352 muertes</div>`)[0];
+                popup_3982764d68dddeec50138f0a322d9427.setContent(html_3f48b636a32a72649a42498473e3fa5f);
+            
+        
+
+        circle_marker_14b600e6d6e95107316c2f24a640111e.bindPopup(popup_3982764d68dddeec50138f0a322d9427)
+        ;
+
+        
+    
+    
+            var circle_marker_2af456016371b97fc2b74bfed0a27f84 = L.circleMarker(
+                [19.5433, -96.9147],
+                {"bubblingMouseEvents": true, "color": "#ffde81ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffde81ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_404604777156459109a9badf28eda8f5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c1658c535b240fa063697a1e7000d80a = $(`<div id="html_c1658c535b240fa063697a1e7000d80a" style="width: 100.0%; height: 100.0%;">VERACRUZ DE IGNACIO DE LA LLAVE: 1396 muertes</div>`)[0];
+                popup_404604777156459109a9badf28eda8f5.setContent(html_c1658c535b240fa063697a1e7000d80a);
+            
+        
+
+        circle_marker_2af456016371b97fc2b74bfed0a27f84.bindPopup(popup_404604777156459109a9badf28eda8f5)
+        ;
+
+        
+    
+    
+            var circle_marker_63dbdd127d06424953b1da832ff4c0ef = L.circleMarker(
+                [20.9674, -89.5926],
+                {"bubblingMouseEvents": true, "color": "#fff4b0ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff4b0ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_5f1d4354e2b54c8e9d1378e0626b4916 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_736e07dfeff3d88bfac05e578532866d = $(`<div id="html_736e07dfeff3d88bfac05e578532866d" style="width: 100.0%; height: 100.0%;">YUCATAN: 620 muertes</div>`)[0];
+                popup_5f1d4354e2b54c8e9d1378e0626b4916.setContent(html_736e07dfeff3d88bfac05e578532866d);
+            
+        
+
+        circle_marker_63dbdd127d06424953b1da832ff4c0ef.bindPopup(popup_5f1d4354e2b54c8e9d1378e0626b4916)
+        ;
+
+        
+    
+    
+            var circle_marker_d4f3e9acead3913e10b9c900bc2bb981 = L.circleMarker(
+                [22.7709, -102.5832],
+                {"bubblingMouseEvents": true, "color": "#fffcc3ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffcc3ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_ce003f2c117ed3f9aa95dbb337ff9da4);
+        
+    
+        var popup_eeb7ff28d18114956ee1e99ae40c9e1a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8626ec6b637d60bd83e83b1e406c3cae = $(`<div id="html_8626ec6b637d60bd83e83b1e406c3cae" style="width: 100.0%; height: 100.0%;">ZACATECAS: 321 muertes</div>`)[0];
+                popup_eeb7ff28d18114956ee1e99ae40c9e1a.setContent(html_8626ec6b637d60bd83e83b1e406c3cae);
+            
+        
+
+        circle_marker_d4f3e9acead3913e10b9c900bc2bb981.bindPopup(popup_eeb7ff28d18114956ee1e99ae40c9e1a)
+        ;
+
+        
+    
+</script>
+</html>

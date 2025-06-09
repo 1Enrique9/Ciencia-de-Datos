@@ -1,0 +1,26 @@
+nyw = readtable('newYork-weather.csv');
+precipitation = nyw.precipitation;
+temp_max = nyw.temp_max;
+temp_min = nyw.temp_min;
+wind = nyw.wind;
+
+% Matriz de correlación
+correlation_matrix = corrcoef([precipitation, temp_max, temp_min, wind]);
+correlation_matrix_rounded = round(correlation_matrix, 2);  
+
+custom_colormap = [0.8 0.9 1;   % Azul muy claro
+                   0.5 0.7 1;   % Azul claro
+                   0 0.4 0.8;   % Azul medio
+                   0 0.2 0.6];  % Azul oscuro
+
+% Matriz de correlacion
+h = heatmap(correlation_matrix_rounded, ...
+    'XData', {'Precipitación', 'Temp Máx', 'Temp Mín', 'Viento'}, ...
+    'YData', {'Precipitación', 'Temp Máx', 'Temp Mín', 'Viento'}, ...
+    'ColorLimits', [-1, 1], ...  
+    'Title', 'Correlación entre variables', ...  
+    'Colormap', custom_colormap, ...
+    'CellLabelColor', 'w', ...  
+    'FontSize', 12 ...  
+    );
+colorbar;

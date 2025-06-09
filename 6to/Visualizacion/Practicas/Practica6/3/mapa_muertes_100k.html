@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_96e874db7a181adf4bb190e77a6980b3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 120px; left: 30px; width: 220px; height: 60px;
+                background-color: white; border:2px solid grey; z-index:9999;
+                font-size:14px; font-weight: bold; padding: 10px;">
+        <b>Muertes por 100,000 Habitantes(Covid)</b>
+    </div>
+    
+    
+    <div style="position: fixed; 
+                bottom: 30px; left: 30px; width: 220px; height: 120px;
+                background-color: white; border:2px solid grey; z-index:9999;
+                font-size:14px; padding: 10px;">
+        <b>Escala de colores</b><br>
+        <svg height="40" width="450"><line x1="0" y1="15" x2="0" y2="27" style="stroke:#ffffccff;stroke-width:2;" /><line x1="1" y1="15" x2="1" y2="27" style="stroke:#ffffccff;stroke-width:2;" /><line x1="2" y1="15" x2="2" y2="27" style="stroke:#ffffcbff;stroke-width:2;" /><line x1="3" y1="15" x2="3" y2="27" style="stroke:#ffffcaff;stroke-width:2;" /><line x1="4" y1="15" x2="4" y2="27" style="stroke:#fffec9ff;stroke-width:2;" /><line x1="5" y1="15" x2="5" y2="27" style="stroke:#fffec8ff;stroke-width:2;" /><line x1="6" y1="15" x2="6" y2="27" style="stroke:#fffec8ff;stroke-width:2;" /><line x1="7" y1="15" x2="7" y2="27" style="stroke:#fffdc7ff;stroke-width:2;" /><line x1="8" y1="15" x2="8" y2="27" style="stroke:#fffdc6ff;stroke-width:2;" /><line x1="9" y1="15" x2="9" y2="27" style="stroke:#fffdc5ff;stroke-width:2;" /><line x1="10" y1="15" x2="10" y2="27" style="stroke:#fffcc4ff;stroke-width:2;" /><line x1="11" y1="15" x2="11" y2="27" style="stroke:#fffcc4ff;stroke-width:2;" /><line x1="12" y1="15" x2="12" y2="27" style="stroke:#fffcc3ff;stroke-width:2;" /><line x1="13" y1="15" x2="13" y2="27" style="stroke:#fffbc2ff;stroke-width:2;" /><line x1="14" y1="15" x2="14" y2="27" style="stroke:#fffbc1ff;stroke-width:2;" /><line x1="15" y1="15" x2="15" y2="27" style="stroke:#fffbc0ff;stroke-width:2;" /><line x1="16" y1="15" x2="16" y2="27" style="stroke:#fffac0ff;stroke-width:2;" /><line x1="17" y1="15" x2="17" y2="27" style="stroke:#fffabfff;stroke-width:2;" /><line x1="18" y1="15" x2="18" y2="27" style="stroke:#fffabeff;stroke-width:2;" /><line x1="19" y1="15" x2="19" y2="27" style="stroke:#fff9bdff;stroke-width:2;" /><line x1="20" y1="15" x2="20" y2="27" style="stroke:#fff9bdff;stroke-width:2;" /><line x1="21" y1="15" x2="21" y2="27" style="stroke:#fff9bcff;stroke-width:2;" /><line x1="22" y1="15" x2="22" y2="27" style="stroke:#fff8bbff;stroke-width:2;" /><line x1="23" y1="15" x2="23" y2="27" style="stroke:#fff8baff;stroke-width:2;" /><line x1="24" y1="15" x2="24" y2="27" style="stroke:#fff8b9ff;stroke-width:2;" /><line x1="25" y1="15" x2="25" y2="27" style="stroke:#fff7b9ff;stroke-width:2;" /><line x1="26" y1="15" x2="26" y2="27" style="stroke:#fff7b8ff;stroke-width:2;" /><line x1="27" y1="15" x2="27" y2="27" style="stroke:#fff7b7ff;stroke-width:2;" /><line x1="28" y1="15" x2="28" y2="27" style="stroke:#fff6b6ff;stroke-width:2;" /><line x1="29" y1="15" x2="29" y2="27" style="stroke:#fff6b5ff;stroke-width:2;" /><line x1="30" y1="15" x2="30" y2="27" style="stroke:#fff6b5ff;stroke-width:2;" /><line x1="31" y1="15" x2="31" y2="27" style="stroke:#fff6b4ff;stroke-width:2;" /><line x1="32" y1="15" x2="32" y2="27" style="stroke:#fff5b3ff;stroke-width:2;" /><line x1="33" y1="15" x2="33" y2="27" style="stroke:#fff5b2ff;stroke-width:2;" /><line x1="34" y1="15" x2="34" y2="27" style="stroke:#fff5b2ff;stroke-width:2;" /><line x1="35" y1="15" x2="35" y2="27" style="stroke:#fff4b1ff;stroke-width:2;" /><line x1="36" y1="15" x2="36" y2="27" style="stroke:#fff4b0ff;stroke-width:2;" /><line x1="37" y1="15" x2="37" y2="27" style="stroke:#fff4afff;stroke-width:2;" /><line x1="38" y1="15" x2="38" y2="27" style="stroke:#fff3aeff;stroke-width:2;" /><line x1="39" y1="15" x2="39" y2="27" style="stroke:#fff3aeff;stroke-width:2;" /><line x1="40" y1="15" x2="40" y2="27" style="stroke:#fff3adff;stroke-width:2;" /><line x1="41" y1="15" x2="41" y2="27" style="stroke:#fff2acff;stroke-width:2;" /><line x1="42" y1="15" x2="42" y2="27" style="stroke:#fff2abff;stroke-width:2;" /><line x1="43" y1="15" x2="43" y2="27" style="stroke:#fff2aaff;stroke-width:2;" /><line x1="44" y1="15" x2="44" y2="27" style="stroke:#fff1aaff;stroke-width:2;" /><line x1="45" y1="15" x2="45" y2="27" style="stroke:#fff1a9ff;stroke-width:2;" /><line x1="46" y1="15" x2="46" y2="27" style="stroke:#fff1a8ff;stroke-width:2;" /><line x1="47" y1="15" x2="47" y2="27" style="stroke:#fff0a7ff;stroke-width:2;" /><line x1="48" y1="15" x2="48" y2="27" style="stroke:#fff0a7ff;stroke-width:2;" /><line x1="49" y1="15" x2="49" y2="27" style="stroke:#fff0a6ff;stroke-width:2;" /><line x1="50" y1="15" x2="50" y2="27" style="stroke:#ffefa5ff;stroke-width:2;" /><line x1="51" y1="15" x2="51" y2="27" style="stroke:#ffefa4ff;stroke-width:2;" /><line x1="52" y1="15" x2="52" y2="27" style="stroke:#ffefa3ff;stroke-width:2;" /><line x1="53" y1="15" x2="53" y2="27" style="stroke:#ffeea3ff;stroke-width:2;" /><line x1="54" y1="15" x2="54" y2="27" style="stroke:#ffeea2ff;stroke-width:2;" /><line x1="55" y1="15" x2="55" y2="27" style="stroke:#ffeea1ff;stroke-width:2;" /><line x1="56" y1="15" x2="56" y2="27" style="stroke:#ffeda0ff;stroke-width:2;" /><line x1="57" y1="15" x2="57" y2="27" style="stroke:#ffed9fff;stroke-width:2;" /><line x1="58" y1="15" x2="58" y2="27" style="stroke:#ffed9fff;stroke-width:2;" /><line x1="59" y1="15" x2="59" y2="27" style="stroke:#ffec9eff;stroke-width:2;" /><line x1="60" y1="15" x2="60" y2="27" style="stroke:#ffec9dff;stroke-width:2;" /><line x1="61" y1="15" x2="61" y2="27" style="stroke:#ffec9cff;stroke-width:2;" /><line x1="62" y1="15" x2="62" y2="27" style="stroke:#ffeb9cff;stroke-width:2;" /><line x1="63" y1="15" x2="63" y2="27" style="stroke:#ffeb9bff;stroke-width:2;" /><line x1="64" y1="15" x2="64" y2="27" style="stroke:#ffeb9aff;stroke-width:2;" /><line x1="65" y1="15" x2="65" y2="27" style="stroke:#ffea99ff;stroke-width:2;" /><line x1="66" y1="15" x2="66" y2="27" style="stroke:#ffea99ff;stroke-width:2;" /><line x1="67" y1="15" x2="67" y2="27" style="stroke:#ffea98ff;stroke-width:2;" /><line x1="68" y1="15" x2="68" y2="27" style="stroke:#ffe997ff;stroke-width:2;" /><line x1="69" y1="15" x2="69" y2="27" style="stroke:#ffe996ff;stroke-width:2;" /><line x1="70" y1="15" x2="70" y2="27" style="stroke:#ffe896ff;stroke-width:2;" /><line x1="71" y1="15" x2="71" y2="27" style="stroke:#ffe895ff;stroke-width:2;" /><line x1="72" y1="15" x2="72" y2="27" style="stroke:#ffe894ff;stroke-width:2;" /><line x1="73" y1="15" x2="73" y2="27" style="stroke:#ffe793ff;stroke-width:2;" /><line x1="74" y1="15" x2="74" y2="27" style="stroke:#ffe793ff;stroke-width:2;" /><line x1="75" y1="15" x2="75" y2="27" style="stroke:#ffe792ff;stroke-width:2;" /><line x1="76" y1="15" x2="76" y2="27" style="stroke:#ffe691ff;stroke-width:2;" /><line x1="77" y1="15" x2="77" y2="27" style="stroke:#ffe690ff;stroke-width:2;" /><line x1="78" y1="15" x2="78" y2="27" style="stroke:#ffe690ff;stroke-width:2;" /><line x1="79" y1="15" x2="79" y2="27" style="stroke:#ffe58fff;stroke-width:2;" /><line x1="80" y1="15" x2="80" y2="27" style="stroke:#ffe58eff;stroke-width:2;" /><line x1="81" y1="15" x2="81" y2="27" style="stroke:#ffe58dff;stroke-width:2;" /><line x1="82" y1="15" x2="82" y2="27" style="stroke:#ffe48dff;stroke-width:2;" /><line x1="83" y1="15" x2="83" y2="27" style="stroke:#ffe48cff;stroke-width:2;" /><line x1="84" y1="15" x2="84" y2="27" style="stroke:#ffe38bff;stroke-width:2;" /><line x1="85" y1="15" x2="85" y2="27" style="stroke:#ffe38aff;stroke-width:2;" /><line x1="86" y1="15" x2="86" y2="27" style="stroke:#ffe38aff;stroke-width:2;" /><line x1="87" y1="15" x2="87" y2="27" style="stroke:#ffe289ff;stroke-width:2;" /><line x1="88" y1="15" x2="88" y2="27" style="stroke:#ffe288ff;stroke-width:2;" /><line x1="89" y1="15" x2="89" y2="27" style="stroke:#ffe287ff;stroke-width:2;" /><line x1="90" y1="15" x2="90" y2="27" style="stroke:#ffe187ff;stroke-width:2;" /><line x1="91" y1="15" x2="91" y2="27" style="stroke:#ffe186ff;stroke-width:2;" /><line x1="92" y1="15" x2="92" y2="27" style="stroke:#ffe185ff;stroke-width:2;" /><line x1="93" y1="15" x2="93" y2="27" style="stroke:#ffe084ff;stroke-width:2;" /><line x1="94" y1="15" x2="94" y2="27" style="stroke:#ffe084ff;stroke-width:2;" /><line x1="95" y1="15" x2="95" y2="27" style="stroke:#ffe083ff;stroke-width:2;" /><line x1="96" y1="15" x2="96" y2="27" style="stroke:#ffdf82ff;stroke-width:2;" /><line x1="97" y1="15" x2="97" y2="27" style="stroke:#ffdf81ff;stroke-width:2;" /><line x1="98" y1="15" x2="98" y2="27" style="stroke:#ffde81ff;stroke-width:2;" /><line x1="99" y1="15" x2="99" y2="27" style="stroke:#ffde80ff;stroke-width:2;" /><line x1="100" y1="15" x2="100" y2="27" style="stroke:#ffde7fff;stroke-width:2;" /><line x1="101" y1="15" x2="101" y2="27" style="stroke:#ffdd7eff;stroke-width:2;" /><line x1="102" y1="15" x2="102" y2="27" style="stroke:#ffdd7eff;stroke-width:2;" /><line x1="103" y1="15" x2="103" y2="27" style="stroke:#ffdd7dff;stroke-width:2;" /><line x1="104" y1="15" x2="104" y2="27" style="stroke:#ffdc7cff;stroke-width:2;" /><line x1="105" y1="15" x2="105" y2="27" style="stroke:#ffdc7bff;stroke-width:2;" /><line x1="106" y1="15" x2="106" y2="27" style="stroke:#ffdc7bff;stroke-width:2;" /><line x1="107" y1="15" x2="107" y2="27" style="stroke:#ffdb7aff;stroke-width:2;" /><line x1="108" y1="15" x2="108" y2="27" style="stroke:#ffdb79ff;stroke-width:2;" /><line x1="109" y1="15" x2="109" y2="27" style="stroke:#ffdb78ff;stroke-width:2;" /><line x1="110" y1="15" x2="110" y2="27" style="stroke:#ffda78ff;stroke-width:2;" /><line x1="111" y1="15" x2="111" y2="27" style="stroke:#ffda77ff;stroke-width:2;" /><line x1="112" y1="15" x2="112" y2="27" style="stroke:#ffd976ff;stroke-width:2;" /><line x1="113" y1="15" x2="113" y2="27" style="stroke:#fed975ff;stroke-width:2;" /><line x1="114" y1="15" x2="114" y2="27" style="stroke:#fed875ff;stroke-width:2;" /><line x1="115" y1="15" x2="115" y2="27" style="stroke:#fed774ff;stroke-width:2;" /><line x1="116" y1="15" x2="116" y2="27" style="stroke:#fed773ff;stroke-width:2;" /><line x1="117" y1="15" x2="117" y2="27" style="stroke:#fed672ff;stroke-width:2;" /><line x1="118" y1="15" x2="118" y2="27" style="stroke:#fed572ff;stroke-width:2;" /><line x1="119" y1="15" x2="119" y2="27" style="stroke:#fed571ff;stroke-width:2;" /><line x1="120" y1="15" x2="120" y2="27" style="stroke:#fed470ff;stroke-width:2;" /><line x1="121" y1="15" x2="121" y2="27" style="stroke:#fed36fff;stroke-width:2;" /><line x1="122" y1="15" x2="122" y2="27" style="stroke:#fed36fff;stroke-width:2;" /><line x1="123" y1="15" x2="123" y2="27" style="stroke:#fed26eff;stroke-width:2;" /><line x1="124" y1="15" x2="124" y2="27" style="stroke:#fed16dff;stroke-width:2;" /><line x1="125" y1="15" x2="125" y2="27" style="stroke:#fed06cff;stroke-width:2;" /><line x1="126" y1="15" x2="126" y2="27" style="stroke:#fed06cff;stroke-width:2;" /><line x1="127" y1="15" x2="127" y2="27" style="stroke:#fecf6bff;stroke-width:2;" /><line x1="128" y1="15" x2="128" y2="27" style="stroke:#fece6aff;stroke-width:2;" /><line x1="129" y1="15" x2="129" y2="27" style="stroke:#fece69ff;stroke-width:2;" /><line x1="130" y1="15" x2="130" y2="27" style="stroke:#fecd69ff;stroke-width:2;" /><line x1="131" y1="15" x2="131" y2="27" style="stroke:#fecc68ff;stroke-width:2;" /><line x1="132" y1="15" x2="132" y2="27" style="stroke:#fecc67ff;stroke-width:2;" /><line x1="133" y1="15" x2="133" y2="27" style="stroke:#fecb66ff;stroke-width:2;" /><line x1="134" y1="15" x2="134" y2="27" style="stroke:#feca66ff;stroke-width:2;" /><line x1="135" y1="15" x2="135" y2="27" style="stroke:#fec965ff;stroke-width:2;" /><line x1="136" y1="15" x2="136" y2="27" style="stroke:#fec964ff;stroke-width:2;" /><line x1="137" y1="15" x2="137" y2="27" style="stroke:#fec863ff;stroke-width:2;" /><line x1="138" y1="15" x2="138" y2="27" style="stroke:#fec763ff;stroke-width:2;" /><line x1="139" y1="15" x2="139" y2="27" style="stroke:#fec762ff;stroke-width:2;" /><line x1="140" y1="15" x2="140" y2="27" style="stroke:#fec661ff;stroke-width:2;" /><line x1="141" y1="15" x2="141" y2="27" style="stroke:#fec560ff;stroke-width:2;" /><line x1="142" y1="15" x2="142" y2="27" style="stroke:#fec560ff;stroke-width:2;" /><line x1="143" y1="15" x2="143" y2="27" style="stroke:#fec45fff;stroke-width:2;" /><line x1="144" y1="15" x2="144" y2="27" style="stroke:#fec35eff;stroke-width:2;" /><line x1="145" y1="15" x2="145" y2="27" style="stroke:#fec35dff;stroke-width:2;" /><line x1="146" y1="15" x2="146" y2="27" style="stroke:#fec25dff;stroke-width:2;" /><line x1="147" y1="15" x2="147" y2="27" style="stroke:#fec15cff;stroke-width:2;" /><line x1="148" y1="15" x2="148" y2="27" style="stroke:#fec05bff;stroke-width:2;" /><line x1="149" y1="15" x2="149" y2="27" style="stroke:#fec05aff;stroke-width:2;" /><line x1="150" y1="15" x2="150" y2="27" style="stroke:#febf5aff;stroke-width:2;" /><line x1="151" y1="15" x2="151" y2="27" style="stroke:#febe59ff;stroke-width:2;" /><line x1="152" y1="15" x2="152" y2="27" style="stroke:#febe58ff;stroke-width:2;" /><line x1="153" y1="15" x2="153" y2="27" style="stroke:#febd57ff;stroke-width:2;" /><line x1="154" y1="15" x2="154" y2="27" style="stroke:#febc57ff;stroke-width:2;" /><line x1="155" y1="15" x2="155" y2="27" style="stroke:#febc56ff;stroke-width:2;" /><line x1="156" y1="15" x2="156" y2="27" style="stroke:#febb55ff;stroke-width:2;" /><line x1="157" y1="15" x2="157" y2="27" style="stroke:#feba54ff;stroke-width:2;" /><line x1="158" y1="15" x2="158" y2="27" style="stroke:#feb954ff;stroke-width:2;" /><line x1="159" y1="15" x2="159" y2="27" style="stroke:#feb953ff;stroke-width:2;" /><line x1="160" y1="15" x2="160" y2="27" style="stroke:#feb852ff;stroke-width:2;" /><line x1="161" y1="15" x2="161" y2="27" style="stroke:#feb751ff;stroke-width:2;" /><line x1="162" y1="15" x2="162" y2="27" style="stroke:#feb751ff;stroke-width:2;" /><line x1="163" y1="15" x2="163" y2="27" style="stroke:#feb650ff;stroke-width:2;" /><line x1="164" y1="15" x2="164" y2="27" style="stroke:#feb54fff;stroke-width:2;" /><line x1="165" y1="15" x2="165" y2="27" style="stroke:#feb54eff;stroke-width:2;" /><line x1="166" y1="15" x2="166" y2="27" style="stroke:#feb44eff;stroke-width:2;" /><line x1="167" y1="15" x2="167" y2="27" style="stroke:#feb34dff;stroke-width:2;" /><line x1="168" y1="15" x2="168" y2="27" style="stroke:#feb24cff;stroke-width:2;" /><line x1="169" y1="15" x2="169" y2="27" style="stroke:#feb24cff;stroke-width:2;" /><line x1="170" y1="15" x2="170" y2="27" style="stroke:#feb14bff;stroke-width:2;" /><line x1="171" y1="15" x2="171" y2="27" style="stroke:#feb04bff;stroke-width:2;" /><line x1="172" y1="15" x2="172" y2="27" style="stroke:#feb04bff;stroke-width:2;" /><line x1="173" y1="15" x2="173" y2="27" style="stroke:#feaf4aff;stroke-width:2;" /><line x1="174" y1="15" x2="174" y2="27" style="stroke:#feae4aff;stroke-width:2;" /><line x1="175" y1="15" x2="175" y2="27" style="stroke:#feae4aff;stroke-width:2;" /><line x1="176" y1="15" x2="176" y2="27" style="stroke:#fead4aff;stroke-width:2;" /><line x1="177" y1="15" x2="177" y2="27" style="stroke:#feac49ff;stroke-width:2;" /><line x1="178" y1="15" x2="178" y2="27" style="stroke:#feac49ff;stroke-width:2;" /><line x1="179" y1="15" x2="179" y2="27" style="stroke:#feab49ff;stroke-width:2;" /><line x1="180" y1="15" x2="180" y2="27" style="stroke:#feab48ff;stroke-width:2;" /><line x1="181" y1="15" x2="181" y2="27" style="stroke:#feaa48ff;stroke-width:2;" /><line x1="182" y1="15" x2="182" y2="27" style="stroke:#fea948ff;stroke-width:2;" /><line x1="183" y1="15" x2="183" y2="27" style="stroke:#fea948ff;stroke-width:2;" /><line x1="184" y1="15" x2="184" y2="27" style="stroke:#fea847ff;stroke-width:2;" /><line x1="185" y1="15" x2="185" y2="27" style="stroke:#fea747ff;stroke-width:2;" /><line x1="186" y1="15" x2="186" y2="27" style="stroke:#fea747ff;stroke-width:2;" /><line x1="187" y1="15" x2="187" y2="27" style="stroke:#fea646ff;stroke-width:2;" /><line x1="188" y1="15" x2="188" y2="27" style="stroke:#fea546ff;stroke-width:2;" /><line x1="189" y1="15" x2="189" y2="27" style="stroke:#fea546ff;stroke-width:2;" /><line x1="190" y1="15" x2="190" y2="27" style="stroke:#fea446ff;stroke-width:2;" /><line x1="191" y1="15" x2="191" y2="27" style="stroke:#fea345ff;stroke-width:2;" /><line x1="192" y1="15" x2="192" y2="27" style="stroke:#fea345ff;stroke-width:2;" /><line x1="193" y1="15" x2="193" y2="27" style="stroke:#fea245ff;stroke-width:2;" /><line x1="194" y1="15" x2="194" y2="27" style="stroke:#fea144ff;stroke-width:2;" /><line x1="195" y1="15" x2="195" y2="27" style="stroke:#fea144ff;stroke-width:2;" /><line x1="196" y1="15" x2="196" y2="27" style="stroke:#fea044ff;stroke-width:2;" /><line x1="197" y1="15" x2="197" y2="27" style="stroke:#fe9f44ff;stroke-width:2;" /><line x1="198" y1="15" x2="198" y2="27" style="stroke:#fe9f43ff;stroke-width:2;" /><line x1="199" y1="15" x2="199" y2="27" style="stroke:#fe9e43ff;stroke-width:2;" /><line x1="200" y1="15" x2="200" y2="27" style="stroke:#fe9d43ff;stroke-width:2;" /><line x1="201" y1="15" x2="201" y2="27" style="stroke:#fe9d42ff;stroke-width:2;" /><line x1="202" y1="15" x2="202" y2="27" style="stroke:#fe9c42ff;stroke-width:2;" /><line x1="203" y1="15" x2="203" y2="27" style="stroke:#fe9b42ff;stroke-width:2;" /><line x1="204" y1="15" x2="204" y2="27" style="stroke:#fe9b42ff;stroke-width:2;" /><line x1="205" y1="15" x2="205" y2="27" style="stroke:#fe9a41ff;stroke-width:2;" /><line x1="206" y1="15" x2="206" y2="27" style="stroke:#fe9941ff;stroke-width:2;" /><line x1="207" y1="15" x2="207" y2="27" style="stroke:#fe9941ff;stroke-width:2;" /><line x1="208" y1="15" x2="208" y2="27" style="stroke:#fe9840ff;stroke-width:2;" /><line x1="209" y1="15" x2="209" y2="27" style="stroke:#fe9740ff;stroke-width:2;" /><line x1="210" y1="15" x2="210" y2="27" style="stroke:#fe9740ff;stroke-width:2;" /><line x1="211" y1="15" x2="211" y2="27" style="stroke:#fe9640ff;stroke-width:2;" /><line x1="212" y1="15" x2="212" y2="27" style="stroke:#fe953fff;stroke-width:2;" /><line x1="213" y1="15" x2="213" y2="27" style="stroke:#fe953fff;stroke-width:2;" /><line x1="214" y1="15" x2="214" y2="27" style="stroke:#fe943fff;stroke-width:2;" /><line x1="215" y1="15" x2="215" y2="27" style="stroke:#fe933eff;stroke-width:2;" /><line x1="216" y1="15" x2="216" y2="27" style="stroke:#fe933eff;stroke-width:2;" /><line x1="217" y1="15" x2="217" y2="27" style="stroke:#fe923eff;stroke-width:2;" /><line x1="218" y1="15" x2="218" y2="27" style="stroke:#fe913eff;stroke-width:2;" /><line x1="219" y1="15" x2="219" y2="27" style="stroke:#fe913dff;stroke-width:2;" /><line x1="220" y1="15" x2="220" y2="27" style="stroke:#fe903dff;stroke-width:2;" /><line x1="221" y1="15" x2="221" y2="27" style="stroke:#fe8f3dff;stroke-width:2;" /><line x1="222" y1="15" x2="222" y2="27" style="stroke:#fe8f3cff;stroke-width:2;" /><line x1="223" y1="15" x2="223" y2="27" style="stroke:#fe8e3cff;stroke-width:2;" /><line x1="224" y1="15" x2="224" y2="27" style="stroke:#fe8d3cff;stroke-width:2;" /><line x1="225" y1="15" x2="225" y2="27" style="stroke:#fd8c3cff;stroke-width:2;" /><line x1="226" y1="15" x2="226" y2="27" style="stroke:#fd8b3bff;stroke-width:2;" /><line x1="227" y1="15" x2="227" y2="27" style="stroke:#fd8a3bff;stroke-width:2;" /><line x1="228" y1="15" x2="228" y2="27" style="stroke:#fd893bff;stroke-width:2;" /><line x1="229" y1="15" x2="229" y2="27" style="stroke:#fd883aff;stroke-width:2;" /><line x1="230" y1="15" x2="230" y2="27" style="stroke:#fd873aff;stroke-width:2;" /><line x1="231" y1="15" x2="231" y2="27" style="stroke:#fd863aff;stroke-width:2;" /><line x1="232" y1="15" x2="232" y2="27" style="stroke:#fd8539ff;stroke-width:2;" /><line x1="233" y1="15" x2="233" y2="27" style="stroke:#fd8339ff;stroke-width:2;" /><line x1="234" y1="15" x2="234" y2="27" style="stroke:#fd8239ff;stroke-width:2;" /><line x1="235" y1="15" x2="235" y2="27" style="stroke:#fd8138ff;stroke-width:2;" /><line x1="236" y1="15" x2="236" y2="27" style="stroke:#fd8038ff;stroke-width:2;" /><line x1="237" y1="15" x2="237" y2="27" style="stroke:#fd7f38ff;stroke-width:2;" /><line x1="238" y1="15" x2="238" y2="27" style="stroke:#fd7e37ff;stroke-width:2;" /><line x1="239" y1="15" x2="239" y2="27" style="stroke:#fd7d37ff;stroke-width:2;" /><line x1="240" y1="15" x2="240" y2="27" style="stroke:#fd7c37ff;stroke-width:2;" /><line x1="241" y1="15" x2="241" y2="27" style="stroke:#fd7a36ff;stroke-width:2;" /><line x1="242" y1="15" x2="242" y2="27" style="stroke:#fd7936ff;stroke-width:2;" /><line x1="243" y1="15" x2="243" y2="27" style="stroke:#fd7836ff;stroke-width:2;" /><line x1="244" y1="15" x2="244" y2="27" style="stroke:#fd7735ff;stroke-width:2;" /><line x1="245" y1="15" x2="245" y2="27" style="stroke:#fd7635ff;stroke-width:2;" /><line x1="246" y1="15" x2="246" y2="27" style="stroke:#fd7535ff;stroke-width:2;" /><line x1="247" y1="15" x2="247" y2="27" style="stroke:#fd7434ff;stroke-width:2;" /><line x1="248" y1="15" x2="248" y2="27" style="stroke:#fd7334ff;stroke-width:2;" /><line x1="249" y1="15" x2="249" y2="27" style="stroke:#fd7134ff;stroke-width:2;" /><line x1="250" y1="15" x2="250" y2="27" style="stroke:#fd7034ff;stroke-width:2;" /><line x1="251" y1="15" x2="251" y2="27" style="stroke:#fd6f33ff;stroke-width:2;" /><line x1="252" y1="15" x2="252" y2="27" style="stroke:#fd6e33ff;stroke-width:2;" /><line x1="253" y1="15" x2="253" y2="27" style="stroke:#fd6d33ff;stroke-width:2;" /><line x1="254" y1="15" x2="254" y2="27" style="stroke:#fd6c32ff;stroke-width:2;" /><line x1="255" y1="15" x2="255" y2="27" style="stroke:#fd6b32ff;stroke-width:2;" /><line x1="256" y1="15" x2="256" y2="27" style="stroke:#fd6a32ff;stroke-width:2;" /><line x1="257" y1="15" x2="257" y2="27" style="stroke:#fd6831ff;stroke-width:2;" /><line x1="258" y1="15" x2="258" y2="27" style="stroke:#fd6731ff;stroke-width:2;" /><line x1="259" y1="15" x2="259" y2="27" style="stroke:#fd6631ff;stroke-width:2;" /><line x1="260" y1="15" x2="260" y2="27" style="stroke:#fd6530ff;stroke-width:2;" /><line x1="261" y1="15" x2="261" y2="27" style="stroke:#fd6430ff;stroke-width:2;" /><line x1="262" y1="15" x2="262" y2="27" style="stroke:#fd6330ff;stroke-width:2;" /><line x1="263" y1="15" x2="263" y2="27" style="stroke:#fd622fff;stroke-width:2;" /><line x1="264" y1="15" x2="264" y2="27" style="stroke:#fd612fff;stroke-width:2;" /><line x1="265" y1="15" x2="265" y2="27" style="stroke:#fd5f2fff;stroke-width:2;" /><line x1="266" y1="15" x2="266" y2="27" style="stroke:#fd5e2eff;stroke-width:2;" /><line x1="267" y1="15" x2="267" y2="27" style="stroke:#fd5d2eff;stroke-width:2;" /><line x1="268" y1="15" x2="268" y2="27" style="stroke:#fd5c2eff;stroke-width:2;" /><line x1="269" y1="15" x2="269" y2="27" style="stroke:#fd5b2dff;stroke-width:2;" /><line x1="270" y1="15" x2="270" y2="27" style="stroke:#fd5a2dff;stroke-width:2;" /><line x1="271" y1="15" x2="271" y2="27" style="stroke:#fd592dff;stroke-width:2;" /><line x1="272" y1="15" x2="272" y2="27" style="stroke:#fd582cff;stroke-width:2;" /><line x1="273" y1="15" x2="273" y2="27" style="stroke:#fd562cff;stroke-width:2;" /><line x1="274" y1="15" x2="274" y2="27" style="stroke:#fd552cff;stroke-width:2;" /><line x1="275" y1="15" x2="275" y2="27" style="stroke:#fd542bff;stroke-width:2;" /><line x1="276" y1="15" x2="276" y2="27" style="stroke:#fd532bff;stroke-width:2;" /><line x1="277" y1="15" x2="277" y2="27" style="stroke:#fd522bff;stroke-width:2;" /><line x1="278" y1="15" x2="278" y2="27" style="stroke:#fd512bff;stroke-width:2;" /><line x1="279" y1="15" x2="279" y2="27" style="stroke:#fd502aff;stroke-width:2;" /><line x1="280" y1="15" x2="280" y2="27" style="stroke:#fc4f2aff;stroke-width:2;" /><line x1="281" y1="15" x2="281" y2="27" style="stroke:#fc4d2aff;stroke-width:2;" /><line x1="282" y1="15" x2="282" y2="27" style="stroke:#fc4d29ff;stroke-width:2;" /><line x1="283" y1="15" x2="283" y2="27" style="stroke:#fb4c29ff;stroke-width:2;" /><line x1="284" y1="15" x2="284" y2="27" style="stroke:#fb4b29ff;stroke-width:2;" /><line x1="285" y1="15" x2="285" y2="27" style="stroke:#fb4a29ff;stroke-width:2;" /><line x1="286" y1="15" x2="286" y2="27" style="stroke:#fa4928ff;stroke-width:2;" /><line x1="287" y1="15" x2="287" y2="27" style="stroke:#fa4828ff;stroke-width:2;" /><line x1="288" y1="15" x2="288" y2="27" style="stroke:#f94728ff;stroke-width:2;" /><line x1="289" y1="15" x2="289" y2="27" style="stroke:#f94628ff;stroke-width:2;" /><line x1="290" y1="15" x2="290" y2="27" style="stroke:#f84527ff;stroke-width:2;" /><line x1="291" y1="15" x2="291" y2="27" style="stroke:#f84427ff;stroke-width:2;" /><line x1="292" y1="15" x2="292" y2="27" style="stroke:#f74327ff;stroke-width:2;" /><line x1="293" y1="15" x2="293" y2="27" style="stroke:#f74227ff;stroke-width:2;" /><line x1="294" y1="15" x2="294" y2="27" style="stroke:#f74126ff;stroke-width:2;" /><line x1="295" y1="15" x2="295" y2="27" style="stroke:#f64026ff;stroke-width:2;" /><line x1="296" y1="15" x2="296" y2="27" style="stroke:#f64026ff;stroke-width:2;" /><line x1="297" y1="15" x2="297" y2="27" style="stroke:#f53f26ff;stroke-width:2;" /><line x1="298" y1="15" x2="298" y2="27" style="stroke:#f53e25ff;stroke-width:2;" /><line x1="299" y1="15" x2="299" y2="27" style="stroke:#f43d25ff;stroke-width:2;" /><line x1="300" y1="15" x2="300" y2="27" style="stroke:#f43c25ff;stroke-width:2;" /><line x1="301" y1="15" x2="301" y2="27" style="stroke:#f33b25ff;stroke-width:2;" /><line x1="302" y1="15" x2="302" y2="27" style="stroke:#f33a24ff;stroke-width:2;" /><line x1="303" y1="15" x2="303" y2="27" style="stroke:#f23924ff;stroke-width:2;" /><line x1="304" y1="15" x2="304" y2="27" style="stroke:#f23824ff;stroke-width:2;" /><line x1="305" y1="15" x2="305" y2="27" style="stroke:#f23724ff;stroke-width:2;" /><line x1="306" y1="15" x2="306" y2="27" style="stroke:#f13623ff;stroke-width:2;" /><line x1="307" y1="15" x2="307" y2="27" style="stroke:#f13523ff;stroke-width:2;" /><line x1="308" y1="15" x2="308" y2="27" style="stroke:#f03423ff;stroke-width:2;" /><line x1="309" y1="15" x2="309" y2="27" style="stroke:#f03323ff;stroke-width:2;" /><line x1="310" y1="15" x2="310" y2="27" style="stroke:#ef3222ff;stroke-width:2;" /><line x1="311" y1="15" x2="311" y2="27" style="stroke:#ef3222ff;stroke-width:2;" /><line x1="312" y1="15" x2="312" y2="27" style="stroke:#ee3122ff;stroke-width:2;" /><line x1="313" y1="15" x2="313" y2="27" style="stroke:#ee3022ff;stroke-width:2;" /><line x1="314" y1="15" x2="314" y2="27" style="stroke:#ee2f21ff;stroke-width:2;" /><line x1="315" y1="15" x2="315" y2="27" style="stroke:#ed2e21ff;stroke-width:2;" /><line x1="316" y1="15" x2="316" y2="27" style="stroke:#ed2d21ff;stroke-width:2;" /><line x1="317" y1="15" x2="317" y2="27" style="stroke:#ec2c21ff;stroke-width:2;" /><line x1="318" y1="15" x2="318" y2="27" style="stroke:#ec2b20ff;stroke-width:2;" /><line x1="319" y1="15" x2="319" y2="27" style="stroke:#eb2a20ff;stroke-width:2;" /><line x1="320" y1="15" x2="320" y2="27" style="stroke:#eb2920ff;stroke-width:2;" /><line x1="321" y1="15" x2="321" y2="27" style="stroke:#ea2820ff;stroke-width:2;" /><line x1="322" y1="15" x2="322" y2="27" style="stroke:#ea271fff;stroke-width:2;" /><line x1="323" y1="15" x2="323" y2="27" style="stroke:#ea261fff;stroke-width:2;" /><line x1="324" y1="15" x2="324" y2="27" style="stroke:#e9251fff;stroke-width:2;" /><line x1="325" y1="15" x2="325" y2="27" style="stroke:#e9251fff;stroke-width:2;" /><line x1="326" y1="15" x2="326" y2="27" style="stroke:#e8241eff;stroke-width:2;" /><line x1="327" y1="15" x2="327" y2="27" style="stroke:#e8231eff;stroke-width:2;" /><line x1="328" y1="15" x2="328" y2="27" style="stroke:#e7221eff;stroke-width:2;" /><line x1="329" y1="15" x2="329" y2="27" style="stroke:#e7211eff;stroke-width:2;" /><line x1="330" y1="15" x2="330" y2="27" style="stroke:#e6201dff;stroke-width:2;" /><line x1="331" y1="15" x2="331" y2="27" style="stroke:#e61f1dff;stroke-width:2;" /><line x1="332" y1="15" x2="332" y2="27" style="stroke:#e61e1dff;stroke-width:2;" /><line x1="333" y1="15" x2="333" y2="27" style="stroke:#e51d1dff;stroke-width:2;" /><line x1="334" y1="15" x2="334" y2="27" style="stroke:#e51c1cff;stroke-width:2;" /><line x1="335" y1="15" x2="335" y2="27" style="stroke:#e41b1cff;stroke-width:2;" /><line x1="336" y1="15" x2="336" y2="27" style="stroke:#e41a1cff;stroke-width:2;" /><line x1="337" y1="15" x2="337" y2="27" style="stroke:#e3191cff;stroke-width:2;" /><line x1="338" y1="15" x2="338" y2="27" style="stroke:#e3191cff;stroke-width:2;" /><line x1="339" y1="15" x2="339" y2="27" style="stroke:#e2191cff;stroke-width:2;" /><line x1="340" y1="15" x2="340" y2="27" style="stroke:#e1181cff;stroke-width:2;" /><line x1="341" y1="15" x2="341" y2="27" style="stroke:#e1181cff;stroke-width:2;" /><line x1="342" y1="15" x2="342" y2="27" style="stroke:#e0171dff;stroke-width:2;" /><line x1="343" y1="15" x2="343" y2="27" style="stroke:#df171dff;stroke-width:2;" /><line x1="344" y1="15" x2="344" y2="27" style="stroke:#de161dff;stroke-width:2;" /><line x1="345" y1="15" x2="345" y2="27" style="stroke:#de161dff;stroke-width:2;" /><line x1="346" y1="15" x2="346" y2="27" style="stroke:#dd151dff;stroke-width:2;" /><line x1="347" y1="15" x2="347" y2="27" style="stroke:#dc151dff;stroke-width:2;" /><line x1="348" y1="15" x2="348" y2="27" style="stroke:#dc141eff;stroke-width:2;" /><line x1="349" y1="15" x2="349" y2="27" style="stroke:#db141eff;stroke-width:2;" /><line x1="350" y1="15" x2="350" y2="27" style="stroke:#da131eff;stroke-width:2;" /><line x1="351" y1="15" x2="351" y2="27" style="stroke:#da131eff;stroke-width:2;" /><line x1="352" y1="15" x2="352" y2="27" style="stroke:#d9131eff;stroke-width:2;" /><line x1="353" y1="15" x2="353" y2="27" style="stroke:#d8121fff;stroke-width:2;" /><line x1="354" y1="15" x2="354" y2="27" style="stroke:#d8121fff;stroke-width:2;" /><line x1="355" y1="15" x2="355" y2="27" style="stroke:#d7111fff;stroke-width:2;" /><line x1="356" y1="15" x2="356" y2="27" style="stroke:#d6111fff;stroke-width:2;" /><line x1="357" y1="15" x2="357" y2="27" style="stroke:#d6101fff;stroke-width:2;" /><line x1="358" y1="15" x2="358" y2="27" style="stroke:#d5101fff;stroke-width:2;" /><line x1="359" y1="15" x2="359" y2="27" style="stroke:#d40f20ff;stroke-width:2;" /><line x1="360" y1="15" x2="360" y2="27" style="stroke:#d40f20ff;stroke-width:2;" /><line x1="361" y1="15" x2="361" y2="27" style="stroke:#d30e20ff;stroke-width:2;" /><line x1="362" y1="15" x2="362" y2="27" style="stroke:#d20e20ff;stroke-width:2;" /><line x1="363" y1="15" x2="363" y2="27" style="stroke:#d20d20ff;stroke-width:2;" /><line x1="364" y1="15" x2="364" y2="27" style="stroke:#d10d20ff;stroke-width:2;" /><line x1="365" y1="15" x2="365" y2="27" style="stroke:#d00c21ff;stroke-width:2;" /><line x1="366" y1="15" x2="366" y2="27" style="stroke:#d00c21ff;stroke-width:2;" /><line x1="367" y1="15" x2="367" y2="27" style="stroke:#cf0c21ff;stroke-width:2;" /><line x1="368" y1="15" x2="368" y2="27" style="stroke:#ce0b21ff;stroke-width:2;" /><line x1="369" y1="15" x2="369" y2="27" style="stroke:#cd0b21ff;stroke-width:2;" /><line x1="370" y1="15" x2="370" y2="27" style="stroke:#cd0a22ff;stroke-width:2;" /><line x1="371" y1="15" x2="371" y2="27" style="stroke:#cc0a22ff;stroke-width:2;" /><line x1="372" y1="15" x2="372" y2="27" style="stroke:#cb0922ff;stroke-width:2;" /><line x1="373" y1="15" x2="373" y2="27" style="stroke:#cb0922ff;stroke-width:2;" /><line x1="374" y1="15" x2="374" y2="27" style="stroke:#ca0822ff;stroke-width:2;" /><line x1="375" y1="15" x2="375" y2="27" style="stroke:#c90822ff;stroke-width:2;" /><line x1="376" y1="15" x2="376" y2="27" style="stroke:#c90723ff;stroke-width:2;" /><line x1="377" y1="15" x2="377" y2="27" style="stroke:#c80723ff;stroke-width:2;" /><line x1="378" y1="15" x2="378" y2="27" style="stroke:#c70623ff;stroke-width:2;" /><line x1="379" y1="15" x2="379" y2="27" style="stroke:#c70623ff;stroke-width:2;" /><line x1="380" y1="15" x2="380" y2="27" style="stroke:#c60523ff;stroke-width:2;" /><line x1="381" y1="15" x2="381" y2="27" style="stroke:#c50524ff;stroke-width:2;" /><line x1="382" y1="15" x2="382" y2="27" style="stroke:#c50524ff;stroke-width:2;" /><line x1="383" y1="15" x2="383" y2="27" style="stroke:#c40424ff;stroke-width:2;" /><line x1="384" y1="15" x2="384" y2="27" style="stroke:#c30424ff;stroke-width:2;" /><line x1="385" y1="15" x2="385" y2="27" style="stroke:#c30324ff;stroke-width:2;" /><line x1="386" y1="15" x2="386" y2="27" style="stroke:#c20324ff;stroke-width:2;" /><line x1="387" y1="15" x2="387" y2="27" style="stroke:#c10225ff;stroke-width:2;" /><line x1="388" y1="15" x2="388" y2="27" style="stroke:#c10225ff;stroke-width:2;" /><line x1="389" y1="15" x2="389" y2="27" style="stroke:#c00125ff;stroke-width:2;" /><line x1="390" y1="15" x2="390" y2="27" style="stroke:#bf0125ff;stroke-width:2;" /><line x1="391" y1="15" x2="391" y2="27" style="stroke:#bf0025ff;stroke-width:2;" /><line x1="392" y1="15" x2="392" y2="27" style="stroke:#be0025ff;stroke-width:2;" /><line x1="393" y1="15" x2="393" y2="27" style="stroke:#bd0026ff;stroke-width:2;" /><line x1="394" y1="15" x2="394" y2="27" style="stroke:#bc0026ff;stroke-width:2;" /><line x1="395" y1="15" x2="395" y2="27" style="stroke:#bb0026ff;stroke-width:2;" /><line x1="396" y1="15" x2="396" y2="27" style="stroke:#ba0026ff;stroke-width:2;" /><line x1="397" y1="15" x2="397" y2="27" style="stroke:#b90026ff;stroke-width:2;" /><line x1="398" y1="15" x2="398" y2="27" style="stroke:#b80026ff;stroke-width:2;" /><line x1="399" y1="15" x2="399" y2="27" style="stroke:#b70026ff;stroke-width:2;" /><line x1="400" y1="15" x2="400" y2="27" style="stroke:#b50026ff;stroke-width:2;" /><line x1="401" y1="15" x2="401" y2="27" style="stroke:#b40026ff;stroke-width:2;" /><line x1="402" y1="15" x2="402" y2="27" style="stroke:#b30026ff;stroke-width:2;" /><line x1="403" y1="15" x2="403" y2="27" style="stroke:#b20026ff;stroke-width:2;" /><line x1="404" y1="15" x2="404" y2="27" style="stroke:#b10026ff;stroke-width:2;" /><line x1="405" y1="15" x2="405" y2="27" style="stroke:#b00026ff;stroke-width:2;" /><line x1="406" y1="15" x2="406" y2="27" style="stroke:#af0026ff;stroke-width:2;" /><line x1="407" y1="15" x2="407" y2="27" style="stroke:#ae0026ff;stroke-width:2;" /><line x1="408" y1="15" x2="408" y2="27" style="stroke:#ad0026ff;stroke-width:2;" /><line x1="409" y1="15" x2="409" y2="27" style="stroke:#ac0026ff;stroke-width:2;" /><line x1="410" y1="15" x2="410" y2="27" style="stroke:#ab0026ff;stroke-width:2;" /><line x1="411" y1="15" x2="411" y2="27" style="stroke:#a90026ff;stroke-width:2;" /><line x1="412" y1="15" x2="412" y2="27" style="stroke:#a80026ff;stroke-width:2;" /><line x1="413" y1="15" x2="413" y2="27" style="stroke:#a70026ff;stroke-width:2;" /><line x1="414" y1="15" x2="414" y2="27" style="stroke:#a60026ff;stroke-width:2;" /><line x1="415" y1="15" x2="415" y2="27" style="stroke:#a50026ff;stroke-width:2;" /><line x1="416" y1="15" x2="416" y2="27" style="stroke:#a40026ff;stroke-width:2;" /><line x1="417" y1="15" x2="417" y2="27" style="stroke:#a30026ff;stroke-width:2;" /><line x1="418" y1="15" x2="418" y2="27" style="stroke:#a20026ff;stroke-width:2;" /><line x1="419" y1="15" x2="419" y2="27" style="stroke:#a10026ff;stroke-width:2;" /><line x1="420" y1="15" x2="420" y2="27" style="stroke:#a00026ff;stroke-width:2;" /><line x1="421" y1="15" x2="421" y2="27" style="stroke:#9f0026ff;stroke-width:2;" /><line x1="422" y1="15" x2="422" y2="27" style="stroke:#9d0026ff;stroke-width:2;" /><line x1="423" y1="15" x2="423" y2="27" style="stroke:#9c0026ff;stroke-width:2;" /><line x1="424" y1="15" x2="424" y2="27" style="stroke:#9b0026ff;stroke-width:2;" /><line x1="425" y1="15" x2="425" y2="27" style="stroke:#9a0026ff;stroke-width:2;" /><line x1="426" y1="15" x2="426" y2="27" style="stroke:#990026ff;stroke-width:2;" /><line x1="427" y1="15" x2="427" y2="27" style="stroke:#980026ff;stroke-width:2;" /><line x1="428" y1="15" x2="428" y2="27" style="stroke:#970026ff;stroke-width:2;" /><line x1="429" y1="15" x2="429" y2="27" style="stroke:#960026ff;stroke-width:2;" /><line x1="430" y1="15" x2="430" y2="27" style="stroke:#950026ff;stroke-width:2;" /><line x1="431" y1="15" x2="431" y2="27" style="stroke:#940026ff;stroke-width:2;" /><line x1="432" y1="15" x2="432" y2="27" style="stroke:#930026ff;stroke-width:2;" /><line x1="433" y1="15" x2="433" y2="27" style="stroke:#910026ff;stroke-width:2;" /><line x1="434" y1="15" x2="434" y2="27" style="stroke:#900026ff;stroke-width:2;" /><line x1="435" y1="15" x2="435" y2="27" style="stroke:#8f0026ff;stroke-width:2;" /><line x1="436" y1="15" x2="436" y2="27" style="stroke:#8e0026ff;stroke-width:2;" /><line x1="437" y1="15" x2="437" y2="27" style="stroke:#8d0026ff;stroke-width:2;" /><line x1="438" y1="15" x2="438" y2="27" style="stroke:#8c0026ff;stroke-width:2;" /><line x1="439" y1="15" x2="439" y2="27" style="stroke:#8b0026ff;stroke-width:2;" /><line x1="440" y1="15" x2="440" y2="27" style="stroke:#8a0026ff;stroke-width:2;" /><line x1="441" y1="15" x2="441" y2="27" style="stroke:#890026ff;stroke-width:2;" /><line x1="442" y1="15" x2="442" y2="27" style="stroke:#880026ff;stroke-width:2;" /><line x1="443" y1="15" x2="443" y2="27" style="stroke:#870026ff;stroke-width:2;" /><line x1="444" y1="15" x2="444" y2="27" style="stroke:#850026ff;stroke-width:2;" /><line x1="445" y1="15" x2="445" y2="27" style="stroke:#840026ff;stroke-width:2;" /><line x1="446" y1="15" x2="446" y2="27" style="stroke:#830026ff;stroke-width:2;" /><line x1="447" y1="15" x2="447" y2="27" style="stroke:#820026ff;stroke-width:2;" /><line x1="448" y1="15" x2="448" y2="27" style="stroke:#810026ff;stroke-width:2;" /><line x1="449" y1="15" x2="449" y2="27" style="stroke:#800026ff;stroke-width:2;" /><text x="0" y="38" style="text-anchor:start; font-size:11px; font:Arial; fill:black">177</text><text x="75" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">1107.3</text><text x="150" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">2037.7</text><text x="225" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">2968.0</text><text x="300" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">3898.3</text><text x="375" y="38"; style="text-anchor:middle; font-size:11px; font:Arial; fill:black">4828.7</text><text x="450" y="38" style="text-anchor:end; font-size:11px; font:Arial; fill:black">5759</text><text x="0" y="12" style="font-size:11px; font:Arial; fill:black"></text></svg>
+    </div>
+    
+    
+            <div class="folium-map" id="map_96e874db7a181adf4bb190e77a6980b3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_96e874db7a181adf4bb190e77a6980b3 = L.map(
+                "map_96e874db7a181adf4bb190e77a6980b3",
+                {
+                    center: [23.6345, -102.5528],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_51a3bed4e9d5f8f5a0f956dd82ecb5df = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_51a3bed4e9d5f8f5a0f956dd82ecb5df.addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+            var circle_marker_a9d06e8627ba73d297dc908712f5d1c2 = L.circleMarker(
+                [21.8853, -102.2916],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_504fb3fdac2c11092091472514764264 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eb83a030d67969cd2be3bda2e700cf34 = $(`<div id="html_eb83a030d67969cd2be3bda2e700cf34" style="width: 100.0%; height: 100.0%;">AGUASCALIENTES: 21.254104392023887 muertes por 100K</div>`)[0];
+                popup_504fb3fdac2c11092091472514764264.setContent(html_eb83a030d67969cd2be3bda2e700cf34);
+            
+        
+
+        circle_marker_a9d06e8627ba73d297dc908712f5d1c2.bindPopup(popup_504fb3fdac2c11092091472514764264)
+        ;
+
+        
+    
+    
+            var circle_marker_c388807b290f724f90bd07e703fa02b8 = L.circleMarker(
+                [32.6643, -115.4679],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_09d773145435657669e0860c1739d7c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_46cb5fb4632b3a4d0ed5528200be3deb = $(`<div id="html_46cb5fb4632b3a4d0ed5528200be3deb" style="width: 100.0%; height: 100.0%;">BAJA CALIFORNIA: 33.350844516611744 muertes por 100K</div>`)[0];
+                popup_09d773145435657669e0860c1739d7c6.setContent(html_46cb5fb4632b3a4d0ed5528200be3deb);
+            
+        
+
+        circle_marker_c388807b290f724f90bd07e703fa02b8.bindPopup(popup_09d773145435657669e0860c1739d7c6)
+        ;
+
+        
+    
+    
+            var circle_marker_35b4390ec7d447dce836db26b67a2ae5 = L.circleMarker(
+                [24.1426, -110.3129],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_dceb4c6867b330621d1003c0f982ebef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e5f5d59cd2834e5f261fd8e023b401d = $(`<div id="html_0e5f5d59cd2834e5f261fd8e023b401d" style="width: 100.0%; height: 100.0%;">BAJA CALIFORNIA SUR: 22.168033695411214 muertes por 100K</div>`)[0];
+                popup_dceb4c6867b330621d1003c0f982ebef.setContent(html_0e5f5d59cd2834e5f261fd8e023b401d);
+            
+        
+
+        circle_marker_35b4390ec7d447dce836db26b67a2ae5.bindPopup(popup_dceb4c6867b330621d1003c0f982ebef)
+        ;
+
+        
+    
+    
+            var circle_marker_fd209e3f415ffaf86f33c30b87a2b1f1 = L.circleMarker(
+                [19.8301, -90.5349],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_c4eb66de52bfa0ce78afd0f8a38ee1fc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_227817b33b6ad8033b41aef701bbc510 = $(`<div id="html_227817b33b6ad8033b41aef701bbc510" style="width: 100.0%; height: 100.0%;">CAMPECHE: 20.68156529288651 muertes por 100K</div>`)[0];
+                popup_c4eb66de52bfa0ce78afd0f8a38ee1fc.setContent(html_227817b33b6ad8033b41aef701bbc510);
+            
+        
+
+        circle_marker_fd209e3f415ffaf86f33c30b87a2b1f1.bindPopup(popup_c4eb66de52bfa0ce78afd0f8a38ee1fc)
+        ;
+
+        
+    
+    
+            var circle_marker_2c67214a3b3ce55b1874912da533368a = L.circleMarker(
+                [16.7516, -93.1165],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_98888676d1ccc437c0704db52b59a6cb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_582ab83ab2f61e1d03de7256e6bfb50b = $(`<div id="html_582ab83ab2f61e1d03de7256e6bfb50b" style="width: 100.0%; height: 100.0%;">CHIAPAS: 4.707938269369108 muertes por 100K</div>`)[0];
+                popup_98888676d1ccc437c0704db52b59a6cb.setContent(html_582ab83ab2f61e1d03de7256e6bfb50b);
+            
+        
+
+        circle_marker_2c67214a3b3ce55b1874912da533368a.bindPopup(popup_98888676d1ccc437c0704db52b59a6cb)
+        ;
+
+        
+    
+    
+            var circle_marker_6c0db08c96485911ac3fa4076b630324 = L.circleMarker(
+                [28.6329, -106.0691],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_386c1c7453d2cd03363259d2530c6508 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0aac886f507fcd48f00c2ec271ec4d75 = $(`<div id="html_0aac886f507fcd48f00c2ec271ec4d75" style="width: 100.0%; height: 100.0%;">CHIHUAHUA: 27.820321876580927 muertes por 100K</div>`)[0];
+                popup_386c1c7453d2cd03363259d2530c6508.setContent(html_0aac886f507fcd48f00c2ec271ec4d75);
+            
+        
+
+        circle_marker_6c0db08c96485911ac3fa4076b630324.bindPopup(popup_386c1c7453d2cd03363259d2530c6508)
+        ;
+
+        
+    
+    
+            var circle_marker_986c0ff9a2771077bce9945c3bb358ef = L.circleMarker(
+                [19.4326, -99.1332],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_2e504a3fc9ddfb97d170ecd86717ff09 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6994b98f5cade8058e6bd7537584d5f4 = $(`<div id="html_6994b98f5cade8058e6bd7537584d5f4" style="width: 100.0%; height: 100.0%;">CIUDAD DE MEXICO: 62.530239054656576 muertes por 100K</div>`)[0];
+                popup_2e504a3fc9ddfb97d170ecd86717ff09.setContent(html_6994b98f5cade8058e6bd7537584d5f4);
+            
+        
+
+        circle_marker_986c0ff9a2771077bce9945c3bb358ef.bindPopup(popup_2e504a3fc9ddfb97d170ecd86717ff09)
+        ;
+
+        
+    
+    
+            var circle_marker_e843008acaa397b139f377e25ed604cd = L.circleMarker(
+                [25.4232, -101.0053],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_621155b1661dd5eb4c4deceee5d07328 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eba13f508528e52e83b5ff41fc5955cf = $(`<div id="html_eba13f508528e52e83b5ff41fc5955cf" style="width: 100.0%; height: 100.0%;">COAHUILA DE ZARAGOZA: 29.585883434161556 muertes por 100K</div>`)[0];
+                popup_621155b1661dd5eb4c4deceee5d07328.setContent(html_eba13f508528e52e83b5ff41fc5955cf);
+            
+        
+
+        circle_marker_e843008acaa397b139f377e25ed604cd.bindPopup(popup_621155b1661dd5eb4c4deceee5d07328)
+        ;
+
+        
+    
+    
+            var circle_marker_1623111057387a4358eeab594b666e9b = L.circleMarker(
+                [19.2433, -103.7246],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_19c9fcf185a4db3335c4db135b7350ca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_54069acc90aa56c6632bd4d3fcaa571f = $(`<div id="html_54069acc90aa56c6632bd4d3fcaa571f" style="width: 100.0%; height: 100.0%;">COLIMA: 25.020816498972504 muertes por 100K</div>`)[0];
+                popup_19c9fcf185a4db3335c4db135b7350ca.setContent(html_54069acc90aa56c6632bd4d3fcaa571f);
+            
+        
+
+        circle_marker_1623111057387a4358eeab594b666e9b.bindPopup(popup_19c9fcf185a4db3335c4db135b7350ca)
+        ;
+
+        
+    
+    
+            var circle_marker_4ec1e63089c664771dcc352ed537126f = L.circleMarker(
+                [24.0277, -104.6537],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_908de2d5e9ff019f52e58a4c1bd23ded = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ad9979c9c45965b3fe118cdaab97c128 = $(`<div id="html_ad9979c9c45965b3fe118cdaab97c128" style="width: 100.0%; height: 100.0%;">DURANGO: 18.115843177911767 muertes por 100K</div>`)[0];
+                popup_908de2d5e9ff019f52e58a4c1bd23ded.setContent(html_ad9979c9c45965b3fe118cdaab97c128);
+            
+        
+
+        circle_marker_4ec1e63089c664771dcc352ed537126f.bindPopup(popup_908de2d5e9ff019f52e58a4c1bd23ded)
+        ;
+
+        
+    
+    
+            var circle_marker_010bbc7130cf39f8c3682ee78881714a = L.circleMarker(
+                [21.019, -101.2574],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_15cd60d0ba7f420ea9df725c96cf5fee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c15328ec463ee37bad0b74f62f0f020 = $(`<div id="html_7c15328ec463ee37bad0b74f62f0f020" style="width: 100.0%; height: 100.0%;">GUANAJUATO: 19.507262441920087 muertes por 100K</div>`)[0];
+                popup_15cd60d0ba7f420ea9df725c96cf5fee.setContent(html_7c15328ec463ee37bad0b74f62f0f020);
+            
+        
+
+        circle_marker_010bbc7130cf39f8c3682ee78881714a.bindPopup(popup_15cd60d0ba7f420ea9df725c96cf5fee)
+        ;
+
+        
+    
+    
+            var circle_marker_4dbdfbd03129eda3db56b9cac63ce03e = L.circleMarker(
+                [17.5734, -99.5056],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_e137a8577a3e2cbd375bd39873bc391b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e58b5cec41346cf3843f37edf7f2ffd8 = $(`<div id="html_e58b5cec41346cf3843f37edf7f2ffd8" style="width: 100.0%; height: 100.0%;">GUERRERO: 15.053584264061897 muertes por 100K</div>`)[0];
+                popup_e137a8577a3e2cbd375bd39873bc391b.setContent(html_e58b5cec41346cf3843f37edf7f2ffd8);
+            
+        
+
+        circle_marker_4dbdfbd03129eda3db56b9cac63ce03e.bindPopup(popup_e137a8577a3e2cbd375bd39873bc391b)
+        ;
+
+        
+    
+    
+            var circle_marker_7cbc5c6c77065f997a3c9f0937b0dee6 = L.circleMarker(
+                [20.1108, -98.7395],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_c91822828f819c15f62aec97dfaf4e4f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8181ae3759acbce5d6616998d2070d5e = $(`<div id="html_8181ae3759acbce5d6616998d2070d5e" style="width: 100.0%; height: 100.0%;">HIDALGO: 21.506136709612985 muertes por 100K</div>`)[0];
+                popup_c91822828f819c15f62aec97dfaf4e4f.setContent(html_8181ae3759acbce5d6616998d2070d5e);
+            
+        
+
+        circle_marker_7cbc5c6c77065f997a3c9f0937b0dee6.bindPopup(popup_c91822828f819c15f62aec97dfaf4e4f)
+        ;
+
+        
+    
+    
+            var circle_marker_c87045ee06bd1442e437357a90765188 = L.circleMarker(
+                [20.6597, -103.3496],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_e56d2ce09b9abdcb567d67f6e9b5399f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7a45c8baf12f9eb49c98118cd46cad34 = $(`<div id="html_7a45c8baf12f9eb49c98118cd46cad34" style="width: 100.0%; height: 100.0%;">JALISCO: 16.45873439519721 muertes por 100K</div>`)[0];
+                popup_e56d2ce09b9abdcb567d67f6e9b5399f.setContent(html_7a45c8baf12f9eb49c98118cd46cad34);
+            
+        
+
+        circle_marker_c87045ee06bd1442e437357a90765188.bindPopup(popup_e56d2ce09b9abdcb567d67f6e9b5399f)
+        ;
+
+        
+    
+    
+            var circle_marker_fa312a179fdbf8878f69adc8d76cda4d = L.circleMarker(
+                [19.2833, -99.6536],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_82799a5ebf19b1201cf6f5ce55a7400a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2155484e6092a3788bd6f4a76a58c2b9 = $(`<div id="html_2155484e6092a3788bd6f4a76a58c2b9" style="width: 100.0%; height: 100.0%;">MEXICO: 21.26242421767167 muertes por 100K</div>`)[0];
+                popup_82799a5ebf19b1201cf6f5ce55a7400a.setContent(html_2155484e6092a3788bd6f4a76a58c2b9);
+            
+        
+
+        circle_marker_fa312a179fdbf8878f69adc8d76cda4d.bindPopup(popup_82799a5ebf19b1201cf6f5ce55a7400a)
+        ;
+
+        
+    
+    
+            var circle_marker_cf84dd7eaa04035112101e4f505b4f2e = L.circleMarker(
+                [19.7069, -101.1853],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_8aa2cc97a5b3a69f4a114b62dc0df8c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8d56947e477d079adfc05f6e3a39690e = $(`<div id="html_8d56947e477d079adfc05f6e3a39690e" style="width: 100.0%; height: 100.0%;">MICHOACAN DE OCAMPO: 14.403499292249105 muertes por 100K</div>`)[0];
+                popup_8aa2cc97a5b3a69f4a114b62dc0df8c6.setContent(html_8d56947e477d079adfc05f6e3a39690e);
+            
+        
+
+        circle_marker_cf84dd7eaa04035112101e4f505b4f2e.bindPopup(popup_8aa2cc97a5b3a69f4a114b62dc0df8c6)
+        ;
+
+        
+    
+    
+            var circle_marker_028a3929910efedf21a0aa885a96235c = L.circleMarker(
+                [18.9211, -99.2307],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_5feca37532593bd98c888a43a6f21602 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a26d65e290dc78eacb55d6d73df46ee = $(`<div id="html_1a26d65e290dc78eacb55d6d73df46ee" style="width: 100.0%; height: 100.0%;">MORELOS: 18.61507872098685 muertes por 100K</div>`)[0];
+                popup_5feca37532593bd98c888a43a6f21602.setContent(html_1a26d65e290dc78eacb55d6d73df46ee);
+            
+        
+
+        circle_marker_028a3929910efedf21a0aa885a96235c.bindPopup(popup_5feca37532593bd98c888a43a6f21602)
+        ;
+
+        
+    
+    
+            var circle_marker_7145ac5b48296c563db34fd109155274 = L.circleMarker(
+                [21.5039, -104.895],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_cd88607462203ba263ae329db8c01652 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bf3ff4e7dc87e98d76e25adb4d4b80f7 = $(`<div id="html_bf3ff4e7dc87e98d76e25adb4d4b80f7" style="width: 100.0%; height: 100.0%;">NAYARIT: 16.10741297140489 muertes por 100K</div>`)[0];
+                popup_cd88607462203ba263ae329db8c01652.setContent(html_bf3ff4e7dc87e98d76e25adb4d4b80f7);
+            
+        
+
+        circle_marker_7145ac5b48296c563db34fd109155274.bindPopup(popup_cd88607462203ba263ae329db8c01652)
+        ;
+
+        
+    
+    
+            var circle_marker_146579e743a10a5b1ef71ebd0bdaf46b = L.circleMarker(
+                [25.6866, -100.3161],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_d788f0698e89d6bfbf827c79957af8d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fd4e917443b8fe07d61ad7810cb58f28 = $(`<div id="html_fd4e917443b8fe07d61ad7810cb58f28" style="width: 100.0%; height: 100.0%;">NUEVO LEON: 22.43950237551003 muertes por 100K</div>`)[0];
+                popup_d788f0698e89d6bfbf827c79957af8d9.setContent(html_fd4e917443b8fe07d61ad7810cb58f28);
+            
+        
+
+        circle_marker_146579e743a10a5b1ef71ebd0bdaf46b.bindPopup(popup_d788f0698e89d6bfbf827c79957af8d9)
+        ;
+
+        
+    
+    
+            var circle_marker_8eef02df4c89da4c984c1db624f2dc81 = L.circleMarker(
+                [17.0732, -96.7266],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_4a49e88423db0be0a8535dba13504c5e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_828152c3f445be722a71190b4ddfde38 = $(`<div id="html_828152c3f445be722a71190b4ddfde38" style="width: 100.0%; height: 100.0%;">OAXACA: 11.204826158211178 muertes por 100K</div>`)[0];
+                popup_4a49e88423db0be0a8535dba13504c5e.setContent(html_828152c3f445be722a71190b4ddfde38);
+            
+        
+
+        circle_marker_8eef02df4c89da4c984c1db624f2dc81.bindPopup(popup_4a49e88423db0be0a8535dba13504c5e)
+        ;
+
+        
+    
+    
+            var circle_marker_113d725dbfc62b847ba7eec74cb8dd2f = L.circleMarker(
+                [19.0414, -98.2063],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_70e66cd830fdb0da5e1f85a4559d2feb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b0393e97ecdf0096970988f82cb0d86 = $(`<div id="html_3b0393e97ecdf0096970988f82cb0d86" style="width: 100.0%; height: 100.0%;">PUEBLA: 21.34195153235212 muertes por 100K</div>`)[0];
+                popup_70e66cd830fdb0da5e1f85a4559d2feb.setContent(html_3b0393e97ecdf0096970988f82cb0d86);
+            
+        
+
+        circle_marker_113d725dbfc62b847ba7eec74cb8dd2f.bindPopup(popup_70e66cd830fdb0da5e1f85a4559d2feb)
+        ;
+
+        
+    
+    
+            var circle_marker_2e32b88c3dc0990ba503a81142014959 = L.circleMarker(
+                [18.5141, -88.3038],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_132d37e5df4a059e099284bc1ab6cb04 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d5dccae7b5048afcadc60a5aa36e6a0d = $(`<div id="html_d5dccae7b5048afcadc60a5aa36e6a0d" style="width: 100.0%; height: 100.0%;">QUINTANA ROO: 21.367233858185077 muertes por 100K</div>`)[0];
+                popup_132d37e5df4a059e099284bc1ab6cb04.setContent(html_d5dccae7b5048afcadc60a5aa36e6a0d);
+            
+        
+
+        circle_marker_2e32b88c3dc0990ba503a81142014959.bindPopup(popup_132d37e5df4a059e099284bc1ab6cb04)
+        ;
+
+        
+    
+    
+            var circle_marker_5c594fc43acaa65304ea33c037ca14e3 = L.circleMarker(
+                [24.8049, -107.394],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_6695116c7cbf87548850fa626c244126 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_753d6c1c1111739ca7f8f989a8a2e348 = $(`<div id="html_753d6c1c1111739ca7f8f989a8a2e348" style="width: 100.0%; height: 100.0%;">SINALOA: 35.21704901611957 muertes por 100K</div>`)[0];
+                popup_6695116c7cbf87548850fa626c244126.setContent(html_753d6c1c1111739ca7f8f989a8a2e348);
+            
+        
+
+        circle_marker_5c594fc43acaa65304ea33c037ca14e3.bindPopup(popup_6695116c7cbf87548850fa626c244126)
+        ;
+
+        
+    
+    
+            var circle_marker_c01e2838bd1954711699e1556dce9070 = L.circleMarker(
+                [29.0892, -110.9616],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_786540da87de96ed6283b59e9f085d2c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_09e0ae7b6d27cb993bcb21243dc5cac5 = $(`<div id="html_09e0ae7b6d27cb993bcb21243dc5cac5" style="width: 100.0%; height: 100.0%;">SONORA: 36.19891063691066 muertes por 100K</div>`)[0];
+                popup_786540da87de96ed6283b59e9f085d2c.setContent(html_09e0ae7b6d27cb993bcb21243dc5cac5);
+            
+        
+
+        circle_marker_c01e2838bd1954711699e1556dce9070.bindPopup(popup_786540da87de96ed6283b59e9f085d2c)
+        ;
+
+        
+    
+    
+            var circle_marker_43baf9d6a8fd5435c2359640566c5dda = L.circleMarker(
+                [17.9895, -92.9281],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_e2466fe0c18fc06f4b92edaede57e33a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_590ac478ed41412f609504b0082df239 = $(`<div id="html_590ac478ed41412f609504b0082df239" style="width: 100.0%; height: 100.0%;">TABASCO: 20.269724689690076 muertes por 100K</div>`)[0];
+                popup_e2466fe0c18fc06f4b92edaede57e33a.setContent(html_590ac478ed41412f609504b0082df239);
+            
+        
+
+        circle_marker_43baf9d6a8fd5435c2359640566c5dda.bindPopup(popup_e2466fe0c18fc06f4b92edaede57e33a)
+        ;
+
+        
+    
+    
+            var circle_marker_5aa3db90ce1204c127e9af0760fa9228 = L.circleMarker(
+                [23.7417, -99.1456],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_36d461bc49cc16403a85f0fd4bb34417 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_da6abe4c1dc281b8437ff7f4b41912ee = $(`<div id="html_da6abe4c1dc281b8437ff7f4b41912ee" style="width: 100.0%; height: 100.0%;">TAMAULIPAS: 22.989255145298614 muertes por 100K</div>`)[0];
+                popup_36d461bc49cc16403a85f0fd4bb34417.setContent(html_da6abe4c1dc281b8437ff7f4b41912ee);
+            
+        
+
+        circle_marker_5aa3db90ce1204c127e9af0760fa9228.bindPopup(popup_36d461bc49cc16403a85f0fd4bb34417)
+        ;
+
+        
+    
+    
+            var circle_marker_bcccbb1eb64119307881fdc73e0c58db = L.circleMarker(
+                [19.3133, -98.2394],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_4f68a4e0c0ec57932e89bfc0ef57c957 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aeb84952a379a02bb2a6dd859ac818a9 = $(`<div id="html_aeb84952a379a02bb2a6dd859ac818a9" style="width: 100.0%; height: 100.0%;">TLAXCALA: 26.210426537461174 muertes por 100K</div>`)[0];
+                popup_4f68a4e0c0ec57932e89bfc0ef57c957.setContent(html_aeb84952a379a02bb2a6dd859ac818a9);
+            
+        
+
+        circle_marker_bcccbb1eb64119307881fdc73e0c58db.bindPopup(popup_4f68a4e0c0ec57932e89bfc0ef57c957)
+        ;
+
+        
+    
+    
+            var circle_marker_bd96e37c66ba661c5a401619329ed75b = L.circleMarker(
+                [19.5433, -96.9147],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_b1906b9d6e6f62870fce5ec83b99dfc4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_930735729850a2ace6fdaab223095b17 = $(`<div id="html_930735729850a2ace6fdaab223095b17" style="width: 100.0%; height: 100.0%;">VERACRUZ DE IGNACIO DE LA LLAVE: 17.31455902633636 muertes por 100K</div>`)[0];
+                popup_b1906b9d6e6f62870fce5ec83b99dfc4.setContent(html_930735729850a2ace6fdaab223095b17);
+            
+        
+
+        circle_marker_bd96e37c66ba661c5a401619329ed75b.bindPopup(popup_b1906b9d6e6f62870fce5ec83b99dfc4)
+        ;
+
+        
+    
+    
+            var circle_marker_ad868f4d5bd60bed201d83d70b5da4c6 = L.circleMarker(
+                [20.9674, -89.5926],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_44f9a48a65960b5eb495cc0e4757c6ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_21de449d47aeba7fa3c072bf08c1bc9e = $(`<div id="html_21de449d47aeba7fa3c072bf08c1bc9e" style="width: 100.0%; height: 100.0%;">YUCATAN: 26.713797848936057 muertes por 100K</div>`)[0];
+                popup_44f9a48a65960b5eb495cc0e4757c6ec.setContent(html_21de449d47aeba7fa3c072bf08c1bc9e);
+            
+        
+
+        circle_marker_ad868f4d5bd60bed201d83d70b5da4c6.bindPopup(popup_44f9a48a65960b5eb495cc0e4757c6ec)
+        ;
+
+        
+    
+    
+            var circle_marker_e0d069cf7891d90a34653e73c3b99e41 = L.circleMarker(
+                [22.7709, -102.5832],
+                {"bubblingMouseEvents": true, "color": "#ffffccff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_96e874db7a181adf4bb190e77a6980b3);
+        
+    
+        var popup_e4b1b378e415e0db9d97dee4e8b8e0d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aa5ff91d11ab9064a5706b1eb145cb70 = $(`<div id="html_aa5ff91d11ab9064a5706b1eb145cb70" style="width: 100.0%; height: 100.0%;">ZACATECAS: 19.788698618736507 muertes por 100K</div>`)[0];
+                popup_e4b1b378e415e0db9d97dee4e8b8e0d9.setContent(html_aa5ff91d11ab9064a5706b1eb145cb70);
+            
+        
+
+        circle_marker_e0d069cf7891d90a34653e73c3b99e41.bindPopup(popup_e4b1b378e415e0db9d97dee4e8b8e0d9)
+        ;
+
+        
+    
+</script>
+</html>

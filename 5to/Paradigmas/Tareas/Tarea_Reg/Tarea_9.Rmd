@@ -1,0 +1,103 @@
+---
+title: "Programa_9"
+author: "Mendoza Saenz de Buruaga Imanol-Luis Enrique Villalon Pineda"
+date: "2024-11-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+rm(list = ls(all.names = TRUE))
+gc()
+library(dplyr)
+library(ggplot2)
+library(zoo) 
+```
+
+#Preopocesamiento de los datos
+```{r}
+setwd("C:/Users/ENRIQUE/Downloads/")
+ads <- read.csv("ads.csv")
+currency <- read.csv("currency.csv")
+ads$Time <- as.Date(ads$Time)
+currency$Time <- as.Date(currency$Time)
+```
+
+# Media móvil
+```{r}
+# Métricas
+mean_absolute_error <- function(y_true, y_pred) {
+  return(mean(abs(y_true - y_pred)))
+}
+
+mean_absolute_percentage_error <- function(y_true, y_pred) {
+  return(mean(abs((y_true - y_pred) / y_true)) * 100)
+}
+
+# Funcion
+plot_moving_average <- function(series, window, scale=1.96, plot_intervals=FALSE, plot_anomalies=FALSE) {
+  rolling_mean <- stats::filter(series, rep(1/window, window), sides=1)
+  
+  plot(series, type='l', col='red', main=paste("Media móvil\nTamaño de la ventana =", window),
+       ylab="Valores", xlab="Tiempo")
+  lines(rolling_mean, col='green', lwd=2)
+  legend("topright", legend=c("Tendencia de media móvil", "Valores reales"), col=c("green", "red"), lty=1, cex=0.8)
+  
+  if (plot_intervals) {
+    mae <- mean_absolute_error(tail(series, length(series) - window + 1), tail(rolling_mean, length(series) - window + 1))
+    deviation <- sd(tail(series, length(series) - window + 1) - tail(rolling_mean, length(series) - window + 1))
+    lower_bound <- rolling_mean - (mae + scale * deviation)
+    upper_bound <- rolling_mean + (mae + scale * deviation)
+    lines(lower_bound, col='blue', lty=2)
+    lines(upper_bound, col='blue', lty=2)
+    
+    if (plot_anomalies) {
+      anomalies <- ifelse(series < lower_bound | series > upper_bound, series, NA)
+      points(anomalies, col='red', pch=19)
+    }
+  }
+  
+  mape <- mean_absolute_percentage_error(tail(series, length(series) - window + 1), tail(rolling_mean, length(series) - window + 1))
+  cat("MAE =", mae, "\n")
+  cat("MAPE =", mape, "\n")
+}
+
+# Ejemplos de uso
+plot_moving_average(ads$Ads, 4, plot_intervals=TRUE, plot_anomalies=TRUE)
+plot_moving_average(currency$GEMS_GEMS_SPENT, 4, plot_intervals=TRUE, plot_anomalies=TRUE)
+```
+
+# Exponencial
+
+```{r}
+exponential_smoothing <- function(series, alpha) {
+  result <- numeric(length(series))
+  result[1] <- series[1]
+  for (n in 2:length(series)) {
+    result[n] <- alpha * series[n] + (1 - alpha) * result[n - 1]
+  }
+  return(result)
+}
+
+plot_exponential_smoothing <- function(series, alphas) {
+  plot(series, type='l', col='green', lwd=2, ylim=range(series),
+       main='Suavizado Exponencial', xlab='Tiempo', ylab='Valores')
+  
+  colors <- rainbow(length(alphas))
+  
+  for (i in 1:length(alphas)) {
+    smoothed <- exponential_smoothing(series, alphas[i])
+    lines(smoothed, col=colors[i], lwd=2, lty=2)
+  }
+  
+  legend("topright", legend=c("Valores reales", paste("Alpha:", alphas)), 
+         col=c("green", colors), lty=c(1, rep(2, length(alphas))), lwd=2, bty="n", cex=0.9)
+}
+# Graficas 
+plot_exponential_smoothing(ads$Ads, c(0.3, 0.05))
+plot_exponential_smoothing(currency$GEMS_GEMS_SPENT, c(0.3, 0.05))
+
+```

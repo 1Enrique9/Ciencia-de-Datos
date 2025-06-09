@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_210b5ab3563b434d493b7d19b4d47f70 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_210b5ab3563b434d493b7d19b4d47f70" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_210b5ab3563b434d493b7d19b4d47f70 = L.map(
+                "map_210b5ab3563b434d493b7d19b4d47f70",
+                {
+                    center: [23.6345, -102.5528],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_60be4b6a77b09847f956fce1d90ecb3b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_60be4b6a77b09847f956fce1d90ecb3b.addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+            var circle_marker_55bda45f387fc6967c7b5773f031fcaf = L.circleMarker(
+                [21.8853, -102.2916],
+                {"bubblingMouseEvents": true, "color": "#0500faff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0500faff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_3b6f5d04039a32456743f29483dcdf7e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_59cf4c8f54c659dbcb8f3f4cfaf42864 = $(`<div id="html_59cf4c8f54c659dbcb8f3f4cfaf42864" style="width: 100.0%; height: 100.0%;">AGUASCALIENTES: 2364 casos</div>`)[0];
+                popup_3b6f5d04039a32456743f29483dcdf7e.setContent(html_59cf4c8f54c659dbcb8f3f4cfaf42864);
+            
+        
+
+        circle_marker_55bda45f387fc6967c7b5773f031fcaf.bindPopup(popup_3b6f5d04039a32456743f29483dcdf7e)
+        ;
+
+        
+    
+    
+            var circle_marker_ea8cb2dfd6fec1748134965b52f64ea2 = L.circleMarker(
+                [32.6643, -115.4679],
+                {"bubblingMouseEvents": true, "color": "#1200edff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1200edff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_d17efccbc5fa3efb8d73f3f032bc75c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bcf6dbc5a1b004dccd205d08de84682e = $(`<div id="html_bcf6dbc5a1b004dccd205d08de84682e" style="width: 100.0%; height: 100.0%;">BAJA CALIFORNIA: 5523 casos</div>`)[0];
+                popup_d17efccbc5fa3efb8d73f3f032bc75c9.setContent(html_bcf6dbc5a1b004dccd205d08de84682e);
+            
+        
+
+        circle_marker_ea8cb2dfd6fec1748134965b52f64ea2.bindPopup(popup_d17efccbc5fa3efb8d73f3f032bc75c9)
+        ;
+
+        
+    
+    
+            var circle_marker_0382b3fe28663094c0f96ec5de0807cf = L.circleMarker(
+                [24.1426, -110.3129],
+                {"bubblingMouseEvents": true, "color": "#0600f9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0600f9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_4f5c7f40770bdc5cce3a89782b957291 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7ae6f774cfd51ecd29a894554bc80f53 = $(`<div id="html_7ae6f774cfd51ecd29a894554bc80f53" style="width: 100.0%; height: 100.0%;">BAJA CALIFORNIA SUR: 2517 casos</div>`)[0];
+                popup_4f5c7f40770bdc5cce3a89782b957291.setContent(html_7ae6f774cfd51ecd29a894554bc80f53);
+            
+        
+
+        circle_marker_0382b3fe28663094c0f96ec5de0807cf.bindPopup(popup_4f5c7f40770bdc5cce3a89782b957291)
+        ;
+
+        
+    
+    
+            var circle_marker_deed844741e69eb99170a1cb5ce065ea = L.circleMarker(
+                [19.8301, -90.5349],
+                {"bubblingMouseEvents": true, "color": "#0000ffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0000ffff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_708dce22ca7a2d8e4c826f7e4909bfb7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aeee1f7f4a786577b02f8feed431c26a = $(`<div id="html_aeee1f7f4a786577b02f8feed431c26a" style="width: 100.0%; height: 100.0%;">CAMPECHE: 1131 casos</div>`)[0];
+                popup_708dce22ca7a2d8e4c826f7e4909bfb7.setContent(html_aeee1f7f4a786577b02f8feed431c26a);
+            
+        
+
+        circle_marker_deed844741e69eb99170a1cb5ce065ea.bindPopup(popup_708dce22ca7a2d8e4c826f7e4909bfb7)
+        ;
+
+        
+    
+    
+            var circle_marker_4a1c270e6f6ecbabb348c1a4eb55fbe2 = L.circleMarker(
+                [16.7516, -93.1165],
+                {"bubblingMouseEvents": true, "color": "#0000ffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0000ffff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_ac149d295961fe9d6a38ce004623311f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1de183f722189e39e83980ffec1e38ce = $(`<div id="html_1de183f722189e39e83980ffec1e38ce" style="width: 100.0%; height: 100.0%;">CHIAPAS: 1128 casos</div>`)[0];
+                popup_ac149d295961fe9d6a38ce004623311f.setContent(html_1de183f722189e39e83980ffec1e38ce);
+            
+        
+
+        circle_marker_4a1c270e6f6ecbabb348c1a4eb55fbe2.bindPopup(popup_ac149d295961fe9d6a38ce004623311f)
+        ;
+
+        
+    
+    
+            var circle_marker_c2f6bced6d3ff8519ed613902ae24131 = L.circleMarker(
+                [28.6329, -106.0691],
+                {"bubblingMouseEvents": true, "color": "#1200edff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1200edff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_a72fe2a161167369d977ab66e5c30953 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2bf48c1f46eefffc05c6c653c120557e = $(`<div id="html_2bf48c1f46eefffc05c6c653c120557e" style="width: 100.0%; height: 100.0%;">CHIHUAHUA: 5361 casos</div>`)[0];
+                popup_a72fe2a161167369d977ab66e5c30953.setContent(html_2bf48c1f46eefffc05c6c653c120557e);
+            
+        
+
+        circle_marker_c2f6bced6d3ff8519ed613902ae24131.bindPopup(popup_a72fe2a161167369d977ab66e5c30953)
+        ;
+
+        
+    
+    
+            var circle_marker_2a5196eee71417141c6ac988e56dbd86 = L.circleMarker(
+                [19.4326, -99.1332],
+                {"bubblingMouseEvents": true, "color": "#ff0000ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_d58beb395cb1abd34e0ee87dd6d68908 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4ffab249486aa8df9246c2866531175b = $(`<div id="html_4ffab249486aa8df9246c2866531175b" style="width: 100.0%; height: 100.0%;">CIUDAD DE MEXICO: 61964 casos</div>`)[0];
+                popup_d58beb395cb1abd34e0ee87dd6d68908.setContent(html_4ffab249486aa8df9246c2866531175b);
+            
+        
+
+        circle_marker_2a5196eee71417141c6ac988e56dbd86.bindPopup(popup_d58beb395cb1abd34e0ee87dd6d68908)
+        ;
+
+        
+    
+    
+            var circle_marker_a77c6d199ce17e075c45133787eacef2 = L.circleMarker(
+                [25.4232, -101.0053],
+                {"bubblingMouseEvents": true, "color": "#1a00e5ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a00e5ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_1989acd5045fc05f14779d3c0a649a58 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c00bf3aab0af4df3661af467dac9d794 = $(`<div id="html_c00bf3aab0af4df3661af467dac9d794" style="width: 100.0%; height: 100.0%;">COAHUILA DE ZARAGOZA: 7427 casos</div>`)[0];
+                popup_1989acd5045fc05f14779d3c0a649a58.setContent(html_c00bf3aab0af4df3661af467dac9d794);
+            
+        
+
+        circle_marker_a77c6d199ce17e075c45133787eacef2.bindPopup(popup_1989acd5045fc05f14779d3c0a649a58)
+        ;
+
+        
+    
+    
+            var circle_marker_f94108dbbb2a1fef8182a44005d07719 = L.circleMarker(
+                [19.2433, -103.7246],
+                {"bubblingMouseEvents": true, "color": "#0000ffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0000ffff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_f6d9eca4cda4e5565dfbe0526ffacf66 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6877ad5eae8fc6b4773d19405c6e0211 = $(`<div id="html_6877ad5eae8fc6b4773d19405c6e0211" style="width: 100.0%; height: 100.0%;">COLIMA: 1182 casos</div>`)[0];
+                popup_f6d9eca4cda4e5565dfbe0526ffacf66.setContent(html_6877ad5eae8fc6b4773d19405c6e0211);
+            
+        
+
+        circle_marker_f94108dbbb2a1fef8182a44005d07719.bindPopup(popup_f6d9eca4cda4e5565dfbe0526ffacf66)
+        ;
+
+        
+    
+    
+            var circle_marker_eef75100147c8af243b04c6d3ba7941a = L.circleMarker(
+                [24.0277, -104.6537],
+                {"bubblingMouseEvents": true, "color": "#0b00f4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0b00f4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_a4ef72112825b3010d3d42c390ab33d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_037153605064e2c9e3a95872104a654c = $(`<div id="html_037153605064e2c9e3a95872104a654c" style="width: 100.0%; height: 100.0%;">DURANGO: 3732 casos</div>`)[0];
+                popup_a4ef72112825b3010d3d42c390ab33d6.setContent(html_037153605064e2c9e3a95872104a654c);
+            
+        
+
+        circle_marker_eef75100147c8af243b04c6d3ba7941a.bindPopup(popup_a4ef72112825b3010d3d42c390ab33d6)
+        ;
+
+        
+    
+    
+            var circle_marker_3c78eb640c8181b647618f3d3568d5cd = L.circleMarker(
+                [21.019, -101.2574],
+                {"bubblingMouseEvents": true, "color": "#3000cfff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3000cfff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_95c74723e9f4894dbf07fefcfcb5d170 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_65d5ca231e929ef5af039e5efa44b193 = $(`<div id="html_65d5ca231e929ef5af039e5efa44b193" style="width: 100.0%; height: 100.0%;">GUANAJUATO: 12540 casos</div>`)[0];
+                popup_95c74723e9f4894dbf07fefcfcb5d170.setContent(html_65d5ca231e929ef5af039e5efa44b193);
+            
+        
+
+        circle_marker_3c78eb640c8181b647618f3d3568d5cd.bindPopup(popup_95c74723e9f4894dbf07fefcfcb5d170)
+        ;
+
+        
+    
+    
+            var circle_marker_c84d7bbc5307d7d18d51a05d18ec1f8d = L.circleMarker(
+                [17.5734, -99.5056],
+                {"bubblingMouseEvents": true, "color": "#0b00f4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0b00f4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_77e3c6e3012d145f3bc7ed1c981df984 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e62fa216ff07efb006d0c7fd1c06d125 = $(`<div id="html_e62fa216ff07efb006d0c7fd1c06d125" style="width: 100.0%; height: 100.0%;">GUERRERO: 3744 casos</div>`)[0];
+                popup_77e3c6e3012d145f3bc7ed1c981df984.setContent(html_e62fa216ff07efb006d0c7fd1c06d125);
+            
+        
+
+        circle_marker_c84d7bbc5307d7d18d51a05d18ec1f8d.bindPopup(popup_77e3c6e3012d145f3bc7ed1c981df984)
+        ;
+
+        
+    
+    
+            var circle_marker_b91794c4891b32fc58ba7e44a0c489b7 = L.circleMarker(
+                [20.1108, -98.7395],
+                {"bubblingMouseEvents": true, "color": "#0900f6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0900f6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_6ea590078f9f25579f5732a07a4609de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4ed3dde8a4c25892f71a95d4786234c7 = $(`<div id="html_4ed3dde8a4c25892f71a95d4786234c7" style="width: 100.0%; height: 100.0%;">HIDALGO: 3421 casos</div>`)[0];
+                popup_6ea590078f9f25579f5732a07a4609de.setContent(html_4ed3dde8a4c25892f71a95d4786234c7);
+            
+        
+
+        circle_marker_b91794c4891b32fc58ba7e44a0c489b7.bindPopup(popup_6ea590078f9f25579f5732a07a4609de)
+        ;
+
+        
+    
+    
+            var circle_marker_6280e77b0a8d7a33145f7cfbc1e5cba9 = L.circleMarker(
+                [20.6597, -103.3496],
+                {"bubblingMouseEvents": true, "color": "#1b00e4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b00e4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_157888ffc1c1ed46081295bb09dfa35c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f7cb23fbf8fca197497fae6630a71416 = $(`<div id="html_f7cb23fbf8fca197497fae6630a71416" style="width: 100.0%; height: 100.0%;">JALISCO: 7518 casos</div>`)[0];
+                popup_157888ffc1c1ed46081295bb09dfa35c.setContent(html_f7cb23fbf8fca197497fae6630a71416);
+            
+        
+
+        circle_marker_6280e77b0a8d7a33145f7cfbc1e5cba9.bindPopup(popup_157888ffc1c1ed46081295bb09dfa35c)
+        ;
+
+        
+    
+    
+            var circle_marker_808b704281fcf7803b823103af785600 = L.circleMarker(
+                [19.2833, -99.6536],
+                {"bubblingMouseEvents": true, "color": "#3800c7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3800c7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_5403fc18026278476bffd5a56996c07e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dd1f0eee43b63e2db8806d84d8c27b81 = $(`<div id="html_dd1f0eee43b63e2db8806d84d8c27b81" style="width: 100.0%; height: 100.0%;">MEXICO: 14419 casos</div>`)[0];
+                popup_5403fc18026278476bffd5a56996c07e.setContent(html_dd1f0eee43b63e2db8806d84d8c27b81);
+            
+        
+
+        circle_marker_808b704281fcf7803b823103af785600.bindPopup(popup_5403fc18026278476bffd5a56996c07e)
+        ;
+
+        
+    
+    
+            var circle_marker_ca45df08bce364449ec0c5eaf28de9ec = L.circleMarker(
+                [19.7069, -101.1853],
+                {"bubblingMouseEvents": true, "color": "#1200edff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1200edff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_7ef22eb3730f3955c613295c0c02a988 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4daae7bf5c5bf35c0b2ad8e10a79f4ec = $(`<div id="html_4daae7bf5c5bf35c0b2ad8e10a79f4ec" style="width: 100.0%; height: 100.0%;">MICHOACAN DE OCAMPO: 5528 casos</div>`)[0];
+                popup_7ef22eb3730f3955c613295c0c02a988.setContent(html_4daae7bf5c5bf35c0b2ad8e10a79f4ec);
+            
+        
+
+        circle_marker_ca45df08bce364449ec0c5eaf28de9ec.bindPopup(popup_7ef22eb3730f3955c613295c0c02a988)
+        ;
+
+        
+    
+    
+            var circle_marker_18a8ee0db2773d3778510e7cb5702ce1 = L.circleMarker(
+                [18.9211, -99.2307],
+                {"bubblingMouseEvents": true, "color": "#0200fdff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0200fdff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_f82ac72ccbe821874a8785d8f7f4345a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a396e2e976db613d07679a07578e7b23 = $(`<div id="html_a396e2e976db613d07679a07578e7b23" style="width: 100.0%; height: 100.0%;">MORELOS: 1749 casos</div>`)[0];
+                popup_f82ac72ccbe821874a8785d8f7f4345a.setContent(html_a396e2e976db613d07679a07578e7b23);
+            
+        
+
+        circle_marker_18a8ee0db2773d3778510e7cb5702ce1.bindPopup(popup_f82ac72ccbe821874a8785d8f7f4345a)
+        ;
+
+        
+    
+    
+            var circle_marker_7843d0d74f6d61c9cd057e226e007375 = L.circleMarker(
+                [21.5039, -104.895],
+                {"bubblingMouseEvents": true, "color": "#0000ffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0000ffff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_763f8fe247aa9dceca47308f7ef6ad17 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61e10cc9edf374d6252d6581af1f1e48 = $(`<div id="html_61e10cc9edf374d6252d6581af1f1e48" style="width: 100.0%; height: 100.0%;">NAYARIT: 1053 casos</div>`)[0];
+                popup_763f8fe247aa9dceca47308f7ef6ad17.setContent(html_61e10cc9edf374d6252d6581af1f1e48);
+            
+        
+
+        circle_marker_7843d0d74f6d61c9cd057e226e007375.bindPopup(popup_763f8fe247aa9dceca47308f7ef6ad17)
+        ;
+
+        
+    
+    
+            var circle_marker_83a032a43030d4bab91ad67ee86877ac = L.circleMarker(
+                [25.6866, -100.3161],
+                {"bubblingMouseEvents": true, "color": "#2e00d1ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2e00d1ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_6d2d20d4da9a8882fb975ea576bf3fc1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d5c3fccbd27ba6452c5339f8cf0f4669 = $(`<div id="html_d5c3fccbd27ba6452c5339f8cf0f4669" style="width: 100.0%; height: 100.0%;">NUEVO LEON: 12111 casos</div>`)[0];
+                popup_6d2d20d4da9a8882fb975ea576bf3fc1.setContent(html_d5c3fccbd27ba6452c5339f8cf0f4669);
+            
+        
+
+        circle_marker_83a032a43030d4bab91ad67ee86877ac.bindPopup(popup_6d2d20d4da9a8882fb975ea576bf3fc1)
+        ;
+
+        
+    
+    
+            var circle_marker_f14c181e8340ccaf07b90f8aa6853eab = L.circleMarker(
+                [17.0732, -96.7266],
+                {"bubblingMouseEvents": true, "color": "#0e00f1ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0e00f1ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_96b5feb826fa1c81028208bd8c7754f2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1ba1d86001952eddb94b145a661f6ed = $(`<div id="html_f1ba1d86001952eddb94b145a661f6ed" style="width: 100.0%; height: 100.0%;">OAXACA: 4584 casos</div>`)[0];
+                popup_96b5feb826fa1c81028208bd8c7754f2.setContent(html_f1ba1d86001952eddb94b145a661f6ed);
+            
+        
+
+        circle_marker_f14c181e8340ccaf07b90f8aa6853eab.bindPopup(popup_96b5feb826fa1c81028208bd8c7754f2)
+        ;
+
+        
+    
+    
+            var circle_marker_0e46a4dd0ba969aba5be108f41af7268 = L.circleMarker(
+                [19.0414, -98.2063],
+                {"bubblingMouseEvents": true, "color": "#1e00e1ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1e00e1ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_f559f6e3d024aa4cfaa5676473ca55cf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3aca8f7244d04066833dee6ba72a7725 = $(`<div id="html_3aca8f7244d04066833dee6ba72a7725" style="width: 100.0%; height: 100.0%;">PUEBLA: 8368 casos</div>`)[0];
+                popup_f559f6e3d024aa4cfaa5676473ca55cf.setContent(html_3aca8f7244d04066833dee6ba72a7725);
+            
+        
+
+        circle_marker_0e46a4dd0ba969aba5be108f41af7268.bindPopup(popup_f559f6e3d024aa4cfaa5676473ca55cf)
+        ;
+
+        
+    
+    
+            var circle_marker_2fb02c24c05c22e5b95248cce3e6a054 = L.circleMarker(
+                [20.5881, -100.3899],
+                {"bubblingMouseEvents": true, "color": "#1000efff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1000efff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_f5c3145770882ff5c8487757bc082add = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9c54dd7999c07eabdae56f39af9979b6 = $(`<div id="html_9c54dd7999c07eabdae56f39af9979b6" style="width: 100.0%; height: 100.0%;">QUERETARO: 4953 casos</div>`)[0];
+                popup_f5c3145770882ff5c8487757bc082add.setContent(html_9c54dd7999c07eabdae56f39af9979b6);
+            
+        
+
+        circle_marker_2fb02c24c05c22e5b95248cce3e6a054.bindPopup(popup_f5c3145770882ff5c8487757bc082add)
+        ;
+
+        
+    
+    
+            var circle_marker_ceb2728e98bb3c3929c784574d82f078 = L.circleMarker(
+                [18.5141, -88.3038],
+                {"bubblingMouseEvents": true, "color": "#0500faff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0500faff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_6b554244cd36b1d4546a0506b098050e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74ca92332402514cb610be76e0776d18 = $(`<div id="html_74ca92332402514cb610be76e0776d18" style="width: 100.0%; height: 100.0%;">QUINTANA ROO: 2334 casos</div>`)[0];
+                popup_6b554244cd36b1d4546a0506b098050e.setContent(html_74ca92332402514cb610be76e0776d18);
+            
+        
+
+        circle_marker_ceb2728e98bb3c3929c784574d82f078.bindPopup(popup_6b554244cd36b1d4546a0506b098050e)
+        ;
+
+        
+    
+    
+            var circle_marker_fef114d2b20fc3bfffde2fc52ad7dda3 = L.circleMarker(
+                [22.1565, -100.9855],
+                {"bubblingMouseEvents": true, "color": "#1300ecff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1300ecff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_64f025f9a99b024b9f3dd555a8c0a92e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f56894512ab0a7ec8cf8280e7d89a6ce = $(`<div id="html_f56894512ab0a7ec8cf8280e7d89a6ce" style="width: 100.0%; height: 100.0%;">SAN LUIS POTOSI: 5613 casos</div>`)[0];
+                popup_64f025f9a99b024b9f3dd555a8c0a92e.setContent(html_f56894512ab0a7ec8cf8280e7d89a6ce);
+            
+        
+
+        circle_marker_fef114d2b20fc3bfffde2fc52ad7dda3.bindPopup(popup_64f025f9a99b024b9f3dd555a8c0a92e)
+        ;
+
+        
+    
+    
+            var circle_marker_17c2060c0e54f5d69670f5d0c2e0fcac = L.circleMarker(
+                [24.8049, -107.394],
+                {"bubblingMouseEvents": true, "color": "#0e00f1ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0e00f1ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_4976f2f6c00117103054ee7d0347c217 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71e9742e5fc93e572a81fcb797aed2e7 = $(`<div id="html_71e9742e5fc93e572a81fcb797aed2e7" style="width: 100.0%; height: 100.0%;">SINALOA: 4429 casos</div>`)[0];
+                popup_4976f2f6c00117103054ee7d0347c217.setContent(html_71e9742e5fc93e572a81fcb797aed2e7);
+            
+        
+
+        circle_marker_17c2060c0e54f5d69670f5d0c2e0fcac.bindPopup(popup_4976f2f6c00117103054ee7d0347c217)
+        ;
+
+        
+    
+    
+            var circle_marker_19ebbb47286fa4042583ba4d781595ac = L.circleMarker(
+                [29.0892, -110.9616],
+                {"bubblingMouseEvents": true, "color": "#2100deff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2100deff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_0e280566c5ac123103c2b1fee2422174 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_45ebf0ce4e540d9ed249c29a6fcef08a = $(`<div id="html_45ebf0ce4e540d9ed249c29a6fcef08a" style="width: 100.0%; height: 100.0%;">SONORA: 8937 casos</div>`)[0];
+                popup_0e280566c5ac123103c2b1fee2422174.setContent(html_45ebf0ce4e540d9ed249c29a6fcef08a);
+            
+        
+
+        circle_marker_19ebbb47286fa4042583ba4d781595ac.bindPopup(popup_0e280566c5ac123103c2b1fee2422174)
+        ;
+
+        
+    
+    
+            var circle_marker_7da5474c1545820312a0e0f2d489a8c8 = L.circleMarker(
+                [17.9895, -92.9281],
+                {"bubblingMouseEvents": true, "color": "#1300ecff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1300ecff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_3f36e24939c23cf42b0c13cb7609afe2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_701e96b4fb4aa5f43b0fc12e1873b038 = $(`<div id="html_701e96b4fb4aa5f43b0fc12e1873b038" style="width: 100.0%; height: 100.0%;">TABASCO: 5782 casos</div>`)[0];
+                popup_3f36e24939c23cf42b0c13cb7609afe2.setContent(html_701e96b4fb4aa5f43b0fc12e1873b038);
+            
+        
+
+        circle_marker_7da5474c1545820312a0e0f2d489a8c8.bindPopup(popup_3f36e24939c23cf42b0c13cb7609afe2)
+        ;
+
+        
+    
+    
+            var circle_marker_6e2ab00968bce2434fca275ee879ffce = L.circleMarker(
+                [23.7417, -99.1456],
+                {"bubblingMouseEvents": true, "color": "#1300ecff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1300ecff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_6f3a9b0dfc93f62b0ef48df315c0f3fb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0fbdc7f08273ae1b329f45c0e8e4b844 = $(`<div id="html_0fbdc7f08273ae1b329f45c0e8e4b844" style="width: 100.0%; height: 100.0%;">TAMAULIPAS: 5629 casos</div>`)[0];
+                popup_6f3a9b0dfc93f62b0ef48df315c0f3fb.setContent(html_0fbdc7f08273ae1b329f45c0e8e4b844);
+            
+        
+
+        circle_marker_6e2ab00968bce2434fca275ee879ffce.bindPopup(popup_6f3a9b0dfc93f62b0ef48df315c0f3fb)
+        ;
+
+        
+    
+    
+            var circle_marker_ce4846f45ee6c93bd0766e72f02461c8 = L.circleMarker(
+                [19.3133, -98.2394],
+                {"bubblingMouseEvents": true, "color": "#0200fdff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0200fdff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_2404038a5cc0c95091e5b73550b6f23e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_657f25fb1965d55c7e4bbd5c054ae344 = $(`<div id="html_657f25fb1965d55c7e4bbd5c054ae344" style="width: 100.0%; height: 100.0%;">TLAXCALA: 1750 casos</div>`)[0];
+                popup_2404038a5cc0c95091e5b73550b6f23e.setContent(html_657f25fb1965d55c7e4bbd5c054ae344);
+            
+        
+
+        circle_marker_ce4846f45ee6c93bd0766e72f02461c8.bindPopup(popup_2404038a5cc0c95091e5b73550b6f23e)
+        ;
+
+        
+    
+    
+            var circle_marker_b02509155dd6ae9ec4bbd09247231f16 = L.circleMarker(
+                [19.5433, -96.9147],
+                {"bubblingMouseEvents": true, "color": "#1600e9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1600e9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_c74c89b17b046d76b7da7375e40457e1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3ec28a59fb9eeaee99bd33012840d2c3 = $(`<div id="html_3ec28a59fb9eeaee99bd33012840d2c3" style="width: 100.0%; height: 100.0%;">VERACRUZ DE IGNACIO DE LA LLAVE: 6438 casos</div>`)[0];
+                popup_c74c89b17b046d76b7da7375e40457e1.setContent(html_3ec28a59fb9eeaee99bd33012840d2c3);
+            
+        
+
+        circle_marker_b02509155dd6ae9ec4bbd09247231f16.bindPopup(popup_c74c89b17b046d76b7da7375e40457e1)
+        ;
+
+        
+    
+    
+            var circle_marker_7662be471775a17747c26e77cace2881 = L.circleMarker(
+                [20.9674, -89.5926],
+                {"bubblingMouseEvents": true, "color": "#0b00f4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0b00f4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_4e80a8080d3c7895d6f5c5c311deba9d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e3a92fc217a5110635151aeb98b5b440 = $(`<div id="html_e3a92fc217a5110635151aeb98b5b440" style="width: 100.0%; height: 100.0%;">YUCATAN: 3895 casos</div>`)[0];
+                popup_4e80a8080d3c7895d6f5c5c311deba9d.setContent(html_e3a92fc217a5110635151aeb98b5b440);
+            
+        
+
+        circle_marker_7662be471775a17747c26e77cace2881.bindPopup(popup_4e80a8080d3c7895d6f5c5c311deba9d)
+        ;
+
+        
+    
+    
+            var circle_marker_93e57b4ab4557de3245169d7bf66d056 = L.circleMarker(
+                [22.7709, -102.5832],
+                {"bubblingMouseEvents": true, "color": "#0700f8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0700f8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+        
+    
+        var popup_22f34bac6f39900859daf1e3396ea9da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4912cc69aa39939e973230657255339e = $(`<div id="html_4912cc69aa39939e973230657255339e" style="width: 100.0%; height: 100.0%;">ZACATECAS: 2932 casos</div>`)[0];
+                popup_22f34bac6f39900859daf1e3396ea9da.setContent(html_4912cc69aa39939e973230657255339e);
+            
+        
+
+        circle_marker_93e57b4ab4557de3245169d7bf66d056.bindPopup(popup_22f34bac6f39900859daf1e3396ea9da)
+        ;
+
+        
+    
+    
+    var color_map_24b326a6d10a86a4691add988dda4fe1 = {};
+
+    
+    color_map_24b326a6d10a86a4691add988dda4fe1.color = d3.scale.threshold()
+              .domain([1053.0, 1175.066132264529, 1297.1322645290581, 1419.198396793587, 1541.2645290581163, 1663.3306613226453, 1785.3967935871742, 1907.4629258517034, 2029.5290581162326, 2151.595190380762, 2273.6613226452905, 2395.7274549098197, 2517.7935871743484, 2639.8597194388776, 2761.925851703407, 2883.991983967936, 3006.058116232465, 3128.124248496994, 3250.190380761523, 3372.2565130260523, 3494.322645290581, 3616.38877755511, 3738.4549098196394, 3860.521042084168, 3982.5871743486973, 4104.653306613227, 4226.719438877755, 4348.785571142284, 4470.851703406814, 4592.917835671343, 4714.983967935872, 4837.0501002004, 4959.11623246493, 5081.182364729459, 5203.248496993988, 5325.314629258517, 5447.380761523046, 5569.446893787575, 5691.513026052105, 5813.579158316633, 5935.645290581162, 6057.711422845691, 6179.77755511022, 6301.84368737475, 6423.909819639279, 6545.975951903808, 6668.042084168336, 6790.108216432865, 6912.174348697395, 7034.240480961924, 7156.306613226453, 7278.372745490982, 7400.438877755511, 7522.50501002004, 7644.571142284569, 7766.637274549098, 7888.703406813627, 8010.769539078156, 8132.835671342686, 8254.901803607216, 8376.967935871744, 8499.034068136272, 8621.1002004008, 8743.16633266533, 8865.23246492986, 8987.298597194389, 9109.364729458917, 9231.430861723446, 9353.496993987976, 9475.563126252506, 9597.629258517034, 9719.695390781562, 9841.761523046092, 9963.82765531062, 10085.89378757515, 10207.959919839679, 10330.02605210421, 10452.092184368737, 10574.158316633266, 10696.224448897796, 10818.290581162324, 10940.356713426854, 11062.422845691382, 11184.488977955913, 11306.55511022044, 11428.62124248497, 11550.6873747495, 11672.753507014027, 11794.819639278558, 11916.885771543086, 12038.951903807616, 12161.018036072144, 12283.084168336673, 12405.150300601203, 12527.21643286573, 12649.282565130261, 12771.34869739479, 12893.41482965932, 13015.480961923848, 13137.547094188376, 13259.613226452906, 13381.679358717434, 13503.745490981964, 13625.811623246493, 13747.877755511023, 13869.943887775551, 13992.01002004008, 14114.07615230461, 14236.142284569138, 14358.208416833668, 14480.274549098196, 14602.340681362726, 14724.406813627254, 14846.472945891783, 14968.539078156313, 15090.605210420841, 15212.671342685371, 15334.7374749499, 15456.80360721443, 15578.869739478958, 15700.935871743486, 15823.002004008016, 15945.068136272545, 16067.134268537075, 16189.200400801603, 16311.266533066133, 16433.33266533066, 16555.39879759519, 16677.46492985972, 16799.531062124246, 16921.597194388778, 17043.663326653306, 17165.729458917835, 17287.795591182366, 17409.86172344689, 17531.927855711423, 17653.99398797595, 17776.06012024048, 17898.12625250501, 18020.19238476954, 18142.258517034068, 18264.324649298596, 18386.390781563125, 18508.456913827657, 18630.523046092185, 18752.589178356713, 18874.65531062124, 18996.721442885773, 19118.7875751503, 19240.85370741483, 19362.919839679358, 19484.985971943886, 19607.05210420842, 19729.118236472947, 19851.184368737475, 19973.250501002003, 20095.31663326653, 20217.382765531063, 20339.44889779559, 20461.51503006012, 20583.581162324648, 20705.64729458918, 20827.71342685371, 20949.779559118237, 21071.845691382765, 21193.911823647293, 21315.977955911825, 21438.044088176353, 21560.11022044088, 21682.17635270541, 21804.24248496994, 21926.30861723447, 22048.374749499, 22170.440881763527, 22292.507014028055, 22414.573146292587, 22536.639278557115, 22658.705410821643, 22780.77154308617, 22902.8376753507, 23024.903807615232, 23146.96993987976, 23269.03607214429, 23391.102204408817, 23513.168336673345, 23635.234468937877, 23757.300601202405, 23879.366733466934, 24001.43286573146, 24123.498997995994, 24245.565130260522, 24367.63126252505, 24489.69739478958, 24611.763527054107, 24733.82965931864, 24855.895791583167, 24977.961923847695, 25100.028056112224, 25222.094188376752, 25344.160320641284, 25466.226452905812, 25588.29258517034, 25710.35871743487, 25832.4248496994, 25954.49098196393, 26076.557114228457, 26198.623246492985, 26320.689378757514, 26442.755511022046, 26564.821643286574, 26686.887775551102, 26808.95390781563, 26931.02004008016, 27053.08617234469, 27175.15230460922, 27297.218436873747, 27419.284569138275, 27541.350701402807, 27663.416833667336, 27785.482965931864, 27907.549098196392, 28029.61523046092, 28151.681362725452, 28273.74749498998, 28395.81362725451, 28517.879759519037, 28639.945891783565, 28762.012024048097, 28884.078156312626, 29006.144288577154, 29128.210420841682, 29250.276553106214, 29372.342685370742, 29494.40881763527, 29616.4749498998, 29738.541082164327, 29860.60721442886, 29982.673346693387, 30104.739478957916, 30226.805611222444, 30348.871743486972, 30470.937875751504, 30593.004008016032, 30715.07014028056, 30837.13627254509, 30959.20240480962, 31081.26853707415, 31203.334669338677, 31325.400801603206, 31447.466933867734, 31569.533066132266, 31691.599198396794, 31813.665330661323, 31935.73146292585, 32057.79759519038, 32179.86372745491, 32301.92985971944, 32423.995991983968, 32546.062124248496, 32668.128256513028, 32790.194388777556, 32912.26052104209, 33034.32665330661, 33156.39278557114, 33278.45891783567, 33400.5250501002, 33522.59118236473, 33644.65731462926, 33766.72344689378, 33888.789579158314, 34010.855711422846, 34132.92184368738, 34254.9879759519, 34377.054108216435, 34499.12024048096, 34621.18637274549, 34743.25250501002, 34865.31863727455, 34987.38476953908, 35109.450901803604, 35231.517034068136, 35353.58316633267, 35475.64929859719, 35597.715430861725, 35719.78156312625, 35841.84769539078, 35963.91382765531, 36085.97995991984, 36208.04609218437, 36330.112224448894, 36452.178356713426, 36574.24448897796, 36696.31062124248, 36818.376753507015, 36940.44288577155, 37062.50901803607, 37184.5751503006, 37306.64128256513, 37428.70741482966, 37550.77354709419, 37672.839679358716, 37794.90581162325, 37916.97194388777, 38039.038076152305, 38161.10420841684, 38283.17034068136, 38405.23647294589, 38527.30260521042, 38649.36873747495, 38771.43486973948, 38893.501002004006, 39015.56713426854, 39137.63326653306, 39259.699398797595, 39381.76553106213, 39503.83166332665, 39625.89779559118, 39747.96392785571, 39870.03006012024, 39992.09619238477, 40114.162324649296, 40236.22845691383, 40358.29458917836, 40480.360721442885, 40602.42685370742, 40724.49298597194, 40846.55911823647, 40968.625250501005, 41090.69138276553, 41212.75751503006, 41334.82364729459, 41456.88977955912, 41578.95591182365, 41701.022044088175, 41823.08817635271, 41945.15430861723, 42067.22044088176, 42189.286573146295, 42311.35270541082, 42433.41883767535, 42555.48496993988, 42677.55110220441, 42799.61723446894, 42921.683366733465, 43043.749498998, 43165.81563126252, 43287.88176352705, 43409.947895791585, 43532.01402805611, 43654.08016032064, 43776.146292585174, 43898.2124248497, 44020.27855711423, 44142.344689378755, 44264.41082164329, 44386.47695390782, 44508.54308617234, 44630.609218436875, 44752.6753507014, 44874.74148296593, 44996.807615230464, 45118.87374749499, 45240.93987975952, 45363.006012024045, 45485.07214428858, 45607.13827655311, 45729.20440881763, 45851.270541082165, 45973.33667334669, 46095.40280561122, 46217.468937875754, 46339.53507014028, 46461.60120240481, 46583.667334669335, 46705.73346693387, 46827.7995991984, 46949.86573146292, 47071.931863727455, 47193.99799599199, 47316.06412825651, 47438.130260521044, 47560.19639278557, 47682.2625250501, 47804.32865731463, 47926.39478957916, 48048.46092184369, 48170.52705410821, 48292.593186372746, 48414.65931863728, 48536.7254509018, 48658.791583166334, 48780.85771543086, 48902.92384769539, 49024.98997995992, 49147.05611222445, 49269.12224448898, 49391.188376753504, 49513.254509018036, 49635.32064128257, 49757.38677354709, 49879.452905811624, 50001.51903807615, 50123.58517034068, 50245.65130260521, 50367.71743486974, 50489.78356713427, 50611.8496993988, 50733.915831663326, 50855.98196392786, 50978.04809619238, 51100.114228456914, 51222.180360721446, 51344.24649298597, 51466.3126252505, 51588.37875751503, 51710.44488977956, 51832.51102204409, 51954.577154308616, 52076.64328657315, 52198.70941883767, 52320.775551102204, 52442.841683366736, 52564.90781563126, 52686.97394789579, 52809.04008016032, 52931.10621242485, 53053.17234468938, 53175.238476953906, 53297.30460921844, 53419.37074148296, 53541.436873747494, 53663.503006012026, 53785.56913827655, 53907.63527054108, 54029.701402805615, 54151.76753507014, 54273.83366733467, 54395.899799599196, 54517.96593186373, 54640.03206412826, 54762.098196392784, 54884.164328657316, 55006.23046092184, 55128.29659318637, 55250.362725450905, 55372.42885771543, 55494.49498997996, 55616.561122244486, 55738.62725450902, 55860.69338677355, 55982.759519038074, 56104.825651302606, 56226.89178356713, 56348.95791583166, 56471.024048096195, 56593.09018036072, 56715.15631262525, 56837.222444889776, 56959.28857715431, 57081.35470941884, 57203.420841683364, 57325.486973947896, 57447.55310621243, 57569.61923847695, 57691.685370741485, 57813.75150300601, 57935.81763527054, 58057.88376753507, 58179.9498997996, 58302.01603206413, 58424.082164328654, 58546.14829659319, 58668.21442885772, 58790.28056112224, 58912.346693386775, 59034.4128256513, 59156.47895791583, 59278.54509018036, 59400.61122244489, 59522.67735470942, 59644.743486973945, 59766.80961923848, 59888.87575150301, 60010.94188376753, 60133.008016032065, 60255.07414829659, 60377.14028056112, 60499.20641282565, 60621.27254509018, 60743.33867735471, 60865.40480961924, 60987.47094188377, 61109.5370741483, 61231.60320641282, 61353.669338677355, 61475.73547094189, 61597.80160320641, 61719.86773547094, 61841.93386773547, 61964.0])
+              .range(['#0000ffff', '#0000ffff', '#0100feff', '#0100feff', '#0200fdff', '#0200fdff', '#0300fcff', '#0300fcff', '#0400fbff', '#0400fbff', '#0500faff', '#0500faff', '#0600f9ff', '#0600f9ff', '#0700f8ff', '#0700f8ff', '#0800f7ff', '#0800f7ff', '#0900f6ff', '#0900f6ff', '#0a00f5ff', '#0a00f5ff', '#0b00f4ff', '#0b00f4ff', '#0c00f3ff', '#0c00f3ff', '#0d00f2ff', '#0d00f2ff', '#0e00f1ff', '#0e00f1ff', '#0f00f0ff', '#0f00f0ff', '#1000efff', '#1000efff', '#1100eeff', '#1100eeff', '#1200edff', '#1200edff', '#1300ecff', '#1400ebff', '#1400ebff', '#1500eaff', '#1500eaff', '#1600e9ff', '#1600e9ff', '#1700e8ff', '#1700e8ff', '#1800e7ff', '#1800e7ff', '#1900e6ff', '#1900e6ff', '#1a00e5ff', '#1a00e5ff', '#1b00e4ff', '#1b00e4ff', '#1c00e3ff', '#1c00e3ff', '#1d00e2ff', '#1d00e2ff', '#1e00e1ff', '#1e00e1ff', '#1f00e0ff', '#1f00e0ff', '#2000dfff', '#2000dfff', '#2100deff', '#2100deff', '#2200ddff', '#2200ddff', '#2300dcff', '#2300dcff', '#2400dbff', '#2400dbff', '#2500daff', '#2500daff', '#2600d9ff', '#2600d9ff', '#2700d8ff', '#2800d7ff', '#2800d7ff', '#2900d6ff', '#2900d6ff', '#2a00d5ff', '#2a00d5ff', '#2b00d4ff', '#2b00d4ff', '#2c00d3ff', '#2c00d3ff', '#2d00d2ff', '#2d00d2ff', '#2e00d1ff', '#2e00d1ff', '#2f00d0ff', '#2f00d0ff', '#3000cfff', '#3000cfff', '#3100ceff', '#3100ceff', '#3200cdff', '#3200cdff', '#3300ccff', '#3300ccff', '#3400cbff', '#3400cbff', '#3500caff', '#3500caff', '#3600c9ff', '#3600c9ff', '#3700c8ff', '#3700c8ff', '#3800c7ff', '#3800c7ff', '#3900c6ff', '#3900c6ff', '#3a00c5ff', '#3a00c5ff', '#3b00c4ff', '#3c00c3ff', '#3c00c3ff', '#3d00c2ff', '#3d00c2ff', '#3e00c1ff', '#3e00c1ff', '#3f00c0ff', '#3f00c0ff', '#4000bfff', '#4000bfff', '#4100beff', '#4100beff', '#4200bdff', '#4200bdff', '#4300bcff', '#4300bcff', '#4400bbff', '#4400bbff', '#4500baff', '#4500baff', '#4600b9ff', '#4600b9ff', '#4700b8ff', '#4700b8ff', '#4800b7ff', '#4800b7ff', '#4900b6ff', '#4900b6ff', '#4a00b5ff', '#4a00b5ff', '#4b00b4ff', '#4b00b4ff', '#4c00b3ff', '#4c00b3ff', '#4d00b2ff', '#4d00b2ff', '#4e00b1ff', '#4f00b0ff', '#4f00b0ff', '#5000afff', '#5000afff', '#5100aeff', '#5100aeff', '#5200adff', '#5200adff', '#5300acff', '#5300acff', '#5400abff', '#5400abff', '#5500aaff', '#5500aaff', '#5600a9ff', '#5600a9ff', '#5700a8ff', '#5700a8ff', '#5800a7ff', '#5800a7ff', '#5900a6ff', '#5900a6ff', '#5a00a5ff', '#5a00a5ff', '#5b00a4ff', '#5b00a4ff', '#5c00a3ff', '#5c00a3ff', '#5d00a2ff', '#5d00a2ff', '#5e00a1ff', '#5e00a1ff', '#5f00a0ff', '#5f00a0ff', '#60009fff', '#60009fff', '#61009eff', '#61009eff', '#62009dff', '#63009cff', '#63009cff', '#64009bff', '#64009bff', '#65009aff', '#65009aff', '#660099ff', '#660099ff', '#670098ff', '#670098ff', '#680097ff', '#680097ff', '#690096ff', '#690096ff', '#6a0095ff', '#6a0095ff', '#6b0094ff', '#6b0094ff', '#6c0093ff', '#6c0093ff', '#6d0092ff', '#6d0092ff', '#6e0091ff', '#6e0091ff', '#6f0090ff', '#6f0090ff', '#70008fff', '#70008fff', '#71008eff', '#71008eff', '#72008dff', '#72008dff', '#73008cff', '#73008cff', '#74008bff', '#74008bff', '#75008aff', '#75008aff', '#760089ff', '#770088ff', '#770088ff', '#780087ff', '#780087ff', '#790086ff', '#790086ff', '#7a0085ff', '#7a0085ff', '#7b0084ff', '#7b0084ff', '#7c0083ff', '#7c0083ff', '#7d0082ff', '#7d0082ff', '#7e0081ff', '#7e0081ff', '#7f0080ff', '#7f0080ff', '#80007fff', '#80007fff', '#81007eff', '#81007eff', '#82007dff', '#82007dff', '#83007cff', '#83007cff', '#84007bff', '#84007bff', '#85007aff', '#85007aff', '#860079ff', '#860079ff', '#870078ff', '#870078ff', '#880077ff', '#880077ff', '#890076ff', '#8a0075ff', '#8a0075ff', '#8b0074ff', '#8b0074ff', '#8c0073ff', '#8c0073ff', '#8d0072ff', '#8d0072ff', '#8e0071ff', '#8e0071ff', '#8f0070ff', '#8f0070ff', '#90006fff', '#90006fff', '#91006eff', '#91006eff', '#92006dff', '#92006dff', '#93006cff', '#93006cff', '#94006bff', '#94006bff', '#95006aff', '#95006aff', '#960069ff', '#960069ff', '#970068ff', '#970068ff', '#980067ff', '#980067ff', '#990066ff', '#990066ff', '#9a0065ff', '#9a0065ff', '#9b0064ff', '#9b0064ff', '#9c0063ff', '#9c0063ff', '#9d0062ff', '#9e0061ff', '#9e0061ff', '#9f0060ff', '#9f0060ff', '#a0005fff', '#a0005fff', '#a1005eff', '#a1005eff', '#a2005dff', '#a2005dff', '#a3005cff', '#a3005cff', '#a4005bff', '#a4005bff', '#a5005aff', '#a5005aff', '#a60059ff', '#a60059ff', '#a70058ff', '#a70058ff', '#a80057ff', '#a80057ff', '#a90056ff', '#a90056ff', '#aa0055ff', '#aa0055ff', '#ab0054ff', '#ab0054ff', '#ac0053ff', '#ac0053ff', '#ad0052ff', '#ad0052ff', '#ae0051ff', '#ae0051ff', '#af0050ff', '#af0050ff', '#b0004fff', '#b0004fff', '#b1004eff', '#b2004dff', '#b2004dff', '#b3004cff', '#b3004cff', '#b4004bff', '#b4004bff', '#b5004aff', '#b5004aff', '#b60049ff', '#b60049ff', '#b70048ff', '#b70048ff', '#b80047ff', '#b80047ff', '#b90046ff', '#b90046ff', '#ba0045ff', '#ba0045ff', '#bb0044ff', '#bb0044ff', '#bc0043ff', '#bc0043ff', '#bd0042ff', '#bd0042ff', '#be0041ff', '#be0041ff', '#bf0040ff', '#bf0040ff', '#c0003fff', '#c0003fff', '#c1003eff', '#c1003eff', '#c2003dff', '#c2003dff', '#c3003cff', '#c3003cff', '#c4003bff', '#c5003aff', '#c5003aff', '#c60039ff', '#c60039ff', '#c70038ff', '#c70038ff', '#c80037ff', '#c80037ff', '#c90036ff', '#c90036ff', '#ca0035ff', '#ca0035ff', '#cb0034ff', '#cb0034ff', '#cc0033ff', '#cc0033ff', '#cd0032ff', '#cd0032ff', '#ce0031ff', '#ce0031ff', '#cf0030ff', '#cf0030ff', '#d0002fff', '#d0002fff', '#d1002eff', '#d1002eff', '#d2002dff', '#d2002dff', '#d3002cff', '#d3002cff', '#d4002bff', '#d4002bff', '#d5002aff', '#d5002aff', '#d60029ff', '#d60029ff', '#d70028ff', '#d70028ff', '#d80027ff', '#d90026ff', '#d90026ff', '#da0025ff', '#da0025ff', '#db0024ff', '#db0024ff', '#dc0023ff', '#dc0023ff', '#dd0022ff', '#dd0022ff', '#de0021ff', '#de0021ff', '#df0020ff', '#df0020ff', '#e0001fff', '#e0001fff', '#e1001eff', '#e1001eff', '#e2001dff', '#e2001dff', '#e3001cff', '#e3001cff', '#e4001bff', '#e4001bff', '#e5001aff', '#e5001aff', '#e60019ff', '#e60019ff', '#e70018ff', '#e70018ff', '#e80017ff', '#e80017ff', '#e90016ff', '#e90016ff', '#ea0015ff', '#ea0015ff', '#eb0014ff', '#eb0014ff', '#ec0013ff', '#ed0012ff', '#ed0012ff', '#ee0011ff', '#ee0011ff', '#ef0010ff', '#ef0010ff', '#f0000fff', '#f0000fff', '#f1000eff', '#f1000eff', '#f2000dff', '#f2000dff', '#f3000cff', '#f3000cff', '#f4000bff', '#f4000bff', '#f5000aff', '#f5000aff', '#f60009ff', '#f60009ff', '#f70008ff', '#f70008ff', '#f80007ff', '#f80007ff', '#f90006ff', '#f90006ff', '#fa0005ff', '#fa0005ff', '#fb0004ff', '#fb0004ff', '#fc0003ff', '#fc0003ff', '#fd0002ff', '#fd0002ff', '#fe0001ff', '#fe0001ff', '#ff0000ff', '#ff0000ff']);
+    
+
+    color_map_24b326a6d10a86a4691add988dda4fe1.x = d3.scale.linear()
+              .domain([1053.0, 61964.0])
+              .range([0, 450 - 50]);
+
+    color_map_24b326a6d10a86a4691add988dda4fe1.legend = L.control({position: 'topright'});
+    color_map_24b326a6d10a86a4691add988dda4fe1.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_24b326a6d10a86a4691add988dda4fe1.legend.addTo(map_210b5ab3563b434d493b7d19b4d47f70);
+
+    color_map_24b326a6d10a86a4691add988dda4fe1.xAxis = d3.svg.axis()
+        .scale(color_map_24b326a6d10a86a4691add988dda4fe1.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([1053.0, 61964.0]);
+
+    color_map_24b326a6d10a86a4691add988dda4fe1.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_24b326a6d10a86a4691add988dda4fe1.g = color_map_24b326a6d10a86a4691add988dda4fe1.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_24b326a6d10a86a4691add988dda4fe1.g.selectAll("rect")
+        .data(color_map_24b326a6d10a86a4691add988dda4fe1.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_24b326a6d10a86a4691add988dda4fe1.x(color_map_24b326a6d10a86a4691add988dda4fe1.color.domain()[i - 1]) : color_map_24b326a6d10a86a4691add988dda4fe1.x.range()[0],
+            x1: i < color_map_24b326a6d10a86a4691add988dda4fe1.color.domain().length ? color_map_24b326a6d10a86a4691add988dda4fe1.x(color_map_24b326a6d10a86a4691add988dda4fe1.color.domain()[i]) : color_map_24b326a6d10a86a4691add988dda4fe1.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_24b326a6d10a86a4691add988dda4fe1.g.call(color_map_24b326a6d10a86a4691add988dda4fe1.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("");
+</script>
+</html>
