@@ -1,0 +1,105 @@
+---
+title: "Practica10"
+author: "EnriqueVillalon"
+date: "2025-10-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.width = 7,
+  fig.height = 4)
+```
+
+```{r, include = FALSE}
+# instalar cmake
+# instalar gfortran
+# instalar classInt
+#install.packages("sf")
+#install.packages("mlr3")
+#install.packages("mlr3learners") 
+install.packages("mlr3extralearners", repos = c('https://mlr-org.r-universe.dev', 'https://cloud.r-project.org'))
+#install.packages("spDataLarge") 
+install.packages("spDataLarge", repos = "https://geocompr.r-universe.dev")
+#install.packages("GGally") 
+#install.packages("kernlab")
+```
+
+
+```{r, include=FALSE}
+library(sf)
+library(terra)
+library(dplyr)
+library(future)             # parallel processing
+library(lgr)                # logging framework for R
+library(mlr3)               # unified interface to machine learning algorithms
+library(mlr3learners)       # most important machine learning algorithms
+library(mlr3extralearners)  # access to even more learning algorithms
+library(mlr3proba)          # here needed for mlr3extralearners::list_learners()
+library(mlr3spatiotempcv)   # spatiotemporal resampling strategies
+library(mlr3tuning)         # hyperparameter tuning
+library(mlr3viz)            # plotting functions for mlr3 objects
+library(progressr)          # report progress updates
+library(pROC) 
+library(spDataLarge) 
+library(tmap)
+```
+
+
+## Statistical Learning
+
+```{r, include=FALSE}
+data("lsl", "study_mask", package = "spDataLarge")
+ta = terra::rast(system.file("raster/ta.tif", package = "spDataLarge"))
+```
+
+```{r, lsl-map, echo=FALSE, out.width="70%", fig.cap="Landslide initiation points (red) and points unaffected by landsliding (blue) in Southern Ecuador.", fig.scap="Landslide initiation points."}
+lsl_sf = sf::st_as_sf(lsl, coords = c("x", "y"), crs = "EPSG:32717")
+hs = terra::shade(slope = ta$slope * pi / 180,
+                   terra::terrain(ta$elev, v = "aspect", unit = "radians"))
+ 
+bbx = tmaptools::bb(raster::raster(hs), xlim = c(-0.0001, 1),
+                     ylim = c(-0.0001, 1), relative = TRUE)
+ 
+map = tm_shape(hs, bbox = bbx) +
+ tm_grid(col = "black", n.x = 1, n.y = 1, labels.inside.frame = FALSE,
+         labels.rot = c(0, 90), lines = FALSE) +
+ tm_raster(palette = gray(0:100 / 100), n = 100, legend.show = FALSE) +
+ tm_shape(ta$elev) +
+ tm_raster(alpha = 0.5, palette = terrain.colors(10), legend.show = FALSE) +
+ tm_shape(lsl_sf) +
+ tm_bubbles("lslpts", size = 0.2, palette = "-RdYlBu",
+            title.col = "Landslide: ") +
+ tm_layout(inner.margins = 0) +
+ tm_legend(bg.color = "white")
+tmap::tmap_save(map, filename = "images/lsl-map-1.png", width = 11,
+               height = 11, units = "cm")
+knitr::include_graphics("images/lsl-map-1.png")
+```
+```{r,echo=FALSE, warning=FALSE}
+fit = glm(lslpts ~ slope + cplan + cprof + elev + log10_carea,
+          family = binomial(),
+          data = lsl)
+```
+
+```{r,echo=FALSE, warning=FALSE}
+class(fit)
+```
+```{r,echo=FALSE, warning=FALSE}
+
+```
+
+```{r,echo=FALSE, warning=FALSE}
+pred_glm = predict(object = fit, type = "response")
+head(pred_glm)
+```
+
+```{r,echo=FALSE, warning=FALSE}
+
+```
+
+
