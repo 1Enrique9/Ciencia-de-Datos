@@ -1,6 +1,8 @@
 import numpy as np
+import pandas as pd
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
-
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
 class SimpleRandomForest:
     def __init__(self, base_model='classifier', n_estimators=10, max_features='sqrt', random_state=None):
@@ -53,18 +55,29 @@ class SimpleRandomForest:
 
     def predict(self, X):
         all_preds = []
-
         for tree, feat_idx in zip(self.trees, self.features_indices):
             preds = tree.predict(X[:, feat_idx])
             all_preds.append(preds)
 
         all_preds = np.array(all_preds)
-
         if self.is_classifier:
-            # Votación mayoritaria
             from scipy.stats import mode
             y_pred, _ = mode(all_preds, axis=0)
             return y_pred.flatten()
         else:
-            # Promedio para regresión
             return np.mean(all_preds, axis=0)
+
+
+
+try:
+    df = pd.read_csv(r"D:\iris_train_totalmente_limpio.csv")  
+except FileNotFoundError:
+    df = pd.read_csv("iris_train_totalmente_limpio.csv")
+
+X = df.drop('target', axis=1).values
+y = df['target'].values
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+rf = SimpleRandomForest(base_model='classifier', n_estimators=5, max_features='sqrt', random_state=42)
+rf.fit(X_train, y_train)
+
