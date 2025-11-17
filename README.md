@@ -1,4 +1,4 @@
-# ⚔️ Git Wars – Superhero Power Prediction with Bayesian Optimization
+# ⚔️ Git Wars – Prediccion  de Poderes de Super Heroes con Optimización Bayesiana 
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.1-009688)
