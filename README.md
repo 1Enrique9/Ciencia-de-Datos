@@ -94,29 +94,15 @@ La **Optimización Bayesiana** se usa cuando evaluar la función objetivo es car
 
 ---
 
-## 🧮 Modelo Final y Resultados (BO vs Random Search)
 
-> Rellena con tus resultados reales.
-
-- **Modelo ganador:** `<RandomForestRegressor / SVR / MLPRegressor>`
-- **Hiperparámetros óptimos (BO):**
-  - `<n_estimators=..., max_depth=...>` (o equivalente)
-- **Métrica en validación:**
-  - `RMSE = <...>`
-  - `R² = <...>` (si la calculaste)
 
 ### Comparación BO vs Random Search (ejemplo de tabla)
 
-| Modelo       | Método         | Mejores Hiperparámetros               | Métrica (p.ej. RMSE) |
-|-------------|----------------|----------------------------------------|----------------------|
-| SVM         | BO             | `<C=..., gamma=...>`                   | `<...>`              |
-| SVM         | Random Search  | `<C=..., gamma=...>`                   | `<...>`              |
-| RandomForest| BO             | `<n_estimators=..., max_depth=...>`    | `<...>`              |
-| RandomForest| Random Search  | `<n_estimators=..., max_depth=...>`    | `<...>`              |
-| MLP         | BO             | `<hidden_layer_sizes, alpha>`          | `<...>`              |
-| MLP         | Random Search  | `<hidden_layer_sizes, alpha>`          | `<...>`              |
-
-> En nuestros experimentos, BO alcanzó configuraciones con **mejor o igual rendimiento**, usando **menos evaluaciones** que Random Search, especialmente para `<modelo ganador>`.
+| Modelo        | Mejor Métrica (BO) | Mejores Hiperparámetros (BO) | Mejor Métrica (RS) | Mejores Hiperparámetros (RS) |
+|---------------|--------------------|-------------------------------|--------------------|-------------------------------|
+| SVM           | 16.8363            | (C = 100.0, gamma = 0.1)      | 15.6400            | (C = 100.0, gamma = 0.01)     |
+| Random Forest | 16.4791            | (n_estimators = 100, max_depth = 8) | 16.4791    | (n_estimators = 100, max_depth = 8) |
+| MLP           | 38.9147            | (hidden_layer_sizes = (64,), alpha = 0.001) | 37.9094 | (hidden_layer_sizes = (64,), alpha = 0.0001) |
 
 ---
 
