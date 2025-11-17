@@ -41,27 +41,26 @@ Predicción del nivel de `power` de superhéroes a partir de características f�
 
 ```mermaid
 flowchart TD
+    A["CLIENTE (Requests)"] --> B["FastAPI REST API"]
+    B -->|GET /health| C1["Health Check"]
+    B -->|GET /info| C2["Modelo & Metadatos"]
+    B -->|POST /predict| C3["Predicción de Power"]
 
-    A[CLIENTE (Requests)] --> B[FastAPI REST API]
-    B -->|GET /health| C1[Health Check]
-    B -->|GET /info| C2[Modelo & Metadatos]
-    B -->|POST /predict| C3[Predicción de Power]
+    B --> D["Pipeline de Preprocesamiento"]
+    D --> E["Modelo Óptimo (SVM / RF / MLP)"]
 
-    B --> D[Pipeline de Preprocesamiento]
-    D --> E[Modelo Óptimo (SVM / RF / MLP)]
-
-    subgraph Data & Training
-        F[Elemento 0:\nSuperHero API -> data.csv]
-        G[Elemento 1:\nOrquestador de modelos]
-        H[Elemento 2:\nOptimización Bayesiana (GP+UCB)]
-        I[Elemento 3:\nComparación BO vs Random Search]
+    subgraph Data_Training["Data & Training"]
+        F["Elemento 0:\nSuperHero API → data.csv"]
+        G["Elemento 1:\nOrquestador de modelos"]
+        H["Elemento 2:\nOptimización Bayesiana (GP+UCB)"]
+        I["Elemento 3:\nComparación BO vs Random Search"]
     end
 
     F --> G
     G --> H
     H --> I
     I --> E
-```
+
 
 ---
 
