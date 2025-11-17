@@ -106,33 +106,43 @@ La **Optimización Bayesiana** se usa cuando evaluar la función objetivo es car
 
 ---
 
-## 🧱 Estructura del Repositorio
+🎥 **Oprtimizacion Bayesiana**  
+**Video explicacion de como funciona ** → [Ver video](<https://drive.google.com/file/d/1qTafvc1ZlTAVJ0GuLYlabed8Gg2zUfmU/view?usp=sharing>)
 
+
+## 🧱 Estructura del Repositorio
 
 ```text
 .
+├── .github/                     # Configuración extra de GitHub (workflows, etc.)
 ├── api/
-│   └── main.py                 # API REST (FastAPI) con /health, /info, /predict
+│   ├── main.py                  # API REST (FastAPI) con /health, /info, /predict
+│   └── model/                   # Artefactos del modelo para la API
+│       ├── best_svm_params.pkl
+│       ├── best_trained_svm_model.pkl
+│       └── preprocesador.pkl
 ├── data/
-│   └── data.csv                # Dataset generado en el Elemento 0
+│   ├── data.csv                 # Dataset generado en el Elemento 0
+│   ├── preprocesador.py         # Lógica de preprocesamiento (versión script)
+│   └── trained_model.py         # Script para cargar/usar el modelo entrenado
 ├── deployments/
-│   ├── Dockerfile              # Imagen Docker de la API
-│   └── render.yaml             # Configuración del servicio en Render
-├── model/
-│   └── model.pkl               # Modelo óptimo entrenado (BO)
+│   ├── Dockerfile               # Imagen Docker de la API
+│   └── render.yaml              # Configuración del servicio en Render
 ├── notebooks/
-│   └── nb_equipo_<nombre>.ipynb# Análisis, BO vs Random Search, visualizaciones
+│   └── nb_wework.ipynb          # Notebook con BO vs RS, análisis y visualizaciones
 ├── src/
 │   ├── Elemento0/
-│   │   └── get_data.py         # Consumo de SuperHero API → data.csv
-│   ├── orchestrator.py         # evaluate_svm / evaluate_rf / evaluate_mlp
-│   ├── optimizer.py            # Implementación de BO (GP + UCB)
-│   ├── random_search.py        # Búsqueda aleatoria de hiperparámetros
-│   └── utils.py                # Funciones auxiliares (si aplica)
-├── Makefile                    # Comandos build / run / stop / clean / package
-├── requirements.txt            # Dependencias del proyecto
-└── README.md                   # Este archivo
+│   │   └── get_data.py          # Consumo de SuperHero API → data.csv
+│   ├── optimizer.py             # Implementación de BO (GP + UCB)
+│   ├── orchestrator.py          # evaluate_svm / evaluate_rf / evaluate_mlp
+│   ├── random_search.py         # Búsqueda aleatoria de hiperparámetros
+│   └── utils.py                 # Funciones auxiliares
+├── .gitignore
+├── Makefile                     # Comandos build / run / stop / clean / package
+├── README.md                    # Documentación principal del proyecto
+└── requirements.txt             # Dependencias del proyecto
 ```
+
 
 ---
 
@@ -304,9 +314,6 @@ Beneficios:
 - 📦 Entorno aislado y consistente
 - 🔁 Integración con `Makefile` para automatizar comandos
 
-🎥 **Video relacionado:**  
-**Cómo usar contenedores Docker** → [Ver video](<URL_VIDEO_DOCKER>)
-
 ---
 
 ## ⚙️ Instalación
@@ -390,8 +397,6 @@ https://<subdominio-del-equipo>.onrender.com/health
 https://<subdominio-del-equipo>.onrender.com/info
 ```
 
-🎥 **Video relacionado:**  
-**Cómo levantar el servicio en Render** → [Ver video](<URL_VIDEO_RENDER>)
 
 ---
 
@@ -423,10 +428,9 @@ https://<subdominio-del-equipo>.onrender.com/info
    → [Ver video](<https://drive.google.com/file/d/1GB2y2Vv3NHgBvAXj7ZDdAv3P2l25bYg4/view?usp=sharing>)
 3. **Cómo levantar una API con FastAPI**  
    → [Ver video](<https://drive.google.com/file/d/1u-bP_8H9B_1PYbTwBD9B2PvPuf-myAd0/view?usp=sharing>)
-4. **Cómo usar contenedores Docker para ML**  
-   → [Ver video](<URL_VIDEO_DOCKER>)
-5. **Cómo desplegar la API en Render paso a paso**  
-   → [Ver video](<URL_VIDEO_RENDER>)
+4. **Optimizacion Bayesiana**  
+   → [Ver video](<https://drive.google.com/file/d/1qTafvc1ZlTAVJ0GuLYlabed8Gg2zUfmU/view?usp=sharing>)
+
 
 ---
 
@@ -454,7 +458,7 @@ https://<subdominio-del-equipo>.onrender.com/info
 - `<Asharetbe>` – 
 - `<Brunofon199>` – 
 - `<marianophys>` – 
-- `<Nombre 4>` –
+- `<lukemorales13>` –
 - `<1Enrique9>` – 
 
 ---
