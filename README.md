@@ -108,7 +108,6 @@ La **Optimización Bayesiana** se usa cuando evaluar la función objetivo es car
 
 ## 🧱 Estructura del Repositorio
 
-_Ajusta rutas/nombres a tu repo real._
 
 ```text
 .
