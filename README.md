@@ -395,23 +395,6 @@ https://<subdominio-del-equipo>.onrender.com/info
 
 ---
 
-## 🧪 Testing (si aplica)
-
-> Si agregan pruebas, describirlas aquí. Ejemplo:
-
-- Pruebas unitarias para:
-  - Orquestador de modelos
-  - Funciones de BO (kernel, GP, UCB)
-  - Endpoints de la API
-
-Ejemplo para ejecutar:
-
-```bash
-make test
-# o
-pytest
-```
-
 ---
 
 ## 📊 Stack Tecnológico
