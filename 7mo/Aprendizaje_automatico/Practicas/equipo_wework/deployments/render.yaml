@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: gitwars-superheroes
+    runtime: docker
+    repo: https://github.com/<tu-usuario>/gitwars-superheroes
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8000

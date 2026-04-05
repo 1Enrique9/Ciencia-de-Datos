@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>NFL Fan Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f9;
+        }
+
+        header {
+            background-color: #013369;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #d50a0a;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero {
+            padding: 40px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+        }
+
+        button {
+            background-color: #013369;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #d50a0a;
+        }
+
+        footer {
+            background-color: #013369;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>NFL Fan Dashboard 🏈</h1>
+</header>
+
+<nav>
+    <a href="#">Inicio</a>
+    <a href="#">Equipos</a>
+    <a href="#">Estadísticas</a>
+    <a href="#">Contacto</a>
+</nav>
+
+<section class="hero">
+    <h2>Bienvenido al Portal NFL</h2>
+    <p>Selecciona tu equipo favorito y revisa estadísticas</p>
+    <button onclick="openModal()">Ver Mensaje</button>
+</section>
+
+<div class="container">
+
+    <h2>Equipos Destacados</h2>
+
+    <div class="card-container">
+        <div class="card">
+            <h3>Dallas Cowboys</h3>
+            <p>Conferencia: NFC</p>
+            <p>Super Bowls: 5</p>
+        </div>
+
+        <div class="card">
+            <h3>New England Patriots</h3>
+            <p>Conferencia: AFC</p>
+            <p>Super Bowls: 6</p>
+        </div>
+
+        <div class="card">
+            <h3>Kansas City Chiefs</h3>
+            <p>Conferencia: AFC</p>
+            <p>Super Bowls: 4</p>
+        </div>
+    </div>
+
+    <h2>Tabla de Resultados</h2>
+
+    <table>
+        <tr>
+            <th>Equipo</th>
+            <th>Victorias</th>
+            <th>Derrotas</th>
+        </tr>
+        <tr>
+            <td>Cowboys</td>
+            <td>12</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Chiefs</td>
+            <td>13</td>
+            <td>4</td>
+        </tr>
+    </table>
+
+    <h2>Encuesta Fan NFL</h2>
+
+    <form onsubmit="submitForm(event)">
+        <label>Nombre:</label>
+        <input type="text" required>
+
+        <label>Equipo Favorito:</label>
+        <select>
+            <option>Cowboys</option>
+            <option>Patriots</option>
+            <option>Chiefs</option>
+            <option>Eagles</option>
+        </select>
+
+        <label>Conferencia:</label><br>
+        <input type="radio" name="conf"> AFC
+        <input type="radio" name="conf"> NFC
+        <br><br>
+
+        <label>
+            <input type="checkbox"> Acepto recibir noticias NFL
+        </label>
+        <br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h3>¡Bienvenido Fan NFL!</h3>
+        <p>Este sitio está listo para Azure App Service 🚀</p>
+        <button onclick="closeModal()">Cerrar</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 NFL Fan Dashboard | Proyecto Azure</p>
+</footer>
+
+<script>
+    function openModal() {
+        document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        alert("Formulario enviado correctamente 🏈");
+    }
+</script>
+
+</body>
+</html>
