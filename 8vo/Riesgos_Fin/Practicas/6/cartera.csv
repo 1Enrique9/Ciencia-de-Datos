@@ -1,0 +1,101 @@
+Empresa,Monto de crédito,Calificación,Zona geografica,Sector Económico,Grupo Económico
+X22,9316336.255,AAA,Noreste,Agricultura,X22
+X41,7658336.702,BBB,Sureste,Minería,X41
+X92,1644679.85,AAA,Noreste,Agricultura,X92
+X62,4960432.13,AAA,Noreste,Agricultura,X62
+X46,7041822.145,BBB,Sureste,Minería,X46
+X82,2752134.562,AA,Noroeste,Alimentos,X82
+X68,3981957.546,A,Centro,Hoteleria,X68
+X15,9637908.89,AAA,Noreste,Agricultura,X15
+X36,7940938.322,BB,Suroeste,Manufactura,Grupo 1
+X33,8140333.324,BB,Suroeste,Manufactura,X33
+X43,7435957.953,BB,Suroeste,Manufactura,X43
+X60,5117198.449,BB,Suroeste,Manufactura,Grupo 1
+X17,9599078.773,BBB,Sureste,Minería,X17
+X27,8864066.64,BB,Suroeste,Manufactura,X27
+X69,3874284.312,AAA,Noreste,Agricultura,X69
+X99,267654.5962,AA,Noroeste,Alimentos,X99
+X55,5853746.499,A,Centro,Hoteleria,Grupo 3
+X71,3741042.39,AA,Noroeste,Alimentos,X71
+X21,9329911.007,A,Centro,Hoteleria,X21
+X26,8920502.583,AAA,Noreste,Agricultura,X26
+X90,1840607.226,AA,Noroeste,Alimentos,X90
+X47,6947490.452,BBB,Sureste,Minería,X47
+X63,4651157.686,AA,Noroeste,Alimentos,X63
+X73,3534199.599,BB,Suroeste,Manufactura,X73
+X61,5008840.426,A,Centro,Hoteleria,X61
+X42,7553103.083,BB,Suroeste,Manufactura,X42
+X4,70500000,AA,Noroeste,Alimentos,X4
+X78,3279851.477,AAA,Noreste,Agricultura,X78
+X3,71000000,BB,Suroeste,Manufactura,X3
+X49,6476734.256,AA,Noroeste,Alimentos,X49
+X14,9703308.922,AA,Noroeste,Alimentos,X14
+X85,2601084.001,AAA,Noreste,Agricultura,X85
+X44,7345469.4,AA,Noroeste,Alimentos,X44
+X59,5255212.266,A,Centro,Hoteleria,Grupo 3
+X25,9018018.092,A,Centro,Hoteleria,Grupo 3
+X84,2632116.566,BBB,Sureste,Minería,X84
+X67,4059195.762,BB,Suroeste,Manufactura,Grupo 1
+X31,8360066.568,AAA,Noreste,Agricultura,Grupo 4
+X11,9893192.704,AA,Noroeste,Alimentos,X11
+X45,7267048.557,BB,Suroeste,Manufactura,X45
+X70,3760799.757,AAA,Noreste,Agricultura,X70
+X24,9080004.38,A,Centro,Hoteleria,X24
+X87,2103669.715,A,Centro,Hoteleria,X87
+X98,383874.0723,AA,Noroeste,Alimentos,X98
+X57,5400684.727,AA,Noroeste,Alimentos,X57
+X48,6724661.84,AA,Noroeste,Alimentos,X48
+X34,8092054.454,AA,Noroeste,Alimentos,Grupo 2
+X20,9351433.167,BB,Suroeste,Manufactura,X20
+X6,69000000,AAA,Noreste,Agricultura,X6
+X30,8718259.865,BBB,Sureste,Minería,X30
+X74,3524148.379,BBB,Sureste,Minería,X74
+X37,7901425.764,AA,Noroeste,Alimentos,Grupo 2
+X13,9728077.717,BBB,Sureste,Minería,X13
+X29,8774707.258,AAA,Noreste,Agricultura,X29
+X8,67000000,BB,Suroeste,Manufactura,X8
+X19,9476201.641,AA,Noroeste,Alimentos,X19
+X2,72000000,AAA,Noreste,Agricultura,X2
+X5,70000000,BB,Suroeste,Manufactura,X5
+X35,8076536.233,AAA,Noreste,Agricultura,X35
+X66,4222517.535,A,Centro,Hoteleria,X66
+X38,7881025.644,AAA,Noreste,Agricultura,X38
+X50,6392603.916,BB,Suroeste,Manufactura,X50
+X52,6197576.408,BBB,Sureste,Minería,X52
+X95,1234157.264,AAA,Noreste,Agricultura,X95
+X39,7763300.686,AA,Noroeste,Alimentos,Grupo 2
+X80,3071076.262,AAA,Noreste,Agricultura,X80
+X10,62000000,BBB,Sureste,Minería,X10
+X75,3447169.9,AA,Noroeste,Alimentos,X75
+X81,2891910.095,AA,Noroeste,Alimentos,X81
+X54,5997053.601,BB,Suroeste,Manufactura,X54
+X91,1751905.048,AAA,Noreste,Agricultura,Grupo 4
+X93,1536155.965,A,Centro,Hoteleria,X93
+X12,9797007.008,AAA,Noreste,Agricultura,Grupo 4
+X89,1974512.762,AAA,Noreste,Agricultura,X89
+X88,1998426.429,BBB,Sureste,Minería,X88
+X56,5767146.5,BB,Suroeste,Manufactura,Grupo 1
+X51,6378285.799,BB,Suroeste,Manufactura,X51
+X64,4636250.27,A,Centro,Hoteleria,X64
+X7,68000000,AAA,Noreste,Agricultura,X7
+X79,3137347.334,BB,Suroeste,Manufactura,X79
+X40,7752048.917,BBB,Sureste,Minería,X40
+X72,3550624.064,AAA,Noreste,Agricultura,X72
+X94,1284808.781,A,Centro,Hoteleria,X94
+X97,497560.1775,AA,Noroeste,Alimentos,X97
+X83,2736264.815,AA,Noroeste,Alimentos,Grupo 2
+X23,9145571.732,BBB,Sureste,Minería,X23
+X1,75000000,A,Centro,Hoteleria,X1
+X96,986577.5953,BB,Suroeste,Manufactura,Grupo 1
+X53,6187263.822,BB,Suroeste,Manufactura,X53
+X65,4583214.104,AAA,Noreste,Agricultura,X65
+X18,9490219.071,A,Centro,Hoteleria,X18
+X16,9630996.183,AA,Noroeste,Alimentos,X16
+X100,182214.6595,A,Centro,Hoteleria,X100
+X86,2464844.347,AA,Noroeste,Alimentos,X86
+X28,8851682.186,A,Centro,Hoteleria,X28
+X77,3355548.195,AAA,Noreste,Agricultura,X77
+X58,5279937.567,BB,Suroeste,Manufactura,X58
+X9,65000000,A,Centro,Hoteleria,X9
+X32,8323439.362,AAA,Noreste,Agricultura,X32
+X76,3364807.624,AAA,Noreste,Agricultura,X76
